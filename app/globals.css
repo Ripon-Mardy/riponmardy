@@ -8,3 +8,7 @@ body
     color: white;
 }
 
+.mainNav
+{
+    z-index: 999999999 !important;
+}

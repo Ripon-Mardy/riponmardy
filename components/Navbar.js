@@ -20,6 +20,7 @@ import { MdEmail } from 'react-icons/md'
 import { IoClose } from 'react-icons/io5'
 
 const Navbar = () => {
+
     const [showNav, setShowNav] = useState(false)
 
     const clickMenu = () => {
@@ -38,18 +39,18 @@ const Navbar = () => {
 
     return (
         <>
-            <div className='bg-gray-900 md:bg-transparent p-1 container mx-auto z-50'>
+            <div className='bg-gray-900 md:bg-transparent p-1 container mx-auto relative z-10'>
                 <div className=' flex md:flex-col items-center md:items-start justify-between  w-full md:w-[20%] px-2 container mx-auto md:fixed'>
                     <Link href='/' className='leading-none'>
                         <h1 className='text-2xl font-extrabold'>Ripon M.</h1>
-                        <span className='font-bold italic text-gray-300 text-xs '>
+                        <span className='font-bold italic text-gray-300 text-xs'>
                             Web Developer | MERN
                         </span>
                     </Link>
 
                     {/* ==== desktop menu === */}
                     <div className='hidden md:block md:w-3/4 md:mt-5'>
-                        <div className='flex flex-col gap-4 hover:text-gray-400'>
+                        <div className='flex flex-col gap-4 hover:text-gray-400 z-10'>
                             <motion.div
                                 ref={navRef}
                                 initial='initial'
