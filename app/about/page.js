@@ -61,7 +61,7 @@ const page = () => {
                     <div className='flex flex-col gap-5 md:flex-row md:gap-40'>
                         <h1 className='text-paragraphColor italic font-bold capitalize'>Connect</h1>
                         <div>
-                            <p>Have a question or just want to chat? Feel free to email me. Try finding me anywhere else at @diego__cb</p>
+                            <p>Have a question or just want to chat? Feel free to email me. Try finding me anywhere else at axel_r_m3</p>
 
                             <div className='grid grid-cols-2 md:grid-cols-3 gap-5 mt-4 text-headingColor hover:text-gray-400 hover:border-gray-100'>
                                 <Link href='/' className='border border-gray-600 rounded-md flex items-center justify-between px-2 p-2 hover:text-headingColor hover:border-gray-600'>
