@@ -50,7 +50,7 @@ const Navbar = () => {
 
                     {/* ==== desktop menu === */}
                     <div className='hidden md:block md:w-3/4 md:mt-5'>
-                        <div className='flex flex-col gap-4 hover:text-gray-400 z-10'>
+                        <div className='flex flex-col gap-4 hover:text-hoverparagraph z-10'>
                             <motion.div
                                 ref={navRef}
                                 initial='initial'

@@ -14,7 +14,12 @@ module.exports = {
       },
       colors: {
         "headingColor": "#eee",
-        "paragraphColor": "#b4b4b4"
+        "paragraphColor": "#b4b4b4",
+        "hoverparagraph": "#BDBDBD"
+      },
+      backgroundColor: {
+        "btnColor": "#212121",
+        "btnHover": "#757575"
       }
     },
   },
