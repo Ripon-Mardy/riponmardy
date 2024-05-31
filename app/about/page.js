@@ -103,10 +103,12 @@ const page = () => {
                         </div>
                     </div>
 
+                    {/* === skils section === */}
+
                     <div className='flex flex-col gap-5 md:flex-row md:gap-40'>
                         <h1 className='italic font-semibold text-paragraphColor'>Skills</h1>
 
-                        <div className='grid grid-cols-4 xl:grid-cols-5 md:grid-cols-3 gap-4 object-cover text-center'>
+                        <div className='grid grid-cols-4 xl:grid-cols-5 md:grid-cols-3 gap-4 object-cover text-center text-xs'>
                             <div className='flex items-center justify-center flex-col gap-2 bg-gray-900 p-1 py-2 rounded-md hover:scale-105 duration-200 ease-in-out'>
                                 <Image width={50} height={50} src={html}></Image>
                                 <h1 className='font-semibold capitalize text-headingColor'>html</h1>

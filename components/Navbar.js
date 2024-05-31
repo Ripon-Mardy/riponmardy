@@ -28,7 +28,7 @@ const Navbar = () => {
     }
 
     const textVariants = {
-        initial: { opacity: 0.3, y: 5 },
+        initial: { opacity: 0.3, y: 10 },
         animate: { opacity: 1, y: 0 }
     }
 
@@ -49,7 +49,7 @@ const Navbar = () => {
                     </Link>
 
                     {/* ==== desktop menu === */}
-                    <div className='hidden md:block md:w-3/4 md:mt-5'>
+                    <motion.div ref={navRef} initial='initial' animate='animate' variants={textVariants} className='hidden md:block md:w-3/4 md:mt-5'>
                         <div className='flex flex-col gap-4 hover:text-hoverparagraph z-10'>
                             <motion.div
                                 ref={navRef}
@@ -132,9 +132,9 @@ const Navbar = () => {
                                 </Link>
                             </motion.div>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className='hidden md:block md:mt-5'>
+                    <motion.div variants={textVariants} initial='initial' animate='animate' className='hidden md:block md:mt-5'>
                         <div className='flex flex-col gap-2 hover:text-gray-400'>
                             <div>
                                 <h1 className=' font-bold text-sm'>SOCIAL</h1>
@@ -170,7 +170,7 @@ const Navbar = () => {
                                 <MdEmail /> Email
                             </Link>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* ====menu button ==== */}
                     <div
@@ -188,6 +188,7 @@ const Navbar = () => {
                                 ref={navRef}
                                 initial={{ x: '-100%' }}
                                 animate={{ x: '0' }}
+                                variants={textVariants}
                                 transition={{ duration: '0.3' }}
                                 exit={{ x: '-100%', duration: '0.3' }}
                                 className='absolute left-0 top-0  h-screen bg-gray-900 w-3/5 p-3'
