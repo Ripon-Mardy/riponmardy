@@ -20,7 +20,6 @@ import { MdEmail } from 'react-icons/md'
 import { IoClose } from 'react-icons/io5'
 
 const Navbar = () => {
-
     const [showNav, setShowNav] = useState(false)
 
     const clickMenu = () => {
@@ -49,7 +48,13 @@ const Navbar = () => {
                     </Link>
 
                     {/* ==== desktop menu === */}
-                    <motion.div ref={navRef} initial='initial' animate='animate' variants={textVariants} className='hidden md:block md:w-3/4 md:mt-5'>
+                    <motion.div
+                        ref={navRef}
+                        initial='initial'
+                        animate='animate'
+                        variants={textVariants}
+                        className='hidden md:block md:w-3/4 md:mt-5'
+                    >
                         <div className='flex flex-col gap-4 hover:text-hoverparagraph z-10'>
                             <motion.div
                                 ref={navRef}
@@ -134,7 +139,12 @@ const Navbar = () => {
                         </div>
                     </motion.div>
 
-                    <motion.div variants={textVariants} initial='initial' animate='animate' className='hidden md:block md:mt-5'>
+                    <motion.div
+                        variants={textVariants}
+                        initial='initial'
+                        animate='animate'
+                        className='hidden md:block md:mt-5'
+                    >
                         <div className='flex flex-col gap-2 hover:text-gray-400'>
                             <div>
                                 <h1 className=' font-bold text-sm'>SOCIAL</h1>
@@ -194,7 +204,11 @@ const Navbar = () => {
                                 className='absolute left-0 top-0  h-screen bg-gray-900 w-3/5 p-3'
                             >
                                 <div className='flex justify-between flex-col h-[66%]'>
-                                    <Link href='/' className='leading-none mb-4' onClick={closeMenu}>
+                                    <Link
+                                        href='/'
+                                        className='leading-none mb-4'
+                                        onClick={closeMenu}
+                                    >
                                         <h1 className='text-2xl font-extrabold'>Ripon M.</h1>
                                         <span className='font-semibold text-gray-300 text-xs '>
                                             Web Developer

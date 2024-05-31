@@ -1,6 +1,8 @@
+'use client'
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion, AnimatePresence } from 'framer-motion'
 
 // === import images ===
 import profile from './../public/images/profile (2).jpg'
@@ -27,25 +29,44 @@ import client3 from './../public/images/client/testimonial-3.jpg'
 import client4 from './../public/images/client/testimonial4.jpg'
 
 const Hero = () => {
+
+    const textVariants = {
+        initial: { opacity: 0.3, y: 20 },
+        animate: { opacity: 1, y: 0 }
+    }
     return (
         <>
             <div className='py-5 pb-5'>
-                <div>
+                <motion.div
+                    initial='initial'
+                    animate='animate'
+                    variants={textVariants}
+                    transition={{ duration: 0.3 }}
+                >
                     <h1 className='text-3xl capitalize font-semibold -tracking-tighter text-headingColor'>Ripon Mardy.</h1>
                     <span className='text-sm font-bold italic text-headingColor'> A web Developer | MERN </span>
-                </div>
-                <div className='flex gap-4 mt-8'>
+                </motion.div>
+                <motion.div
+                    initial='initial'
+                    animate='animate'
+                    variants={textVariants}
+                    transition={{ duration: 0.3 }}
+                    className='flex gap-4 mt-8'>
                     <Image src={profile} width={150} height={155} alt='profile' className='rounded-xl md:w-48' ></Image>
                     <div className='flex flex-col mt-5 gap-4 hover:text-hoverparagraph'>
                         <Link href='/' className='flex gap-3 text-headingColor font-semibold items-center hover:text-hoverparagraph'><FaCalendarWeek /> 2+ years Experience</Link>
                         <Link href='/' className='flex gap-3 text-headingColor font-semibold items-center hover:text-hoverparagraph'><FaGithub /> 27 Repositories  </Link>
                         <Link href='/' className='flex gap-3 text-headingColor font-semibold items-center hover:text-hoverparagraph'> <FaWandMagicSparkles /> 67+ successfully completed projects </Link>
                     </div>
-                </div>
-                <div className='mt-9'>
+                </motion.div>
+                <motion.div
+                    initial='initial'
+                    animate='animate'
+                    variants={textVariants}
+                    className='mt-9'>
                     <Image width={50} height={50} src={hey}></Image>
                     <p className='text-sm mt-2 text-paragraphColor md:w-3/4 md:text-lg'> I'm Ripon Mardy, a computer science student who enjoys coding, writing, working-out, and playing football. And I always try to create a creative website. In addition to coding, I also make YouTube videos, where I teach mathematics, creative videos on code, and personal development.</p>
-                </div>
+                </motion.div>
 
                 <div className='my-10 px-5 md:px-0 md:flex md:gap-20 items-center'>
                     <Image className='w-full  object-cover rounded-lg md:w-1/3 hover:scale-105 duration-200 ease-in-out' src={pic2}></Image>
