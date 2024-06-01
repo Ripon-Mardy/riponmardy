@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRef } from 'react'
+import Image from 'next/image'
 
 // ==== imports icons ====
 import { AiOutlineMenu } from 'react-icons/ai'
@@ -18,6 +19,9 @@ import { FaInstagram } from 'react-icons/fa'
 import { FaGithub } from 'react-icons/fa6'
 import { MdEmail } from 'react-icons/md'
 import { IoClose } from 'react-icons/io5'
+
+// === import logo ====
+import logo from './../public/images/logo.png'
 
 const Navbar = () => {
     const [showNav, setShowNav] = useState(false)
@@ -40,11 +44,14 @@ const Navbar = () => {
         <>
             <div className='bg-gray-900 md:bg-transparent p-1 container mx-auto relative z-10'>
                 <div className=' flex md:flex-col items-center md:items-start justify-between  w-full md:w-[20%] px-2 container mx-auto md:fixed'>
-                    <Link href='/' className='leading-none'>
-                        <h1 className='text-2xl font-extrabold'>Ripon M.</h1>
-                        <span className='font-bold italic text-gray-300 text-xs'>
-                            Web Developer | MERN
-                        </span>
+                    <Link href='/' className='leading-none flex items-center gap-2'>
+                        <Image width={50} height={50} src={logo}></Image>
+                        <div className='hidden md:block'>
+                            <h1 className='text-2xl font-extrabold'>Ripon M.</h1>
+                            <span className='font-bold italic text-gray-300 text-xs'>
+                                Web Developer | MERN
+                            </span>
+                        </div>
                     </Link>
 
                     {/* ==== desktop menu === */}
@@ -206,13 +213,16 @@ const Navbar = () => {
                                 <div className='flex justify-between flex-col h-[66%]'>
                                     <Link
                                         href='/'
-                                        className='leading-none mb-4'
+                                        className='leading-none mb-4 flex items-center gap-2'
                                         onClick={closeMenu}
                                     >
-                                        <h1 className='text-2xl font-extrabold'>Ripon M.</h1>
-                                        <span className='font-semibold text-gray-300 text-xs '>
-                                            Web Developer
-                                        </span>
+                                        <Image width={50} height={50} src={logo}></Image>
+                                        <div>
+                                            <h1 className='text-2xl font-extrabold'>Ripon M. (Axel)</h1>
+                                            <span className='font-semibold text-gray-300 text-xs '>
+                                                Web Developer
+                                            </span>
+                                        </div>
                                     </Link>
 
                                     <div className='flex flex-col gap-4 mb-10 mt-4'>

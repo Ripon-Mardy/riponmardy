@@ -41,7 +41,7 @@ const Hero = () => {
                     initial='initial'
                     animate='animate'
                     variants={textVariants}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.4 }}
                 >
                     <h1 className='text-3xl capitalize font-semibold -tracking-tighter text-headingColor'>Ripon Mardy.</h1>
                     <span className='text-sm font-bold italic text-headingColor'> A web Developer | MERN </span>
@@ -50,7 +50,7 @@ const Hero = () => {
                     initial='initial'
                     animate='animate'
                     variants={textVariants}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.4 }}
                     className='flex gap-4 mt-8'>
                     <Image src={profile} width={150} height={155} alt='profile' className='rounded-xl md:w-48' ></Image>
                     <div className='flex flex-col mt-5 gap-4 hover:text-hoverparagraph'>
@@ -63,6 +63,7 @@ const Hero = () => {
                     initial='initial'
                     animate='animate'
                     variants={textVariants}
+                    transition={{ duration: 0.4 }}
                     className='mt-9'>
                     <Image width={50} height={50} src={hey}></Image>
                     <p className='text-sm mt-2 text-paragraphColor md:w-3/4 md:text-lg'> I'm Ripon Mardy, a computer science student who enjoys coding, writing, working-out, and playing football. And I always try to create a creative website. In addition to coding, I also make YouTube videos, where I teach mathematics, creative videos on code, and personal development.</p>

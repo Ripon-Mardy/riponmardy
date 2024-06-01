@@ -1,7 +1,9 @@
+'use client'
 import Swipercomponents from '@/components/swiper/Swipercomponents'
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 // ==== import images ====
 import pic4 from './../../public/images/4.jpg'
@@ -32,13 +34,24 @@ import { FaGithub } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 
 const page = () => {
+
+
+    const textVariants = {
+        initial: { opacity: 0.3, y: 20 },
+        animate: { opacity: 1, y: 0 }
+    }
     return (
         <>
             <div className='pb-12'>
-                <div>
+                <motion.div
+                    initial='initial'
+                    animate='animate'
+                    variants={textVariants}
+                    transition={{ duration: 0.4 }}
+                >
                     <h1 className='text-3xl font-semibold'>About Me</h1>
                     <span className='text-sm leading-none block text-paragraphColor italic'>Just a quick explanation.</span>
-                </div>
+                </motion.div>
                 {/* ==== swiper Components === */}
                 <div>
                     <Swipercomponents />

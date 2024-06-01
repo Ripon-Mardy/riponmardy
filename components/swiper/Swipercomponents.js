@@ -1,6 +1,7 @@
 'use client'
 import Image from 'next/image';
 import React, { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -26,6 +27,11 @@ import { EffectCoverflow, Pagination } from 'swiper/modules';
 
 
 const Swipercomponents = () => {
+
+    const textVariants = {
+        initial: { opacity: 0.3, y: 20 },
+        animate: { opacity: 1, y: 0 }
+    }
     return (
         <>
             <div>
@@ -45,11 +51,21 @@ const Swipercomponents = () => {
                     modules={[EffectCoverflow, Pagination]}
                     className="mySwiper"
                 >
+
                     <SwiperSlide>
-                        <Image src={pic1} ></Image>
+                        <motion.div
+                            initial='initial'
+                            animate='animate'
+                            variants={textVariants}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <Image src={pic1} ></Image>
+                        </motion.div>
+
                     </SwiperSlide>
                     <SwiperSlide>
-                        <Image src={pic2}></Image>
+                        <Image className='object-cover' src={pic2}></Image>
+
                     </SwiperSlide>
                     <SwiperSlide>
                         <Image src={pic3}></Image>
