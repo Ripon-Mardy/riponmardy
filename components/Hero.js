@@ -19,7 +19,10 @@ import { GoArrowUpRight } from "react-icons/go";
 import { RiStarSFill } from "react-icons/ri";
 
 // =-=== projects iamge ==== 
-import project1 from './../public/images/projects/project1.png'
+import project2 from './../public/images/projects/project2.jpeg'
+import project3 from './../public/images/projects/project3.jpeg'
+import project4 from './../public/images/projects/project4.jpg'
+import project5 from './../public/images/projects/project1.jpg'
 
 
 // ==== client images ====
@@ -31,7 +34,7 @@ import client4 from './../public/images/client/testimonial4.jpg'
 const Hero = () => {
 
     const textVariants = {
-        initial: { opacity: 0.3, y: 20 },
+        initial: { opacity: 0.3, y: 30 },
         animate: { opacity: 1, y: 0 }
     }
     return (
@@ -43,7 +46,7 @@ const Hero = () => {
                     variants={textVariants}
                     transition={{ duration: 0.4 }}
                 >
-                    <h1 className='text-3xl capitalize font-semibold -tracking-tighter text-headingColor'>Ripon Mardy.</h1>
+                    <h1 className='text-3xl capitalize font-semibold -tracking-tighter text-headingColor'>Ripon Mardy. (Axel)</h1>
                     <span className='text-sm font-bold italic text-headingColor'> A web Developer | MERN </span>
                 </motion.div>
                 <motion.div
@@ -69,10 +72,15 @@ const Hero = () => {
                     <p className='text-sm mt-2 text-paragraphColor md:w-3/4 md:text-lg'> I'm Ripon Mardy, a computer science student who enjoys coding, writing, working-out, and playing football. And I always try to create a creative website. In addition to coding, I also make YouTube videos, where I teach mathematics, creative videos on code, and personal development.</p>
                 </motion.div>
 
-                <div className='my-10 px-5 md:px-0 md:flex md:gap-20 items-center'>
+                <motion.div
+                    initial='initial'
+                    animate='animate'
+                    variants={textVariants}
+                    transition={{ duration: 0.5 }}
+                    className='my-10 px-5 md:px-0 md:flex md:gap-20 items-center'>
                     <Image className='w-full  object-cover rounded-lg md:w-1/3 hover:scale-105 duration-200 ease-in-out' src={pic2}></Image>
                     <Image className='hidden md:block w-full rounded-lg md:w-1/3 object-cover hover:scale-105 duration-200 ease-in-out' src={pic3}></Image>
-                </div>
+                </motion.div>
 
 
                 {/* ==== projects==== */}
@@ -82,50 +90,52 @@ const Hero = () => {
                         <Link className='flex items-center gap-1 capitalize hover:bg-gray-900 text-sm hover:text-headingColor duration-200 ease-in-out px-1 rounded-sm text-paragraphColor ' href='/projects'>See all <GoArrowUpRight /> </Link>
                     </div>
                     <div className='md:grid md:grid-cols-2 flex flex-col gap-6 hover:text-gray-500'>
+
                         <div className='border-gray-600 border p-2.5 rounded-md flex justify-between items-center gap-4 hover:text-headingColor duration-200 ease-in-out group  relative overflow-hidden'>
-                            <Image className='w-32 rounded-md group-hover:scale-105 duration-200 ease-in-out' src={project1}></Image>
+                            <Image className='w-32 rounded-md group-hover:scale-105 duration-200 ease-in-out' src={project2}></Image>
                             <div className='flex flex-col justify-between'>
-                                <h1 className='text-sm font-semibold'>Floating Image Gallery | GSAP Scroll Trigger + Flip | React Animation</h1>
+                                <h1 className='text-sm font-semibold'>Messageing website | Html, CSS, JS | React Js</h1>
                                 <span className='text-paragraphColor text-xs font-semibold my-2'>Nov 09, 2023</span>
                                 <div className='flex items-center gap-7'>
-                                    <a href="#" className='text-sm bg-btnColor px-3 font-semibold rounded-sm hover:bg-btnHover duration-200 ease-in-out'>live</a>
-                                    <a href="#" className='text-sm bg-btnColor px-3 font-semibold rounded-sm hover:bg-btnHover duration-200 ease-in-out'>Github</a>
+                                    <a href="https://ripon-mardy.github.io/Message-site/" target='_blank' className='text-sm bg-btnColor px-3 font-semibold rounded-sm hover:bg-btnHover duration-200 ease-in-out'>live</a>
+                                    <a href="https://github.com/Ripon-Mardy/Message-site" target='_blank' className='text-sm bg-btnColor px-3 font-semibold rounded-sm hover:bg-btnHover duration-200 ease-in-out'>Github</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div className='border-gray-600 border p-2.5 rounded-md flex gap-4 hover:text-headingColor duration-200 ease-in-out group'>
+                            <Image className='w-32 group-hover:scale-105 duration-200 ease-in-out' src={project3}></Image>
+                            <div className='flex flex-col justify-between'>
+                                <h1 className='text-sm font-semibold'>Health-Tracker | Html, CSS , JS, Bootstrap | React JS</h1>
+                                <span className='text-paragraphColor text-xs font-semibold my-2'>Dec 23, 2022</span>
+                                <div className='flex items-center gap-7'>
+                                    <a href="https://ripon-mardy.github.io/Health-Tracker/" target='_blank' className='text-sm bg-btnColor px-3 font-semibold rounded-sm hover:bg-btnHover duration-200 ease-in-out'>live</a>
+                                    <a href="https://github.com/Ripon-Mardy/Health-Tracker" target='_blank' className='text-sm bg-btnColor px-3 font-semibold rounded-sm hover:bg-btnHover duration-200 ease-in-out'>Github</a>
                                 </div>
                             </div>
                         </div>
 
                         <div className='border-gray-600 border p-2.5 rounded-md flex gap-4 hover:text-headingColor duration-200 ease-in-out group'>
-                            <Image className='w-32 group-hover:scale-105 duration-200 ease-in-out' src={project1}></Image>
+                            <Image className='w-32 group-hover:scale-105 duration-200 ease-in-out' src={project4}></Image>
                             <div className='flex flex-col justify-between'>
-                                <h1 className='text-sm font-semibold'>Floating Image Gallery | GSAP Scroll Trigger + Flip | React Animation</h1>
-                                <span className='text-paragraphColor text-xs font-semibold my-2'>Nov 09, 2023</span>
+                                <h1 className='text-sm font-semibold'>Form-Validation | Javascript, Validation | React JS | Modern</h1>
+                                <span className='text-paragraphColor text-xs font-semibold my-2'>Jan 12, 2023</span>
                                 <div className='flex items-center gap-7'>
-                                    <a href="#" className='text-sm bg-btnColor px-3 font-semibold rounded-sm hover:bg-btnHover duration-200 ease-in-out'>live</a>
-                                    <a href="#" className='text-sm bg-btnColor px-3 font-semibold rounded-sm hover:bg-btnHover duration-200 ease-in-out'>Github</a>
+                                    <a href="https://ripon-mardy.github.io/Form-Validation/" target='_blank' className='text-sm bg-btnColor px-3 font-semibold rounded-sm hover:bg-btnHover duration-200 ease-in-out'>live</a>
+                                    <a href="https://github.com/Ripon-Mardy/Form-Validation" target='_blank' className='text-sm bg-btnColor px-3 font-semibold rounded-sm hover:bg-btnHover duration-200 ease-in-out'>Github</a>
                                 </div>
                             </div>
                         </div>
 
                         <div className='border-gray-600 border p-2.5 rounded-md flex gap-4 hover:text-headingColor duration-200 ease-in-out group'>
-                            <Image className='w-32 group-hover:scale-105 duration-200 ease-in-out' src={project1}></Image>
+                            <Image className='w-32 group-hover:scale-105 duration-200 ease-in-out' src={project5}></Image>
                             <div className='flex flex-col justify-between'>
-                                <h1 className='text-sm font-semibold'>Floating Image Gallery | GSAP Scroll Trigger + Flip | React Animation</h1>
-                                <span className='text-paragraphColor text-xs font-semibold my-2'>Nov 09, 2023</span>
+                                <h1 className='text-sm font-semibold'>Marketing Website | Html, CSS, JS , Framer Motion | React JS | client Project</h1>
+                                <span className='text-paragraphColor text-xs font-semibold my-2'>Feb 04, 2023</span>
                                 <div className='flex items-center gap-7'>
-                                    <a href="#" className='text-sm bg-btnColor px-3 font-semibold rounded-sm hover:bg-btnHover duration-200 ease-in-out'>live</a>
-                                    <a href="#" className='text-sm bg-btnColor px-3 font-semibold rounded-sm hover:bg-btnHover duration-200 ease-in-out'>Github</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className='border-gray-600 border p-2.5 rounded-md flex gap-4 hover:text-headingColor duration-200 ease-in-out group'>
-                            <Image className='w-32 group-hover:scale-105 duration-200 ease-in-out' src={project1}></Image>
-                            <div className='flex flex-col justify-between'>
-                                <h1 className='text-sm font-semibold'>Floating Image Gallery | GSAP Scroll Trigger + Flip | React Animation</h1>
-                                <span className='text-paragraphColor text-xs font-semibold my-2'>Nov 09, 2023</span>
-                                <div className='flex items-center gap-7'>
-                                    <a href="#" className='text-sm bg-btnColor px-3 font-semibold rounded-sm hover:bg-btnHover duration-200 ease-in-out'>live</a>
-                                    <a href="#" className='text-sm bg-btnColor px-3 font-semibold rounded-sm hover:bg-btnHover duration-200 ease-in-out'>Github</a>
+                                    <a href="https://ripon-mardy.github.io/Marketing/" target='_blank' className='text-sm bg-btnColor px-3 font-semibold rounded-sm hover:bg-btnHover duration-200 ease-in-out'>live</a>
+                                    <a href="https://github.com/Ripon-Mardy/Marketing" target='_blank' className='text-sm bg-btnColor px-3 font-semibold rounded-sm hover:bg-btnHover duration-200 ease-in-out'>Github</a>
                                 </div>
                             </div>
                         </div>

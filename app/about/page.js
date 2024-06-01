@@ -20,6 +20,7 @@ import nextjs from './../../public/images/tecnologies/NextJS-Icon.webp'
 import reactjs from './../../public/images/tecnologies/react-icon.webp'
 import typescript from './../../public/images/tecnologies/typescript.png'
 import nodejs from './../../public/images/tecnologies/nodejs.png'
+import bootstrap from './../../public/images/tecnologies/bootstrap-stack.png'
 
 
 
@@ -37,7 +38,7 @@ const page = () => {
 
 
     const textVariants = {
-        initial: { opacity: 0.3, y: 20 },
+        initial: { opacity: 0.3, y: 30 },
         animate: { opacity: 1, y: 0 }
     }
     return (
@@ -58,10 +59,14 @@ const page = () => {
                 </div>
 
                 <div className='flex flex-col gap-10 py-5'>
-                    <div className='flex flex-col  md:flex-row md:gap-44'>
+                    <motion.div
+                        initial='initial'
+                        animate='animate'
+                        variants={textVariants}
+                        className='flex flex-col  md:flex-row md:gap-44'>
                         <h1 className='text-paragraphColor italic font-semibold'>About</h1>
-                        <span className='text-headingColor font-semibold text-lg'>I'm Ripon Mardy!</span>
-                    </div>
+                        <span className='text-headingColor font-semibold text-xl'>I'm Ripon Mardy Axel</span>
+                    </motion.div>
 
                     <div className='flex flex-col gap-5 md:flex-row md:gap-28'>
                         <Image width={100} height={100} className='rounded-xl' src={pic4} ></Image>
@@ -158,8 +163,8 @@ const page = () => {
                             </div>
 
                             <div className='flex items-center justify-center flex-col gap-2 bg-gray-900 p-1 py-2 rounded-md hover:scale-105 duration-200 ease-in-out'>
-                                <Image width={50} height={50} src={nodejs}></Image>
-                                <h1 className='font-semibold capitalize text-headingColor'>Node Js</h1>
+                                <Image width={50} height={50} src={bootstrap}></Image>
+                                <h1 className='font-semibold capitalize text-headingColor'>Bootstrap</h1>
                             </div>
 
                             <div className='flex items-center justify-center flex-col gap-2 bg-gray-900 p-1 py-2 rounded-md hover:scale-105 duration-200 ease-in-out'>

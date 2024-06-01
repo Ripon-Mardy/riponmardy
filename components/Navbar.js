@@ -63,86 +63,44 @@ const Navbar = () => {
                         className='hidden md:block md:w-3/4 md:mt-5'
                     >
                         <div className='flex flex-col gap-4 hover:text-hoverparagraph z-10'>
-                            <motion.div
-                                ref={navRef}
-                                initial='initial'
-                                animate='animate'
-                                variants={textVariants}
+                            <Link
+                                className=' hover:opacity-100 flex gap-3 items-center border border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
+                                href='/'
                             >
-                                <Link
-                                    className=' hover:opacity-100 flex gap-3 items-center border border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
-                                    href='/'
-                                >
-                                    <IoHome /> Home
-                                </Link>
-                            </motion.div>
-                            <motion.div
-                                initial='initial'
-                                animate='animate'
-                                variants={textVariants}
-                                transition={{ duration: 0.1 }}
+                                <IoHome /> Home
+                            </Link>
+                            <Link
+                                className=' flex gap-3 items-center border border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
+                                href='/resume'
                             >
-                                <Link
-                                    className=' flex gap-3 items-center border border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
-                                    href='/resume'
-                                >
-                                    <FaAddressCard /> Reusme
-                                </Link>
-                            </motion.div>
-                            <motion.div
-                                initial='initial'
-                                animate='animate'
-                                variants={textVariants}
-                                transition={{ duration: 0.2 }}
+                                <FaAddressCard /> Reusme
+                            </Link>
+                            <Link
+                                className='flex gap-3 items-center border border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
+                                href='/projects'
                             >
-                                <Link
-                                    className='flex gap-3 items-center border border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
-                                    href='/projects'
-                                >
-                                    <PiMagicWandFill /> Projects
-                                </Link>
-                            </motion.div>
+                                <PiMagicWandFill /> Projects
+                            </Link>
+                            <Link
+                                className='flex gap-3 items-center border border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
+                                href='/blogs'
+                            >
+                                <FaBlog /> Blogs
+                            </Link>
 
-                            <motion.div
-                                initial='initial'
-                                animate='animate'
-                                variants={textVariants}
+                            <Link
+                                className='flex gap-3 items-center border border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
+                                href='/about'
                             >
-                                <Link
-                                    className='flex gap-3 items-center border border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
-                                    href='/blogs'
-                                >
-                                    <FaBlog /> Blogs
-                                </Link>
-                            </motion.div>
+                                <FaUser /> About
+                            </Link>
 
-                            <motion.div
-                                initial='initial'
-                                animate='animate'
-                                variants={textVariants}
-                                transition={{ duration: 0.4 }}
+                            <Link
+                                className='flex gap-3 items-center border border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
+                                href='/others'
                             >
-                                <Link
-                                    className='flex gap-3 items-center border border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
-                                    href='/about'
-                                >
-                                    <FaUser /> About
-                                </Link>
-                            </motion.div>
-
-                            <motion.div
-                                initial='initial'
-                                animate='animate'
-                                variants={textVariants}
-                                transition={{ duration: 0.5 }}
-                            >
-                                <Link
-                                    className='flex gap-3 items-center border border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
-                                    href='/others'
-                                >
-                                    <GiStarFormation /> Others
-                                </Link>
-                            </motion.div>
+                                <GiStarFormation /> Others
+                            </Link>
                         </div>
                     </motion.div>
 
@@ -158,31 +116,31 @@ const Navbar = () => {
                             </div>
                             <Link
                                 className='flex gap-3 items-center  border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
-                                href='/'
+                                href='https://www.linkedin.com/in/ripon-mardy-axel-bb2286249/' target='_blank'
                             >
                                 <FaLinkedin /> Linkedin
                             </Link>
                             <Link
                                 className='flex gap-3 items-center  border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
-                                href='/'
+                                href='https://www.facebook.com/romenripon.mardi.1' target='_blank'
                             >
                                 <FaFacebook /> Facebook
                             </Link>
                             <Link
                                 className='flex gap-3 items-center  border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
-                                href='/'
+                                href='https://www.instagram.com/axel_r_m3/' target='_blank'
                             >
                                 <FaInstagram /> Instagram
                             </Link>
                             <Link
                                 className='flex gap-3 items-center  border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
-                                href='/'
+                                href='https://github.com/Ripon-Mardy' target='_blank'
                             >
                                 <FaGithub /> Github
                             </Link>
                             <Link
                                 className='flex gap-3 items-center  border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
-                                href='/'
+                                href='mardyripon10@gmial.com' target='_blank'
                             >
                                 <MdEmail /> Email
                             </Link>
@@ -218,7 +176,7 @@ const Navbar = () => {
                                     >
                                         <Image width={50} height={50} src={logo}></Image>
                                         <div>
-                                            <h1 className='text-2xl font-extrabold'>Ripon M. (Axel)</h1>
+                                            <h1 className='text-2xl font-extrabold'>Ripon M.</h1>
                                             <span className='font-semibold text-gray-300 text-xs '>
                                                 Web Developer
                                             </span>
