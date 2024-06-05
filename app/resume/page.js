@@ -10,7 +10,13 @@ const page = () => {
     }
     return (
         <>
-            <div>
+            <div className='relative'>
+
+                <div
+                    className='absolute left-1/2 -top-7 md:-top-10 right-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-500 p-0.5 px-2 block w-fit text-sm font-semibold hover:bg-gray-700 duration-200 ease-in-out'>
+                    <a href="../../public/images/CVWebDeveloper.pdf" download="CVWebDeveloper.pdf" >Download</a>
+                </div>
+
                 <motion.div
                     initial='initial'
                     animate='animate'
@@ -19,7 +25,7 @@ const page = () => {
 
                     className='px-2 md:px-0 pb-5'>
                     {/* heading  */}
-                    <div className='flex items-center flex-col md:flex-row justify-center md:justify-between'>
+                    <div className='flex items-center flex-col md:flex-row justify-center md:justify-between mt-6'>
                         <div>
                             <h1 className='text-3xl md:text-4xl font-semibold text-headingColor'>
                                 Ripon Mardy Axel
@@ -99,7 +105,7 @@ const page = () => {
                                 Front-End Development
                             </h1>
                             <div>
-                                <ul className='list-disc flex p-2 gap-4 md:gap-8 items-center justify-between flex-wrap text-paragraphColor font-semibold text-sm md:text-lg'>
+                                <ul className='list-disc flex p-2 gap-4 md:gap-8 items-center justify-between flex-wrap text-paragraphColor font-semibold text-sm'>
                                     <li>HTML5</li>
                                     <li>CSS3</li>
                                     <li> Tailwind CSS</li>
@@ -117,7 +123,7 @@ const page = () => {
                                 Back-End Development
                             </h1>
                             <div>
-                                <ul className='flex items-start gap-4 flex-col text-sm md:text-lg list-disc'>
+                                <ul className='flex items-start gap-4 flex-col text-sm list-disc'>
                                     <li className='text-paragraphColor'>
                                         <span className='text-headingColor font-bold inline-block text-sm italic mr-3'>
                                             Node.js
@@ -166,7 +172,7 @@ const page = () => {
                             Experience
                         </h1>
                         <div className='mt-6'>
-                            <ul className='flex items-start gap-4 flex-col text-sm md:text-lg list-disc'>
+                            <ul className='flex items-start gap-4 flex-col text-sm list-disc'>
                                 <li className='text-paragraphColor'>
                                     <span className='text-headingColor font-bold inline-block italic mr-3'>
                                         Developed and maintained
