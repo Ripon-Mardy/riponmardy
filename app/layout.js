@@ -10,7 +10,7 @@ const lora = Lora({
 
 
 export const metadata = {
-  title: "Ripon Mardy",
+  title: "Ripon Mardy - Developer Portfolio",
   description: "A createtive Web Developer portfolio",
 };
 

@@ -186,10 +186,10 @@ const page = () => {
                 </div>
 
                 {/* === aviable for freelancing ==== */}
-                <div className='py-5'>
+                <div className='py-8'>
                     <div className=' p-4 block bg-image text-center' >
                         <h1 className='md:text-4xl text-lg text-headingColor font-semibold capitalize'>I am available for freelancing</h1>
-                        <Link href={'https://wa.me/+8801320585642'} target='_blank' className='text-sm font-semibold bg-gray-500 rounded-sm px-4 mt-3 inline-block hover:bg-gray-800 duration-200 ease-in-out'>contact Me on Whatsapp</Link>
+                        <Link href={'https://wa.me/+8801320585642'} target='_blank' className='text-sm md:text-lg p-1 font-semibold bg-gray-800 rounded-sm px-4 mt-3 inline-block hover:bg-gray-900 duration-200 ease-in-out'>contact Me on Whatsapp</Link>
                     </div>
                 </div>
             </div>

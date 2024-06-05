@@ -24,6 +24,7 @@ body
     background-image: url('./../public/images/2.jpg');
     background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
     position: relative;
     z-index: 1;
 }
