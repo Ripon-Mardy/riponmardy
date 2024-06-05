@@ -12,10 +12,10 @@ const page = () => {
         <>
             <div className='relative'>
 
-                <div
+                {/* <div
                     className='absolute left-1/2 -top-7 md:-top-10 right-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-500 p-0.5 px-2 block w-fit text-sm font-semibold hover:bg-gray-700 duration-200 ease-in-out'>
-                    <a href="../../public/images/CVWebDeveloper.pdf" download="CVWebDeveloper.pdf" >Download</a>
-                </div>
+                    <a href={cvfile} download={cvfile}>Download</a>
+                </div> */}
 
                 <motion.div
                     initial='initial'
