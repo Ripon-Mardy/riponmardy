@@ -236,6 +236,7 @@ const page = () => {
                             </ul>
                         </div>
                     </div>
+                    <h1 className='md:text-lg text-sm font-bold mt-6'>Ripon Mardy</h1>
                 </motion.div>
             </div>
         </>
