@@ -21,6 +21,7 @@ import reactjs from './../../public/images/tecnologies/react-icon.webp'
 import typescript from './../../public/images/tecnologies/typescript.png'
 import nodejs from './../../public/images/tecnologies/nodejs.png'
 import bootstrap from './../../public/images/tecnologies/bootstrap-stack.png'
+import tailwindCss from './../../public/images/tecnologies/tailwind.webp'
 
 
 
@@ -41,6 +42,7 @@ const page = () => {
         initial: { opacity: 0.3, y: 30 },
         animate: { opacity: 1, y: 0 }
     }
+
     return (
         <>
             <div className='pb-12'>
@@ -82,37 +84,37 @@ const page = () => {
                             <p>Have a question or just want to chat? Feel free to email me. Try finding me anywhere else at axel_r_m3</p>
 
                             <div className='grid grid-cols-2 md:grid-cols-3 gap-5 mt-4 text-headingColor hover:text-gray-400 hover:border-gray-100'>
-                                <Link href='/' className='border border-gray-600 rounded-md flex items-center justify-between px-2 p-2 hover:text-headingColor hover:border-gray-600'>
+                                <Link href='mailto:mardyripon10@gmail.com' target='_blank' className='border border-gray-600 rounded-md flex items-center justify-between px-2 p-2 hover:text-headingColor hover:border-gray-600'>
                                     <div className='flex items-center gap-1.5 font-semibold'> <MdEmail />  Email </div>
                                     <CgArrowTopRight />
                                 </Link>
 
-                                <Link href='/' className='border border-gray-600 rounded-md flex items-center justify-between px-2 p-2 hover:text-headingColor hover:border-gray-600'>
+                                <Link href='https://wa.me/+8801320585642' target='_blank' className='border border-gray-600 rounded-md flex items-center justify-between px-2 p-2 hover:text-headingColor hover:border-gray-600'>
                                     <div className='flex items-center gap-1.5 font-semibold'> <IoLogoWhatsapp />  WhatsApp </div>
                                     <CgArrowTopRight />
                                 </Link>
 
-                                <Link href='/' className='border border-gray-600 rounded-md flex items-center justify-between px-2 p-2 hover:text-headingColor hover:border-gray-600'>
+                                <Link href='https://www.instagram.com/axel_r_m3/' target='_blank' className='border border-gray-600 rounded-md flex items-center justify-between px-2 p-2 hover:text-headingColor hover:border-gray-600'>
                                     <div className='flex items-center gap-1.5 font-semibold'> <FaInstagramSquare />  Instagram </div>
                                     <CgArrowTopRight />
                                 </Link>
 
-                                <Link href='/' className='border border-gray-600 rounded-md flex items-center justify-between px-2 p-2 hover:text-headingColor hover:border-gray-600'>
+                                <Link href='https://www.linkedin.com/in/ripon-mardy-axel-bb2286249/' target='_blank' className='border border-gray-600 rounded-md flex items-center justify-between px-2 p-2 hover:text-headingColor hover:border-gray-600'>
                                     <div className='flex items-center gap-1.5 font-semibold'> <FaLinkedin />  Linkedin </div>
                                     <CgArrowTopRight />
                                 </Link>
 
-                                <Link href='/' className='border border-gray-600 rounded-md flex items-center justify-between px-2 p-2 hover:text-headingColor hover:border-gray-600'>
+                                <Link href='https://www.facebook.com/romenripon.mardi.1' target='_blank' className='border border-gray-600 rounded-md flex items-center justify-between px-2 p-2 hover:text-headingColor hover:border-gray-600'>
                                     <div className='flex items-center gap-1.5 font-semibold'> <FaFacebook />  Facebook </div>
                                     <CgArrowTopRight />
                                 </Link>
 
-                                <Link href='/' className='border border-gray-600 rounded-md flex items-center justify-between px-2 p-2 hover:text-headingColor hover:border-gray-600'>
+                                <Link href='https://github.com/Ripon-Mardy' target='_blank' className='border border-gray-600 rounded-md flex items-center justify-between px-2 p-2 hover:text-headingColor hover:border-gray-600'>
                                     <div className='flex items-center gap-1.5 font-semibold'> <FaGithub />  Github </div>
                                     <CgArrowTopRight />
                                 </Link>
 
-                                <Link href='/' className='border border-gray-600 rounded-md flex items-center justify-between px-2 p-2 hover:text-headingColor hover:border-gray-600'>
+                                <Link href='https://www.youtube.com/channel/UC2yGQ2bMW_VG4j5MESnTWjg' target='_blank' className='border border-gray-600 rounded-md flex items-center justify-between px-2 p-2 hover:text-headingColor hover:border-gray-600'>
                                     <div className='flex items-center gap-1.5 font-semibold'> <FaYoutube />  Youtube </div>
                                     <CgArrowTopRight />
                                 </Link>
@@ -160,6 +162,11 @@ const page = () => {
                             <div className='flex items-center justify-center flex-col gap-2 bg-gray-900 p-1 py-2 rounded-md hover:scale-105 duration-200 ease-in-out'>
                                 <Image width={50} height={50} src={typescript}></Image>
                                 <h1 className='font-semibold capitalize text-headingColor'>TypeScript</h1>
+                            </div>
+
+                            <div className='flex items-center justify-center flex-col gap-2 bg-gray-900 p-1 py-2 rounded-md hover:scale-105 duration-200 ease-in-out'>
+                                <Image width={50} height={50} src={tailwindCss}></Image>
+                                <h1 className='font-semibold capitalize text-headingColor'>Tailwind CSS</h1>
                             </div>
 
                             <div className='flex items-center justify-center flex-col gap-2 bg-gray-900 p-1 py-2 rounded-md hover:scale-105 duration-200 ease-in-out'>

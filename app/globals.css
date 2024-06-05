@@ -8,7 +8,33 @@ body
     color: white;
 }
 
-.mainNav
+::-webkit-scrollbar {
+    width: 7px;
+    background-color: #333333 ;
+    scrollbar-width: 10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color:#BDBDBD;
+    border-radius: 10px;
+}
+
+.bg-image
 {
-    z-index: 999999999 !important;
+    background-image: url('./../public/images/2.jpg');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.bg-image::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.521);
+    z-index: -1;
 }

@@ -60,6 +60,7 @@ const Navbar = () => {
                         initial='initial'
                         animate='animate'
                         variants={textVariants}
+                        transition={{ duration: 0.5 }}
                         className='hidden md:block md:w-3/4 md:mt-5'
                     >
                         <div className='flex flex-col gap-4 hover:text-hoverparagraph z-10'>
@@ -108,6 +109,7 @@ const Navbar = () => {
                         variants={textVariants}
                         initial='initial'
                         animate='animate'
+                        transition={{ duration: 0.5 }}
                         className='hidden md:block md:mt-5'
                     >
                         <div className='flex flex-col gap-2 hover:text-gray-400'>
@@ -140,7 +142,7 @@ const Navbar = () => {
                             </Link>
                             <Link
                                 className='flex gap-3 items-center  border-gray-700 p-2 text-sm rounded-md capitalize font-light hover:text-white'
-                                href='mardyripon10@gmial.com' target='_blank'
+                                href='mailto:mardyripon10@gmial.com' target='_blank'
                             >
                                 <MdEmail /> Email
                             </Link>
@@ -233,31 +235,31 @@ const Navbar = () => {
                                         </div>
                                         <Link
                                             className='flex gap-3 items-center  border-gray-700 p-2 text-sm rounded-md capitalize font-light'
-                                            href='/'
+                                            href='https://www.linkedin.com/in/ripon-mardy-axel-bb2286249/' target='_blank'
                                         >
                                             <FaLinkedin /> Linkedin
                                         </Link>
                                         <Link
                                             className='flex gap-3 items-center  border-gray-700 p-2 text-sm rounded-md capitalize font-light'
-                                            href='/'
+                                            href='https://www.facebook.com/romenripon.mardi.1' target='_blank'
                                         >
                                             <FaFacebook /> Facebook
                                         </Link>
                                         <Link
                                             className='flex gap-3 items-center  border-gray-700 p-2 text-sm rounded-md capitalize font-light'
-                                            href='/'
+                                            href='https://www.instagram.com/axel_r_m3/' target='_blank'
                                         >
                                             <FaInstagram /> Instagram
                                         </Link>
                                         <Link
                                             className='flex gap-3 items-center  border-gray-700 p-2 text-sm rounded-md capitalize font-light'
-                                            href='/'
+                                            href='https://github.com/Ripon-Mardy' target='_blank'
                                         >
                                             <FaGithub /> Github
                                         </Link>
                                         <Link
                                             className='flex gap-3 items-center  border-gray-700 p-2 text-sm rounded-md capitalize font-light'
-                                            href='/'
+                                            href='mailto:mardyripon10@gmail.com' target='_blank'
                                         >
                                             <MdEmail /> Email
                                         </Link>
