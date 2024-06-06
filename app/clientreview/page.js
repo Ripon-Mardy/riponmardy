@@ -1,6 +1,6 @@
 import React from 'react'
-import Link from 'next/link'
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 
 // ==== imports images ====
@@ -15,9 +15,18 @@ import { RiStarSFill } from "react-icons/ri";
 
 
 const page = () => {
+    const textVariants = {
+        initial: { opacity: 0.3, y: 30 },
+        animate: { opacity: 1, y: 0 }
+    }
     return (
         <>
-            <div>
+            <motion.div
+                initial='initial'
+                animate='animate'
+                variants={textVariants}
+                transition={{ duration: 0.5 }}
+            >
 
                 <div className='flex flex-col gap-4 md:gap-6 md:grid md:grid-cols-2 hover:bg-transparent relative'>
                     <div className='border border-gray-500 p-2 inset-0 bg-gray-800  bg-opacity-90 rounded-lg backdrop-blur-lg hover:bg-transparent duration-200 ease-in-out '>
@@ -117,7 +126,7 @@ const page = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </>
     )
 }
