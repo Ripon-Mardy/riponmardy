@@ -148,8 +148,8 @@ const Hero = () => {
                 {/* ==== review sction === */}
                 <div>
                     <div className='flex items-center justify-between  mb-5'>
-                        <h1 className='text-headingColor font-bold '>Projects</h1>
-                        <Link className='flex items-center gap-1 capitalize hover:bg-gray-900 text-sm hover:text-headingColor duration-200 ease-in-out px-1 rounded-sm text-paragraphColor ' href='/projects'>See all <GoArrowUpRight /> </Link>
+                        <h1 className='text-headingColor font-bold '>Review</h1>
+                        <Link className='flex items-center gap-1 capitalize hover:bg-gray-900 text-sm hover:text-headingColor duration-200 ease-in-out px-1 rounded-sm text-paragraphColor ' href='/clientreview'>See all <GoArrowUpRight /> </Link>
                     </div>
 
                     <div className='flex flex-col gap-4 md:gap-6 md:grid md:grid-cols-2 hover:bg-transparent relative'>

@@ -41,7 +41,7 @@ const page = () => {
                             </span>
                             <span className='text-paragraphColor'>
                                 {' '}
-                                <b className='text-headingColor font-semibold'>Email :</b>{' '}
+                                <b className='text-headingColor font-semibold'>Email :</b>
                                 mardyripon10@gmail.com{' '}
                             </span>
                             <span>
@@ -131,33 +131,30 @@ const page = () => {
                                         Asynchronous programming, event-driven architecture
                                     </li>
                                     <li className='text-paragraphColor'>
-                                        {' '}
                                         <span className='text-headingColor font-bold inline-block text-sm italic mr-3'>
                                             Express.js
-                                        </span>{' '}
-                                        RESTful API development, middleware integration{' '}
+                                        </span>
+                                        RESTful API development, middleware integration
                                     </li>
                                     <li className='text-paragraphColor'>
                                         {' '}
                                         <span className='text-headingColor font-bold inline-block text-sm italic mr-3'>
-                                            {' '}
                                             MongoDB
-                                        </span>{' '}
-                                        NoSQL database design, CRUD operations, Mongoose ORM{' '}
+                                        </span>
+                                        NoSQL database design, CRUD operations, Mongoose ORM
                                     </li>
                                     <li className='text-paragraphColor'>
                                         {' '}
                                         <span className='text-headingColor font-bold inline-block text-sm italic mr-3'>
                                             Next.Js
                                         </span>{' '}
-                                        Full Stack Framework{' '}
+                                        Full Stack Framework
                                     </li>
                                     <li className='text-paragraphColor'>
-                                        {' '}
                                         <span className='text-headingColor font-bold inline-block text-sm italic mr-3'>
                                             JWT (JSON Web Tokens)
-                                        </span>{' '}
-                                        Authentication and authorization{' '}
+                                        </span>
+                                        Authentication and authorization
                                     </li>
                                 </ul>
                             </div>
