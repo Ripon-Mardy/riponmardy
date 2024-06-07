@@ -74,7 +74,7 @@ const page = () => {
                         <Image width={100} height={100} className='rounded-xl' src={pic4} ></Image>
                         <div>
                             <p className='text-headingColor'>I am a computer science student at Aptouch Polytechnic Institute. With a strong passion for technology, software and design, I am constantly looking to expand my knowledge and skills in these areas. I am also interested in writing and mathematics, and I believe that these subjects complement my technical pursuits. Thank you for viewing my portfolio, and I look forward to sharing my work with you.</p>
-                            <p className='mt-3 text-headingColor'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, explicabo!</p>
+
                         </div>
                     </div>
 
