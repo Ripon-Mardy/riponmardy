@@ -69,7 +69,7 @@ const Hero = () => {
                     transition={{ duration: 0.5 }}
                     className='mt-9'>
                     <Image width={50} height={50} src={hey}></Image>
-                    <p className='text-sm mt-2 text-paragraphColor md:w-3/4 md:text-lg'> I'm Ripon Mardy, a computer science student who enjoys coding, writing, working-out, and playing football. And I always try to create a creative website. In addition to coding, I also make YouTube videos, where I teach mathematics, creative videos on code, and personal development.</p>
+                    <p className='text-sm mt-2 text-paragraphColor md:w-3/4 md:text-lg'> I'm Ripon Mardy, a computer science student who enjoys coding, writing, working-out, and playing football. And I always try to create a creative website. In addition to coding, I also make YouTube videos, where I teach  creative videos on code, and personal development.</p>
                 </motion.div>
 
                 <motion.div

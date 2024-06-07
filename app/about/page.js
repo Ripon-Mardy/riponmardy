@@ -73,7 +73,7 @@ const page = () => {
                     <div className='flex flex-col gap-5 md:flex-row md:gap-28'>
                         <Image width={100} height={100} className='rounded-xl' src={pic4} ></Image>
                         <div>
-                            <p className='text-headingColor'>I'm a college student at Wake Tech Community College pursuing an Associate in Science degree. I'll be transferring to NC State University to pursue a Bachelor's degree in Computer Science. With a strong passion for technology, software, and design, I am constantly seeking to expand my knowledge and skills in these areas. I'm also interested in writing and mathematics, and I believe that these subjects complement my technical pursuits. Thank you for visiting my portfolio, and I look forward to sharing my work with you.</p>
+                            <p className='text-headingColor'>I am a computer science student at Aptouch Polytechnic Institute. With a strong passion for technology, software and design, I am constantly looking to expand my knowledge and skills in these areas. I am also interested in writing and mathematics, and I believe that these subjects complement my technical pursuits. Thank you for viewing my portfolio, and I look forward to sharing my work with you.</p>
                             <p className='mt-3 text-headingColor'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, explicabo!</p>
                         </div>
                     </div>
@@ -81,9 +81,8 @@ const page = () => {
                     <div className='flex flex-col gap-5 md:flex-row md:gap-40'>
                         <h1 className='text-paragraphColor italic font-bold capitalize'>Connect</h1>
                         <div>
-                            <p>Have a question or just want to chat? Feel free to email me. Try finding me anywhere else at axel_r_m3</p>
 
-                            <div className='grid grid-cols-2 md:grid-cols-3 gap-5 mt-4 text-headingColor hover:text-gray-400 hover:border-gray-100'>
+                            <div className='grid grid-cols-2 md:grid-cols-4 gap-5 mt-4 text-headingColor hover:text-gray-400 hover:border-gray-100'>
                                 <Link href='mailto:mardyripon10@gmail.com' target='_blank' className='border border-gray-600 rounded-md flex items-center justify-between px-2 p-2 hover:text-headingColor hover:border-gray-600'>
                                     <div className='flex items-center gap-1.5 font-semibold'> <MdEmail />  Email </div>
                                     <CgArrowTopRight />
