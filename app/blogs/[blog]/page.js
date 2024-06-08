@@ -9,10 +9,10 @@ const page = ({ params }) => {
 
     return (
         <div>
-            <h1 className='text-xl font-semibold text-headingColor '>{blogpost.title}</h1>
-            <span className='text-sm italic'>  {blogpost.subTitle} </span>
+            <h1 className='text-xl md:text-2xl font-semibold text-headingColor '>{blogpost.title}</h1>
+            <span className='text-sm italic md:text-lg'>  {blogpost.subTitle} </span>
             <span className='text-xs block text-paragraphColor'> {blogpost.date} </span>
-            <p className='mt-3 text-paragraphColor text-sm'> {blogpost.content} </p>
+            <p className='mt-3 text-paragraphColor text-sm md:text-lg'> {blogpost.content} </p>
         </div>
     )
 }

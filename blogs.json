@@ -10,28 +10,28 @@
     },
     {
         "id": "2",
-        "image": "https://i.ibb.co/BybrbjC/blog1.png",
-        "title": "javascript",
-        "subTitle": "Building Websites for Every Screen",
-        "content": "In today's world, where mobile devices reign supreme, having a website that looks great and functions flawlessly across all screen sizes is no longer a luxury, it's a necessity. As a web developer, I'm passionate about crafting user experiences that are seamless and adaptable, regardless of the device used to access them. Here's why responsive design is a game-changer, and how it can elevate your web presence:",
+        "image": "https://i.ibb.co/hgtJqTw/nextjs-hero.jpg",
+        "title": "Full Stack Framework Next JS",
+        "subTitle": " Building Dynamic and SEO-Friendly Applications",
+        "content": "Next.js is a powerful React framework that simplifies building server-rendered and statically generated web applications. This blog explores its capabilities and how it can benefit developers:",
         "author": "John Doe",
         "date": "2023-01-01"
     },
     {
         "id": "3",
-        "image": "https://i.ibb.co/BybrbjC/blog1.png",
-        "title": "javascript",
-        "subTitle": "Building Websites for Every Screen",
-        "content": "In today's world, where mobile devices reign supreme, having a website that looks great and functions flawlessly across all screen sizes is no longer a luxury, it's a necessity. As a web developer, I'm passionate about crafting user experiences that are seamless and adaptable, regardless of the device used to access them. Here's why responsive design is a game-changer, and how it can elevate your web presence:",
+        "image": "https://i.ibb.co/nPFhxSb/1-Tt-PYy-A2-F6jqc-HQdh-HMui-QA.png",
+        "title": "Introduction to Server-Side Rendering",
+        "subTitle": "Enhancing Performance with Server-Side Rendering (SSR",
+        "content": "Server-side rendering can improve performance and SEO. This blog explains what SSR is, how it works, and how to implement it using frameworks like Next.js.",
         "author": "John Doe",
         "date": "2023-01-01"
     },
     {
         "id": "4",
-        "image": "https://i.ibb.co/BybrbjC/blog1.png",
-        "title": "javascript",
-        "subTitle": "Building Websites for Every Screen",
-        "content": "In today's world, where mobile devices reign supreme, having a website that looks great and functions flawlessly across all screen sizes is no longer a luxury, it's a necessity. As a web developer, I'm passionate about crafting user experiences that are seamless and adaptable, regardless of the device used to access them. Here's why responsive design is a game-changer, and how it can elevate your web presence:",
+        "image": "https://i.ibb.co/LRvnR6z/images.jpg",
+        "title": "Web Development Roadmap",
+        "subTitle": "Charting Your Path to Success",
+        "content": " The exciting world of web development offers a diverse range of career paths. This roadmap provides a general guide to help you navigate your learning journey",
         "author": "John Doe",
         "date": "2023-01-01"
     }

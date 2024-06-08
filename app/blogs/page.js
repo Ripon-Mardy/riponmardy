@@ -24,7 +24,12 @@ const page = () => {
 
 
     return (
-        <div className='pb-5'>
+        <motion.div
+            initial='initial'
+            animate='animate'
+            variants={textVariants}
+            transition={{ duration: 0.5 }}
+            className='pb-5'>
             <div
                 initial='initial'
                 animate='animate'
@@ -55,7 +60,7 @@ const page = () => {
                     }
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
