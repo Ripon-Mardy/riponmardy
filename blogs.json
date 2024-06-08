@@ -1,16 +1,38 @@
 [
     {
         "id": "1",
-        "title": "First Blog Post",
-        "content": "This is the content of the first blog post.",
+        "image": "https://i.ibb.co/BybrbjC/blog1.png",
+        "title": "The Power of Responsive Design",
+        "subTitle": "Building Websites for Every Screen",
+        "content": "In today's world, where mobile devices reign supreme, having a website that looks great and functions flawlessly across all screen sizes is no longer a luxury, it's a necessity. As a web developer, I'm passionate about crafting user experiences that are seamless and adaptable, regardless of the device used to access them. Here's why responsive design is a game-changer, and how it can elevate your web presence:",
         "author": "John Doe",
         "date": "2023-01-01"
     },
     {
         "id": "2",
-        "title": "Second Blog Post",
-        "content": "This is the content of the second blog post.",
-        "author": "Jane Doe",
-        "date": "2023-02-01"
+        "image": "https://i.ibb.co/BybrbjC/blog1.png",
+        "title": "javascript",
+        "subTitle": "Building Websites for Every Screen",
+        "content": "In today's world, where mobile devices reign supreme, having a website that looks great and functions flawlessly across all screen sizes is no longer a luxury, it's a necessity. As a web developer, I'm passionate about crafting user experiences that are seamless and adaptable, regardless of the device used to access them. Here's why responsive design is a game-changer, and how it can elevate your web presence:",
+        "author": "John Doe",
+        "date": "2023-01-01"
+    },
+    {
+        "id": "3",
+        "image": "https://i.ibb.co/BybrbjC/blog1.png",
+        "title": "javascript",
+        "subTitle": "Building Websites for Every Screen",
+        "content": "In today's world, where mobile devices reign supreme, having a website that looks great and functions flawlessly across all screen sizes is no longer a luxury, it's a necessity. As a web developer, I'm passionate about crafting user experiences that are seamless and adaptable, regardless of the device used to access them. Here's why responsive design is a game-changer, and how it can elevate your web presence:",
+        "author": "John Doe",
+        "date": "2023-01-01"
+    },
+    {
+        "id": "4",
+        "image": "https://i.ibb.co/BybrbjC/blog1.png",
+        "title": "javascript",
+        "subTitle": "Building Websites for Every Screen",
+        "content": "In today's world, where mobile devices reign supreme, having a website that looks great and functions flawlessly across all screen sizes is no longer a luxury, it's a necessity. As a web developer, I'm passionate about crafting user experiences that are seamless and adaptable, regardless of the device used to access them. Here's why responsive design is a game-changer, and how it can elevate your web presence:",
+        "author": "John Doe",
+        "date": "2023-01-01"
     }
 ]

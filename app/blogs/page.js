@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 
-// ==== import blogs images ====
-import blog1 from './../../public/images/blog/blog1.png'
+
 
 // ==== json data ====
 import blogsJson from './../../blogs.json'
@@ -40,14 +40,20 @@ const page = () => {
                 </span>
             </div>
             {/* ==== blog content === */}
-            <div>
-                {
-                    blogs.map((item, index) => (
-                        <div>
-                            {item.title}
-                        </div>
-                    ))
-                }
+            <div className='mt-6'>
+                <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
+                    {
+                        blogs.map((item, index) => (
+                            <Link href={`/blogs/${item.id}`} key={index} className='border border-gray-500 p-2 rounded-sm'>
+                                <Image width={100} height={100} src={item.image} className='mx-auto' alt='blogs'></Image>
+                                <div className='mt-3'>
+                                    <h1 className='text-headingColor font-semibold text-sm mb-2 leading-none'> {item.title} </h1>
+                                    <span className='text-xs leading-none'> {item.subTitle} </span>
+                                </div>
+                            </Link>
+                        ))
+                    }
+                </div>
             </div>
         </div>
     )
