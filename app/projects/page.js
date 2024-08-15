@@ -140,7 +140,7 @@ const page = () => {
                 </motion.div>
                 {/* ==== show projects menu ==== */}
                 <div className='mt-8'>
-                    <div className='grid grid-cols-3 md:grid-cols-4 gap-4 '>
+                    <div className='grid md:grid-cols-2 gap-4 '>
                         {projectActive.map((item, index) => (
                             <motion.div
                                 initial='initial'
@@ -148,17 +148,18 @@ const page = () => {
                                 variants={textVariants}
                                 transition={{ duration: 0.5 }}
                                 key={index}
-                                className='border border-gray-700 p-1 flex flex-col items-center md:py-2 rounded-md'
+                                className='border border-gray-700 p-1 flex gap-6  md:py-2 rounded-md'
                             >
                                 <Image
                                     width={190}
                                     height={190}
                                     alt='projects'
                                     src={item.image}
-                                    className='rounded-lg object-cover hover:scale-105 duration-200 ease-in-out'
+                                    className='w-52 h-36 rounded-lg object-cover hover:scale-105 duration-200 ease-in-out'
                                 ></Image>
-                                <div className='flex items-center justify-between gap-3 md:gap-10 px-1 md:px-6  mt-4'>
-                                    <Link
+                                <div className=' px-1 md:px-6 mt-4'>
+                                   <div className='flex gap-5'>
+                                   <Link
                                         className=' bg-btnHover px-1 text-sm rounded-sm font-semibold text-headingColor hover:bg-btnHover'
                                         href={item.live}
                                         target='_blank'
@@ -172,6 +173,7 @@ const page = () => {
                                     >
                                         Github
                                     </Link>
+                                   </div>
                                 </div>
                                 {/* <span className='text-sm'> {item.title} </span> */}
                             </motion.div>
