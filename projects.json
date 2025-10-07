@@ -61,23 +61,5 @@
         "date": "Nov 09, 2023",
         "live": "https://ripon-mardy.github.io/Responsive-Home-slider/",
         "github": "https://github.com/Ripon-Mardy/Responsive-Home-slider"
-    },
-    {
-        "id": 8,
-        "category": "Landing Page",
-        "image": "https://i.ibb.co/jkPPxXZ/Screenshot-2024-03-14-001055.png",
-        "title": "Messageing website | Html, CSS, JS | React Js",
-        "date": "Nov 09, 2023",
-        "live": "https://ripon-mardy.github.io/Axel-R-Ripon/",
-        "github": "https://github.com/Ripon-Mardy/Axel-R-Ripon"
-    },
-    {
-        "id": 9,
-        "category": "Landing Page",
-        "image": "https://i.ibb.co/jkPPxXZ/Screenshot-2024-03-14-001055.png",
-        "title": "Messageing website | Html, CSS, JS | React Js",
-        "date": "Nov 09, 2023",
-        "live": "https://ripon-mardy.github.io/Axel-R-Ripon/",
-        "github": "https://github.com/Ripon-Mardy/Axel-R-Ripon"
     }
 ]
