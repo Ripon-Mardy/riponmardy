@@ -1,4 +1,4 @@
-import { Lora, Bitter } from "next/font/google";
+import { Lora, Bitter, Ubuntu } from "next/font/google";
 import "./globals.css";
 
 import Script from "next/script";
@@ -14,8 +14,13 @@ const bitte = Bitter ({
   weight: ["400", "500", "600", "700"],
 })
 
+const ubuntu = Ubuntu ({
+  subsets: ['latin'],
+  weight : ['300', '400', '500', '700']
+})
+
 export const metadata = {
-  title: "Ripon Mardy - Developer Portfolio",
+  title: "Ripon Mardy",
   description: "A createtive Web Developer portfolio",
 };
 
@@ -44,7 +49,7 @@ export default function RootLayout({ children }) {
         </Script>
       </head>
 
-      <body suppressHydrationWarning className={bitte.className}>
+      <body suppressHydrationWarning className={ubuntu.className}>
         <Navbar />
         {children}
       </body>

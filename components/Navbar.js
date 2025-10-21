@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,8 +9,7 @@ import github from "@/public/social/github.png";
 import linkedin from "@/public/social/linkedin.png";
 
 const Navbar = () => {
-
-    const [showNavbar, setShowNavbar] = useState(false)
+  const [showNavbar, setShowNavbar] = useState(false);
 
   const menus = [
     { name: "Projects", link: "/" },
@@ -25,19 +24,23 @@ const Navbar = () => {
         {/* logo  */}
         <Link
           href={"/"}
+          title="Ripon Mardy"
           className="bg-blue-600 p-1 rounded-sm text-white font-semibold"
         >
           RM
         </Link>
         {/* bar  */}
-        <Menu onClick={() => setShowNavbar(!showNavbar)} className="md:hidden cursor-pointer" />
+        <Menu
+          onClick={() => setShowNavbar(!showNavbar)}
+          className="md:hidden cursor-pointer"
+        />
         {/* menus  */}
         <div className="hidden md:flex items-center justify-center space-x-10 ">
           {menus.map((menu, index) => (
             <Link key={index} href={menu.link}>
               {menu?.icon ? (
                 <Image
-                title={menu.name}
+                  title={menu.name}
                   src={menu.icon}
                   alt={menu.name}
                   width={22}
@@ -52,9 +55,8 @@ const Navbar = () => {
         </div>
 
         {/* mobile menu  */}
-        {
-         showNavbar && (
-             <div className="absolute left-0 top-full bg-gray-300 w-full p-4 md:hidden">
+        {showNavbar && (
+          <div className="absolute left-0 top-full bg-gray-300 w-full p-4 md:hidden">
             <div className="flex flex-col  items-start justify-start space-y-5">
               {menus.map((menu, index) => (
                 <Link key={index} href={menu.link}>
@@ -79,8 +81,7 @@ const Navbar = () => {
               Contact Me
             </Link>
           </div>
-         )
-        }
+        )}
         {/* contact me  */}
         <Link
           href={"/contact-me"}
