@@ -27,8 +27,8 @@ const Banner = () => {
               Software Engineer
             </span>
           </h2>
-          <h3 className="text-2xl">Full Stack Web Developer with 4+ years of experience.</h3>
-          <p className="text-2xl">I <strong className="font-semibold">design</strong>, <strong>code</strong>, and <strong>deploy</strong> things that live on the web.</p>
+          <h3 className="text-lg md:text-2xl">Full Stack Web Developer with 4+ years of experience.</h3>
+          <p className="text-lg md:text-2xl">I <strong className="font-semibold">design</strong>, <strong>code</strong>, and <strong>deploy</strong> things that live on the web.</p>
           </div>
           {/* “I’m Interested In” */}
           <div className="mt-16">

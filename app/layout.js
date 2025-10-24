@@ -3,6 +3,7 @@ import "./globals.css";
 
 import Script from "next/script";
 import Navbar from "@/components/Navbar";
+import Copyright from "@/components/Copyright";
 
 const lora = Lora({
   subsets: ["latin"],
@@ -52,6 +53,7 @@ export default function RootLayout({ children }) {
       <body suppressHydrationWarning className={ubuntu.className}>
         <Navbar />
         {children}
+        <Copyright/>
       </body>
     </html>
   );
