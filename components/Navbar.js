@@ -12,10 +12,10 @@ const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
 
   const menus = [
-    { name: "Projects", link: "/" },
-    { name: "Resume", link: "/" },
-    { name: "Github", link: "/", icon: github },
-    { name: "LinkedIn", link: "/", icon: linkedin },
+    { name: "Projects", link: "/projects" },
+    { name: "Resume", link: "/resume" },
+    { name: "Github", link: "https://github.com/Ripon-Mardy", icon: github },
+    { name: "LinkedIn", link: "https://www.linkedin.com/in/ripon-mardy-axel-bb2286249/", icon: linkedin },
   ];
 
   return (
@@ -37,7 +37,7 @@ const Navbar = () => {
         {/* menus  */}
         <div className="hidden md:flex items-center justify-center space-x-10 ">
           {menus.map((menu, index) => (
-            <Link key={index} href={menu.link}>
+            <Link key={index} href={menu.link} target={menu.icon && '_blank'}>
               {menu?.icon ? (
                 <Image
                   title={menu.name}
