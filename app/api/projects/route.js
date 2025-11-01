@@ -24,6 +24,7 @@ export async function POST(req) {
       live,
       tags,
     };
+    
     Projects.create(newProject);
 
     return NextResponse.json(
