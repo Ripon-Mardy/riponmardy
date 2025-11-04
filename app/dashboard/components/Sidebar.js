@@ -1,53 +1,46 @@
-"use client";
-import React from "react";
+'use client'
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Header from "./Header";
 
-const Sidebar = () => {
-  const pathname = usePathname();
+const Sidebar = ({menu}) => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
-  const menus = [
-    {
-      name: "Home",
-      link: "/dashboard",
-    },
-    {
-      name: "Skills",
-      link: "/skills",
-    },
-    {
-      name: "Projects",
-      link: "/projects",
-    },
-  ];
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+            if(window.innerWidth >= 768) {
+                setIsSidebarOpen(true)
+            } else {
+                setIsSidebarOpen(false)
+            }
+        }
+        checkMobile();
+
+        window.addEventListener('resize', checkMobile);
+
+        return () => window.removeEventListener('resize', checkMobile)
+    }, [])
+
+
+
 
   return (
-    <div className=" bg-gray-200 h-screen py-8 w-2/12">
-      <div className="">
-        <div className="pl-8">
+    <aside className={` ${isSidebarOpen ? 'w-64' : 'hidden'} bg-gray-900 min-h-screen fixed text-white p-3`}>
+      <h2 className="bg-gray-700 text-xl p-4 rounded-md font-semibold">RM</h2>
+      <div className="flex flex-col gap-5 mt-10">
+        {menu.map((menu, index) => (
           <Link
-            href={"/dashboard"}
-            className="bg-blue-600 text-white p-1 rounded-md font-medium w-fit"
+            key={index}
+            href={menu?.link}
+            className="text-gray-300 font-medium w-full hover:bg-gray-800 p-2 rounded"
           >
-            RM
+            {menu?.name}
           </Link>
-        </div>
-
-        <div className="flex items-start gap-3 flex-col mt-8">
-          {menus.map((menu, index) => (
-            <Link
-              key={index}
-              href={menu.link}
-              className={`w-full text-gray-900 transition duration-100 pl-8 p-2 ${
-                pathname === menu.link ? "bg-red-500" : ""
-              } `}
-            >
-              {menu.name}
-            </Link>
-          ))}
-        </div>
+        ))}
       </div>
-    </div>
+    </aside>
   );
 };
 
