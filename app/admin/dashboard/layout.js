@@ -11,19 +11,19 @@ export default function DashboardLayout({ children }) {
       const adminMenus = [
         {
           name: "Dashboard",
-          link: "/dashboard",
+          link: "/admin/dashboard",
         },
         {
           name: "Projects",
-          link: "/dashboard/projects",
+          link: "/admin/dashboard/projects",
         },
         {
           name: "Skills",
-          link: "/dashboard/skills",
+          link: "/admin/dashboard/skills",
         },
         {
           name: "Settings",
-          link: "/dashboard/settings",
+          link: "/admin/dashboard/settings",
         },
       ];
 

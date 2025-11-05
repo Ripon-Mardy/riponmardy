@@ -1,6 +1,20 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 
 const page = () => {
+  const [formData, setFormdData] = useState({
+    title: "",
+    description: "",
+    github: "",
+    live: "",
+    tags: [],
+  });
+
+  // handle input chagne 
+  const handleInputChange = (e) => {
+    
+  }
+
   return (
     <div>
       <h2 className="font-semibold text-2xl">Projects</h2>
@@ -17,6 +31,9 @@ const page = () => {
             </label>
             <input
               id="project_name"
+              name="title"
+              onChange={handleInputChange}
+              value={formData?.title}
               type="text"
               className="p-2 rounded-md outline-none border border-gray-200 text-sm text-gray-800"
               placeholder="Project Name"
@@ -34,6 +51,9 @@ const page = () => {
             <textarea
               id="project_description"
               rows={5}
+              name="description"
+              value={formData.description}
+              onChange={handleInputChange}
               type="text"
               className="p-2 rounded-md outline-none border border-gray-200 text-sm text-gray-800 resize-none"
               placeholder="write project description..."
@@ -50,6 +70,9 @@ const page = () => {
             </label>
             <input
               id="project_github_link"
+              name="github"
+              value={formData.github}
+              onChange={handleInputChange}
               type="text"
               className="p-2 rounded-md outline-none border border-gray-200 text-sm text-gray-800 resize-none"
               placeholder="Project github link"
@@ -67,6 +90,9 @@ const page = () => {
             <input
               id="project_live_link"
               type="text"
+              name="live"
+              value={formData?.live}
+              onChange={handleInputChange}
               className="p-2 rounded-md outline-none border border-gray-200 text-sm text-gray-800 resize-none"
               placeholder="Project live link"
               required

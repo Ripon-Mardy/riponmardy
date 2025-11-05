@@ -7,11 +7,22 @@ import { Menu } from "lucide-react";
 const Header = ({ menu }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  //   handle logout
+  const handleLogout = async () => {
+    await fetch("/api/logout", {
+      method: "POST",
+    });
+    window.location.href = "/";
+  };
+
   return (
     <header className="relative bg-white shadow-sm border-b border-gray-200">
       <div className="p-4 flex items-center justify-between gap-4">
         <h2 className="text-xl font-semibold text-gray-800">Dashboard</h2>
-        <button className="text-red-500 font-medium hidden md:block">
+        <button
+          onClick={handleLogout}
+          className="text-red-500 font-medium hidden md:block"
+        >
           Logout
         </button>
         {/* mobile bar  */}

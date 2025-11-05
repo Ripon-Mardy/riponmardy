@@ -4,9 +4,15 @@ import Link from "next/link";
 import Image from "next/image";
 
 import profileCV from "@/public/profile.jpg";
+import Navbar from "@/components/Navbar";
+import Copyright from "@/components/Copyright";
 
 export default function Resume() {
     return (
+        <>
+        <Navbar/>
+
+
         <main className="min-h-screen bg-gray-50 p-6 md:p-12">
             <div className="max-w-5xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden print:shadow-none print:rounded-none print:bg-white">
                 <div className="md:flex">
@@ -342,5 +348,10 @@ export default function Resume() {
                 </div>
             </div>
         </main>
+
+
+
+        <Copyright/>
+        </>
     );
 }
