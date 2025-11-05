@@ -12,7 +12,30 @@ const page = () => {
 
   // handle input chagne 
   const handleInputChange = (e) => {
-    
+    const {name, value} = e.target;
+
+    setFormdData((prev) => ({
+      ...prev,
+      [name] : value
+    }))
+  }; 
+
+  // handle project submit button 
+  const handleProjectSubmitButton = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch('/api/projects', {
+        method : 'POST',
+        body : JSON.stringify(formData)
+      })
+
+      if(res.ok) {
+        alert('project add sucessfully');
+      }
+    } catch (error) {
+      console.log('error', error)
+    }
   }
 
   return (
@@ -20,7 +43,7 @@ const page = () => {
       <h2 className="font-semibold text-2xl">Projects</h2>
 
       <div className="mt-5 bg-white rounded-md max-w-md p-5">
-        <form action="#" className="space-y-5">
+        <form action="#" onSubmit={handleProjectSubmitButton} className="space-y-5">
           {/* project name  */}
           <div className="flex flex-col gap-1">
             <label
@@ -100,7 +123,7 @@ const page = () => {
           </div>
 
           <button
-            type="button"
+            type="submit"
             className="text-sm bg-blue-600 text-white  p-2 rounded-md"
           >
             Add Project
