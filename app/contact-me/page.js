@@ -19,7 +19,7 @@ export default function ContactPage() {
           </p>
 
           {/* Contact Info */}
-          <div className="space-y-4">
+          <div className="space-y-4"> 
             <div>
               <p className="text-sm font-medium text-gray-700">Email</p>
               <p className="text-gray-800">youremail@gmail.com</p>
