@@ -5,6 +5,11 @@ import Navbar from "./Navbar";
 import Copyright from "./Copyright";
 
 const Projects = ({ projectsData }) => {
+
+    if(!Array.isArray(projectsData?.projects)) {
+        return [];
+    }
+
   return (
     <>
       <Navbar />

@@ -1,17 +1,23 @@
 import Projects from "@/components/Projects";
 import React from "react";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
 async function getProjects() {
   try {
-    const res = await fetch(`${baseUrl}/api/projects`, {
+    const res = await fetch(`http://localhost:3000/api/projects`, {
       next: { revalidate: 60 },
     });
-    if (!res.ok) console.log('error');
-    return res.json();
+    if(!res.ok) {
+      console.log('Api Error', res.status);
+      // return [];
+    }
+    const data = await res.json();
+
+    return data;
+
+
   } catch (error) {
-    console.log('error', error)
+    console.log('error', error);
+    return []
   }
 }
 
@@ -20,7 +26,7 @@ const page = async () => {
 
   return (
     <div>
-      <Projects projectsData={data || []} />
+      <Projects projectsData={data} />
     </div>
   );
 };

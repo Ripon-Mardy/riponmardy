@@ -27,7 +27,7 @@ const page = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${baseUrl}/api/projects`, {
+      const res = await fetch(`/api/projects`, {
         method : 'POST',
         headers : {'Accept' : 'application/json'},
         body : JSON.stringify(formData)

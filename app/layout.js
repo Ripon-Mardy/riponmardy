@@ -41,9 +41,7 @@ export default function RootLayout({ children }) {
       </head>
 
       <body suppressHydrationWarning className={ubuntu.className}>
-        {/* <Navbar /> */}
         {children}
-        {/* <Copyright/> */}
       </body>
     </html>
   );
