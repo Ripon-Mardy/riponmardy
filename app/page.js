@@ -1,16 +1,17 @@
 'use client'
-import AdUnit from "@/components/AddUnit";
-import Hero from "@/components/Hero";
+
+import Banner from "@/components/Banner";
+import Copyright from "@/components/Copyright";
+import Experience from "@/components/Experience";
 import Navbar from "@/components/Navbar";
-import Image from "next/image";
 
 export default function Home() {
   return (
     <>
-      <div>
-        <Hero />
-        <AdUnit/>
-      </div>
+    <Navbar/>
+    <Banner/>
+    <Experience/>
+    <Copyright/>
     </>
   );
 }
