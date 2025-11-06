@@ -14,8 +14,6 @@ export async function GET(req) {
 
   const total = await Projects.countDocuments();
 
-  console.log("serachParams", searchParams);
-
   const projects = await Projects.find().sort({ createdAt: -1 }).skip(skip).limit(limit);
 
   return NextResponse.json({
