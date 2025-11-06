@@ -1,9 +1,7 @@
-import { Lora, Bitter, Ubuntu } from "next/font/google";
+import { Ubuntu } from "next/font/google";
 import "./globals.css";
 
 import Script from "next/script";
-import Navbar from "@/components/Navbar";
-import Copyright from "@/components/Copyright";
 
 
 
