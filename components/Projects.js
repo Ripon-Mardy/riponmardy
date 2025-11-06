@@ -5,8 +5,6 @@ import Navbar from "./Navbar";
 import Copyright from "./Copyright";
 
 const Projects = ({ projectsData }) => {
-
-    console.log('projectsdata', projectsData)
   return (
     <>
       <Navbar />
@@ -39,11 +37,11 @@ const Projects = ({ projectsData }) => {
                 </div>
               </div>
               <p className="text-gray-800 text-sm">{project?.description}</p>
-              <div>
+              {/* <div>
                 <span className="text-gray-900 bg-gray-300 text-xs p-1 px-2 rounded-md font-light">
                   HTML
                 </span>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>
