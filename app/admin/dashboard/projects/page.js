@@ -29,6 +29,7 @@ const page = () => {
     try {
       const res = await fetch(`${baseUrl}/api/projects`, {
         method : 'POST',
+        headers : {'Accept' : 'application/json'},
         body : JSON.stringify(formData)
       })
 
