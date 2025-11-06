@@ -5,15 +5,7 @@ import Script from "next/script";
 import Navbar from "@/components/Navbar";
 import Copyright from "@/components/Copyright";
 
-const lora = Lora({
-  subsets: ["latin"],
-  weight: ["400", "500", "500", "600", "700"],
-});
 
-const bitte = Bitter ({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-})
 
 const ubuntu = Ubuntu ({
   subsets: ['latin'],
