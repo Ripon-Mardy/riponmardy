@@ -1,8 +1,10 @@
 import Projects from '@/components/Projects'
 import React from 'react'
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
 async function getProjects() {
-  const res = await fetch('http://localhost:3000/api/projects', {next : {revalidate : 60}});
+  const res = await fetch(`${baseUrl}/api/projects`, {next : {revalidate : 60}});
   if(!res.ok) throw new Error('Failed to fetch projects');
   return res.json();
 }
