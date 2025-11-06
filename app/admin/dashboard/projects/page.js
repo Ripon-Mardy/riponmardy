@@ -10,6 +10,8 @@ const page = () => {
     tags: [],
   });
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
   // handle input chagne 
   const handleInputChange = (e) => {
     const {name, value} = e.target;
@@ -25,7 +27,7 @@ const page = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch('/api/projects', {
+      const res = await fetch(`${baseUrl}/api/projects`, {
         method : 'POST',
         body : JSON.stringify(formData)
       })
