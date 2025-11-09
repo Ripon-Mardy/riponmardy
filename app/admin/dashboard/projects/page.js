@@ -1,5 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
+import { Pencil, Trash2  } from 'lucide-react';
+
 
 const page = () => {
   const [formData, setFormdData] = useState({
@@ -9,8 +12,22 @@ const page = () => {
     live: "",
     tags: [],
   });
+  const [projects, setProjects ] = useState([]);
+  console.log('projects', projects)
+  const [error, setError] = useState('')
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const res = await fetch('/api/projects');
+
+      if(!res.ok) setError('failed to fetch projects');
+      const projectData = await res.json();
+      setProjects(projectData?.projects || [])
+    }
+
+    fetchProjects();
+  }, [])
 
   // handle input chagne 
   const handleInputChange = (e) => {
@@ -27,7 +44,7 @@ const page = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${baseUrl}/api/projects`, {
+      const res = await fetch(`/api/projects`, {
         method : 'POST',
         headers : {'Accept' : 'application/json'},
         body : JSON.stringify(formData)
@@ -35,6 +52,12 @@ const page = () => {
 
       if(res.ok) {
         alert('project add sucessfully');
+        setFormdData({
+          title : '',
+          description : '',
+          github : '',
+          live : ''
+        })
       }
     } catch (error) {
       console.log('error', error)
@@ -45,7 +68,8 @@ const page = () => {
     <div>
       <h2 className="font-semibold text-2xl">Projects</h2>
 
-      <div className="mt-5 bg-white rounded-md max-w-md p-5">
+      <div className="grid grid-cols-2 gap-10 mt-5">
+        <div className=" bg-white rounded-md p-5">
         <form action="#" onSubmit={handleProjectSubmitButton} className="space-y-5">
           {/* project name  */}
           <div className="flex flex-col gap-1">
@@ -133,6 +157,32 @@ const page = () => {
           </button>
         </form>
       </div>
+
+      {/* projects details  */}
+      <div className="bg-white p-5 rounded-md">
+        {/* <h2>Projects Details</h2> */}
+
+        {projects.length > 0 ? (
+           <div className="border border-gray-100 rounded-md p-3">
+          <div className="flex items-center justify-between gap-2">
+            <h2 className="text-sm font-medium">project Name</h2>
+            <div className="flex items-center justify-center gap-2">
+              <Pencil className="w-4 h-4 text-gray-600 text-sm cursor-pointer hover:text-gray-800 transition duration-100"/>
+              <Trash2 className="w-4 h-4 text-gray-600 text-sm cursor-pointer hover:text-gray-800 transition duration-100" />
+            </div>
+          </div>
+          <p className="text-sm mt-2 text-gray-600">description here</p>
+        </div>
+        ): (
+          <span className="text-sm text-gray-600"> Projects not available </span>
+        )}
+       
+
+
+      </div>
+      </div>
+
+
     </div>
   );
 };
