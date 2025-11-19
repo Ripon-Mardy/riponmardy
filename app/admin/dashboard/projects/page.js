@@ -13,13 +13,14 @@ const page = () => {
     tags: [],
   });
   const [projects, setProjects ] = useState([]);
-  console.log('projects', projects)
   const [error, setError] = useState('')
+
+  const apiUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const res = await fetch('/api/projects');
+      const res = await fetch(`${apiUrl}/api/projects`);
 
       if(!res.ok) setError('failed to fetch projects');
       const projectData = await res.json();
