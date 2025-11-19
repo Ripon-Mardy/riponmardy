@@ -10,8 +10,6 @@ const Projects = ({ projectsData }) => {
         return [];
     }
 
-    console.log('projectsData', projectsData)
-
   return (
     <>
       <Navbar />
