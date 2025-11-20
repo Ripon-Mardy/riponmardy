@@ -7,9 +7,12 @@ import { Menu } from "lucide-react";
 const Header = ({ menu }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // api key 
+  const apiKey = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+
   //   handle logout
   const handleLogout = async () => {
-    await fetch("/api/logout", {
+    await fetch(`${apiKey}/api/logout`, {
       method: "POST",
     });
     window.location.href = "/";

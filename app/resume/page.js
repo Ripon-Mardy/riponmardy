@@ -73,7 +73,7 @@ export default function Resume() {
                                     </a>
                                 </li>
                                 <li>
-                                    Portfolio:{" "}
+                                    Portfolio:
                                     <a
                                         className="text-blue-600"
                                         href="https://riponmardy.vercel.app"
