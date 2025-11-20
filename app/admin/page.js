@@ -10,6 +10,7 @@ const page = () => {
   const [isError, setIsError] = useState("");
 
   const router = useRouter();
+  const apiKey = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
   // handle input change
   const handleInputChange = (e) => {
@@ -25,7 +26,7 @@ const page = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("/api/login", {
+    const res = await fetch(`${apiKey}/api/login`, {
       method: "POST",
       body: JSON.stringify(formData),
     });
