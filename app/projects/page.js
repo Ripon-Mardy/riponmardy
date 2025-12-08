@@ -3,13 +3,14 @@ import React from "react";
 
 async function getProjects() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
   try {
     const res = await fetch(`${baseUrl}/api/projects`, {
       next: { revalidate: 60 },
     });
     if(!res.ok) {
       console.log('Api Error', res.status);
-      // return [];
+      return [];
     }
     const data = await res.json();
 
@@ -27,7 +28,7 @@ const page = async () => {
 
   return (
     <div>
-      <Projects projectsData={data} />
+      <Projects projectsData={data}/>
     </div>
   );
 };
