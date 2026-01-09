@@ -7,6 +7,8 @@ const page = () => {
     username: "",
     password: "",
   });
+  
+  const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState("");
 
   const router = useRouter();
@@ -26,7 +28,10 @@ const page = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(`${apiKey}/api/login`, {
+    setIsLoading(true);
+
+    try {
+      const res = await fetch(`${apiKey}/api/login`, {
       method: "POST",
       body: JSON.stringify(formData),
     });
@@ -36,6 +41,12 @@ const page = () => {
     } else {
       setIsError('Invalid Username or Password')
     }
+    } catch (error) {
+      setIsError('Something went wrong. Please try again later.')
+    } finally {
+      setIsLoading(false);
+    }
+
   };
 
   return (
@@ -93,7 +104,7 @@ const page = () => {
             type="submit"
             className="p-2 text-white rounded-md px-9 bg-blue-500 font-medium text-sm"
           >
-            Login
+            {isLoading ? 'Loading...' : 'Login'}
           </button>
         </div>
       </form>
