@@ -1,7 +1,34 @@
+'use client'
 import Copyright from "@/components/Copyright";
 import Navbar from "@/components/Navbar";
+import { useState } from "react";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name : '',
+    email : '',
+    message : ''
+  })
+  console.log('formdata', formData)
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+
+  // input handle 
+  const handleInputChange = (e) => {
+    const {name, value} = e.target;
+    setFormData({
+      ...formData,
+      [name] : value
+    })
+  }
+
+  // handle form submit 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    
+  }
+
   return (
     <>
     <Navbar/>
@@ -56,13 +83,16 @@ export default function ContactPage() {
         </div>
 
         {/* Right Side: Contact Form */}
-        <form className="space-y-5">
+        <form className="space-y-5" onSubmit={handleFormSubmit}>
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Your Name
             </label>
             <input
               type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
               className="w-full mt-1 border border-gray-300 rounded-lg p-3 outline-none focus:border-blue-500"
               placeholder="John Doe"
             />
@@ -74,6 +104,9 @@ export default function ContactPage() {
             </label>
             <input
               type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
               className="w-full mt-1 border border-gray-300 rounded-lg p-3 outline-none focus:border-blue-500"
               placeholder="email@example.com"
             />
@@ -85,6 +118,9 @@ export default function ContactPage() {
             </label>
             <textarea
               rows="4"
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
               className="w-full mt-1 border border-gray-300 rounded-lg p-3 outline-none focus:border-blue-500"
               placeholder="Write your message…"
             ></textarea>
