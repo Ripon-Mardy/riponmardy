@@ -2,11 +2,17 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
+// icons 
+import { Eye, EyeOff  } from 'lucide-react';
+
 const page = () => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState("");
 
   const router = useRouter();
@@ -25,9 +31,15 @@ const page = () => {
   // handle form submit
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setIsError('')
 
-    const res = await fetch(`${apiKey}/api/login`, {
+    try {
+      const res = await fetch(`${apiKey}/api/login`, {
       method: "POST",
+      headers : {
+        'Content-Type' : 'application/json'
+      },
       body: JSON.stringify(formData),
     });
 
@@ -36,6 +48,12 @@ const page = () => {
     } else {
       setIsError('Invalid Username or Password')
     }
+    } catch (error) {
+      setIsError('Something went wrong. Please try again later.')
+    } finally {
+      setIsLoading(false);
+    }
+
   };
 
   return (
@@ -70,30 +88,36 @@ const page = () => {
             required
           />
         </div>
-        <div>
+        <div className="relative">
           <label
             htmlFor="password"
             className="text-sm font-medium text-gray-800"
           >
             Password
           </label>
-          <input
+          <div>
+            <input
             id="password"
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             name="password"
             value={formData.password}
             onChange={handleInputChange}
-            className="w-full border border-gray-300 rounded-md p-2 outline-none bg-transparent text-sm font-medium text-gray-800"
+            className="relative w-full border border-gray-300 rounded-md p-2 outline-none bg-transparent text-sm font-medium text-gray-800"
             placeholder="Password"
             required
           />
+          <button type="button" onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? <EyeOff className="absolute right-3 top-8 cursor-pointer w-5 h-5 text-gray-400" /> : <Eye className="absolute right-3 top-8 cursor-pointer w-5 h-5 text-gray-400" />}
+          </button>
+
+          </div>
         </div>
         <div className="text-center">
           <button
             type="submit"
             className="p-2 text-white rounded-md px-9 bg-blue-500 font-medium text-sm"
           >
-            Login
+            {isLoading ? 'Logging...' : 'Login'}
           </button>
         </div>
       </form>
