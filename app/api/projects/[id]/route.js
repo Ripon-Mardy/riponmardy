@@ -10,6 +10,13 @@ export async function DELETE(req, { params }) {
     await connectDB();
 
     const { id } = params;
+
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+      return NextResponse.json(
+        { message: "Invalid project id" },
+        { status: 400 }
+      );
+    }
     const deleteProject = await Projects.findByIdAndDelete(id);
 
     if (!deleteProject) {
