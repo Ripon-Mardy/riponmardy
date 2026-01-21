@@ -18,6 +18,10 @@ export default function DashboardLayout({ children }) {
           link: "/admin/dashboard/projects",
         },
         {
+          name : 'Messages',
+          link: "/admin/dashboard/messages",
+        },
+        {
           name: "Skills",
           link: "/admin/dashboard/skills",
         },

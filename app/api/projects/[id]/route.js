@@ -1,5 +1,6 @@
 import { connectDB } from "@/lib/db";
 import Projects from "@/lib/models/Projects";
+import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
 
@@ -9,6 +10,13 @@ export async function DELETE(req, { params }) {
     await connectDB();
 
     const { id } = params;
+
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+      return NextResponse.json(
+        { message: "Invalid project id" },
+        { status: 400 }
+      );
+    }
     const deleteProject = await Projects.findByIdAndDelete(id);
 
     if (!deleteProject) {
@@ -40,12 +48,35 @@ export async function PUT(request, {params}) {
         await connectDB();
 
         const {id} = params;
-        const body = request.json();
 
-        const updateProject = await Projects.findByIdAndUpdate(id, body, {
-            new : true,
-            runValidators : true
-        })
+        // valid mongodb id check 
+        if(!mongoose.Types.ObjectId.isValid(id)) {
+          return NextResponse.json(
+            {message : "Invalid project id"},
+            {status : 400}
+          )
+        }
+
+        const body = await request.json();
+        const {title, description, github, live} = body;
+
+        if(!title || !description || !github || !live) {
+          return NextResponse.json(
+            {message : "All fields are required"},
+            {status : 400}
+          )
+        }
+
+        const updateProject = await Projects.findByIdAndUpdate(
+          id,
+          {
+            title : title.trim(),
+            description : description.trim(),
+            github : github.trim(),
+            live : live.trim(),
+          },
+          {new : true, runValidators : true}
+        )
 
         if(!updateProject) {
             return NextResponse.json(
@@ -54,10 +85,13 @@ export async function PUT(request, {params}) {
             )
         }
 
-        return NextResponse.json({
-            message : "Project update sucessfully",
+        return NextResponse.json(
+          {
+            message : 'Project updated successfully',
             project : updateProject
-        })
+          },
+          {status : 200}
+        )
 
     } catch (error) {
         console.log('error', error);

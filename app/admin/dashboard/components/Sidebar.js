@@ -2,10 +2,13 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Header from "./Header";
+import { usePathname } from "next/navigation";
 
 const Sidebar = ({menu}) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+
+    const pathname = usePathname();
 
     useEffect(() => {
         const checkMobile = () => {
@@ -34,7 +37,7 @@ const Sidebar = ({menu}) => {
           <Link
             key={index}
             href={menu?.link}
-            className="text-gray-300 font-medium w-full hover:bg-gray-800 p-2 rounded"
+            className={`text-gray-300 font-medium w-full hover:bg-gray-800 p-2 rounded ${pathname === menu?.link ? 'bg-gray-800' : ''}`}
           >
             {menu?.name}
           </Link>

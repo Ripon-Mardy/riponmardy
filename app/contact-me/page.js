@@ -1,7 +1,7 @@
 "use client";
 import Copyright from "@/components/Copyright";
 import Navbar from "@/components/Navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -64,6 +64,16 @@ export default function ContactPage() {
     }
 
   };
+
+  useEffect(() => {
+    if(!success) return;
+
+    const timer = setTimeout(() => {
+      setSuccess(null)
+    }, 60000) 
+
+    return () => clearTimeout(timer)
+  }, [success])
 
   return (
     <>
