@@ -14,7 +14,7 @@ const Projects = ({ projectsData }) => {
     <>
       <Navbar />
 
-      <div className="max-w-6xl mx-auto py-5">
+      <div className="max-w-6xl mx-auto py-5 px-4">
         <h2 className="text-2xl font-semibold text-gray-900 ">Projects</h2>
 
         <div className="mt-5 grid md:grid-cols-2 gap-4">
