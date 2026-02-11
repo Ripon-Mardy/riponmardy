@@ -21,6 +21,7 @@ const Experience = () => {
                     <li>Tailwind CSS, Bootstrap</li>
                     <li>HTML5, CSS3</li>
                     <li>Responsive Design & UI/UX fundamentals</li>
+                    <li>Shadch/ui</li>
                 </ul>
             </div>
             {/* backend  */}
@@ -52,12 +53,15 @@ const Experience = () => {
                     <li>CI/CD (basic understanding)</li>
                     <li>Postman</li>
                     <li>Figma (UI collaboration)</li>
+                    <li>Nginx & PM2 </li>
                 </ul>
               </div>
 
 
            </div>
         </div>
+
+        
         {/* experience  */}
         <div className='space-y-8'>
             <h2 className='text-2xl md:text-3xl font-medium'>Experience_</h2>
