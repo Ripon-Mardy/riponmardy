@@ -22,6 +22,7 @@ const Experience = () => {
                     <li>HTML5, CSS3</li>
                     <li>Responsive Design & UI/UX fundamentals</li>
                     <li>Shadch/ui</li>
+                    <li>Redux Toolkit</li>
                 </ul>
             </div>
             {/* backend  */}
