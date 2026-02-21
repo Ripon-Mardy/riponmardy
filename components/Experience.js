@@ -21,7 +21,7 @@ const Experience = () => {
                     <li>Tailwind CSS, Bootstrap</li>
                     <li>HTML5, CSS3</li>
                     <li>Responsive Design & UI/UX fundamentals</li>
-                    <li>Shadch/ui</li>
+                    <li>Shadcn/ui</li>
                     <li>Redux Toolkit</li>
                 </ul>
             </div>
