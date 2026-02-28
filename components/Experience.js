@@ -50,8 +50,8 @@ const Experience = () => {
                 <h2 className='text-xl font-medium'>Tools & Others *</h2>
                 <ul className='space-y-1 mt-2 text-gray-800 text-base'>
                     <li>Git & GitHub</li>
-                    <li>Docker (basic)</li>
-                    <li>CI/CD (basic understanding)</li>
+                    <li>Docker</li>
+                    <li>CI/CD</li>
                     <li>Postman</li>
                     <li>Figma (UI collaboration)</li>
                     <li>Nginx & PM2 </li>
