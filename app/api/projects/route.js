@@ -7,6 +7,7 @@ export async function GET(req) {
     await connectDB();
 
     const { searchParams } = new URL(req.url);
+    console.log("serchParams", searchParams);
 
     const page = Number(searchParams.get("page")) || 1;
     const limit = Number(searchParams.get("limit")) || 10;
@@ -17,7 +18,8 @@ export async function GET(req) {
     const projects = await Projects.find()
       .sort({ createdAt: -1 })
       .skip(skip)
-      .limit(limit);
+      .limit(limit)
+      .lean();
 
     return NextResponse.json({
       success: true,
