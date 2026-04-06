@@ -153,6 +153,7 @@ export default function Resume() {
                 <ul className="mt-2 text-sm text-gray-700 space-y-1">
                   <li>English — Intermediate</li>
                   <li>Bengali — Native</li>
+                  <li>Santali - Mother tongue</li>
                 </ul>
               </div>
             </aside>
