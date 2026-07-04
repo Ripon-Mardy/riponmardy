@@ -12,7 +12,7 @@ const page = async ({ searchParams }) => {
   const res = await fetch(
     `${baseUrl}/api/projects?page=${page}&limit=${limit}`,
     {
-      cache: "no-store",
+     next:{revalidate: 120}
     },
   );
 
