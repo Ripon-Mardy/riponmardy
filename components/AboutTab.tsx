@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Image from "next/image";
 import { personalInfo, services, testimonials, clients } from "../lib/data";
 import Icon from "./Icon";
 import { motion, AnimatePresence } from "motion/react";
