@@ -85,7 +85,7 @@ export default function ContactTab() {
           <h2 className="text-2xl font-bold text-white tracking-tight">
             Contact
           </h2>
-          <div className="absolute bottom-0 left-0 w-10 h-1 bg-gradient-to-r from-[#ffdb70] to-[#f59e0b] rounded-full" />
+          <div className="absolute bottom-0 left-0 w-10 h-1 bg-linear-to-r from-[#ffdb70] to-[#f59e0b] rounded-full" />
         </header>
       </section>
 
@@ -93,7 +93,7 @@ export default function ContactTab() {
       <section className="space-y-4">
         <div className="relative w-full h-64 rounded-3xl overflow-hidden border border-[#383838] bg-[#0c0d0e] shadow-inner">
           {/* Futuristic Map Blueprint Overlay */}
-          <div className="absolute inset-0 opacity-20 pointer-events-none bg-[linear-gradient(rgba(56,56,56,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(56,56,56,0.3)_1px,transparent_1px)] bg-[size:20px_20px]" />
+          <div className="absolute inset-0 opacity-20 pointer-events-none bg-[linear-gradient(rgba(56,56,56,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(56,56,56,0.3)_1px,transparent_1px)] bg-size-[20px]" />
 
           {/* Abstract vector map continents */}
           <div className="absolute inset-0 flex items-center justify-center opacity-30 select-none pointer-events-none">
@@ -156,7 +156,7 @@ export default function ContactTab() {
             </div>
 
             {/* Tooltip Popup */}
-            <div className="absolute top-[-44px] bg-[#1e1e1f] border border-[#ffdb70]/30 rounded-lg px-2.5 py-1 text-[10px] font-bold text-[#ffdb70] tracking-wide whitespace-nowrap shadow-xl">
+            <div className="absolute -top-11 bg-[#1e1e1f] border border-[#ffdb70]/30 rounded-lg px-2.5 py-1 text-[10px] font-bold text-[#ffdb70] tracking-wide whitespace-nowrap shadow-xl">
               San Francisco Studio
             </div>
           </div>
@@ -295,7 +295,7 @@ export default function ContactTab() {
               id="submit-contact-btn"
               type="submit"
               disabled={formStatus === "submitting"}
-              className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#ffdb70] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#1e1e1f] flex items-center justify-center gap-2 text-xs font-bold tracking-wide transition-all duration-300 shadow-md hover:-translate-y-0.5 cursor-pointer disabled:opacity-75 disabled:cursor-wait"
+              className="px-6 py-3.5 rounded-xl bg-linear-to-r from-[#ffdb70] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#1e1e1f] flex items-center justify-center gap-2 text-xs font-bold tracking-wide transition-all duration-300 shadow-md hover:-translate-y-0.5 cursor-pointer disabled:opacity-75 disabled:cursor-wait"
             >
               {formStatus === "idle" && (
                 <>

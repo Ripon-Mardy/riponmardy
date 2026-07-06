@@ -2,8 +2,6 @@ import { Ubuntu } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 
-import Script from "next/script";
-
 const ubuntu = Ubuntu({
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
@@ -14,7 +12,7 @@ export const metadata = {
   description: "A createtive Web Developer portfolio",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head></head>

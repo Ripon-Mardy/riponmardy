@@ -28,7 +28,7 @@ export default function ResumeTab() {
           <h2 className="text-2xl font-bold text-white tracking-tight">
             Resume
           </h2>
-          <div className="absolute bottom-0 left-0 w-10 h-1 bg-gradient-to-r from-[#ffdb70] to-[#f59e0b] rounded-full" />
+          <div className="absolute bottom-0 left-0 w-10 h-1 bg-linear-to-r from-[#ffdb70] to-[#f59e0b] rounded-full" />
         </header>
       </section>
 
@@ -49,8 +49,8 @@ export default function ResumeTab() {
             {experienceTimeline.map((item) => (
               <div key={item.id} className="relative group">
                 {/* Timeline node circle */}
-                <div className="absolute -left-[30px] top-1.5 w-3.5 h-3.5 rounded-full bg-[#383838] border-2 border-[#1e1e1f] group-hover:bg-[#ffdb70] transition-colors duration-300" />
-                <div className="absolute -left-[35px] top-[1.5px] w-6 h-6 rounded-full bg-[#ffdb70]/0 border border-[#ffdb70]/0 group-hover:border-[#ffdb70]/20 group-hover:bg-[#ffdb70]/5 transition-all duration-300 pointer-events-none" />
+                <div className="absolute -left-7.5 top-1.5 w-3.5 h-3.5 rounded-full bg-[#383838] border-2 border-[#1e1e1f] group-hover:bg-[#ffdb70] transition-colors duration-300" />
+                <div className="absolute -left-8.75 top-[1.5px] w-6 h-6 rounded-full bg-[#ffdb70]/0 border border-[#ffdb70]/0 group-hover:border-[#ffdb70]/20 group-hover:bg-[#ffdb70]/5 transition-all duration-300 pointer-events-none" />
 
                 <div className="space-y-2">
                   <h4 className="text-sm font-bold text-gray-100 group-hover:text-[#ffdb70] transition-colors duration-300">
@@ -87,8 +87,8 @@ export default function ResumeTab() {
             {educationTimeline.map((item) => (
               <div key={item.id} className="relative group">
                 {/* Timeline node circle */}
-                <div className="absolute -left-[30px] top-1.5 w-3.5 h-3.5 rounded-full bg-[#383838] border-2 border-[#1e1e1f] group-hover:bg-[#ffdb70] transition-colors duration-300" />
-                <div className="absolute -left-[35px] top-[1.5px] w-6 h-6 rounded-full bg-[#ffdb70]/0 border border-[#ffdb70]/0 group-hover:border-[#ffdb70]/20 group-hover:bg-[#ffdb70]/5 transition-all duration-300 pointer-events-none" />
+                <div className="absolute -left-7.5 top-1.5 w-3.5 h-3.5 rounded-full bg-[#383838] border-2 border-[#1e1e1f] group-hover:bg-[#ffdb70] transition-colors duration-300" />
+                <div className="absolute -left-8.75 top-[1.5px] w-6 h-6 rounded-full bg-[#ffdb70]/0 border border-[#ffdb70]/0 group-hover:border-[#ffdb70]/20 group-hover:bg-[#ffdb70]/5 transition-all duration-300 pointer-events-none" />
 
                 <div className="space-y-2">
                   <h4 className="text-sm font-bold text-gray-100 group-hover:text-[#ffdb70] transition-colors duration-300">
@@ -111,7 +111,7 @@ export default function ResumeTab() {
         </section>
       </div>
 
-      <div className="w-full h-[1px] bg-[#383838] my-8" />
+      <div className="w-full h-px bg-[#383838] my-8" />
 
       {/* Professional Skills Grid */}
       <section className="space-y-6">
@@ -165,7 +165,7 @@ export default function ResumeTab() {
                     ease: "easeOut",
                     delay: index * 0.05,
                   }}
-                  className="h-full bg-gradient-to-r from-[#ffdb70] to-[#f59e0b] rounded-full"
+                  className="h-full bg-linear-to-r from-[#ffdb70] to-[#f59e0b] rounded-full"
                 />
               </div>
             </div>

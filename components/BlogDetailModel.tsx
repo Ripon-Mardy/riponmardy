@@ -110,14 +110,14 @@ export default function BlogDetailModal({
           </button>
 
           {/* Banner cover */}
-          <div className="relative w-full aspect-[21/9] bg-[#141415] overflow-hidden border-b border-[#383838]">
+          <div className="relative w-full aspect-21/9 bg-[#141415] overflow-hidden border-b border-[#383838]">
             <img
               src={post.image}
               alt={post.title}
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1e1e1f] to-transparent opacity-50" />
+            <div className="absolute inset-0 bg-linear-to-t from-[#1e1e1f] to-transparent opacity-50" />
           </div>
 
           {/* Content area */}
@@ -138,7 +138,7 @@ export default function BlogDetailModal({
               {post.title}
             </h3>
 
-            <div className="w-full h-[1px] bg-[#383838] my-4" />
+            <div className="w-full h-px bg-[#383838] my-4" />
 
             {/* Author box */}
             <div className="flex items-center gap-3">
@@ -165,7 +165,7 @@ export default function BlogDetailModal({
               {renderContent(post.content)}
             </div>
 
-            <div className="w-full h-[1px] bg-[#383838] my-6" />
+            <div className="w-full h-px bg-[#383838] my-6" />
 
             {/* Tags footer */}
             <div className="flex flex-wrap items-center gap-2">

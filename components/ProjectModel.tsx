@@ -19,7 +19,7 @@ export default function ProjectModal({
   useEffect(() => {
     if (isOpen) {
       setActiveImageIdx(0);
-      document.body.style.overflow = "hidden"; // Disable background scrolling
+      document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
     }
@@ -61,7 +61,7 @@ export default function ProjectModal({
           </button>
 
           {/* Hero Image Slider */}
-          <div className="relative w-full aspect-[16/9] md:aspect-[21/9] bg-[#141415] overflow-hidden group border-b border-[#383838]">
+          <div className="relative w-full aspect-video md:aspect-21/9 bg-[#141415] overflow-hidden group border-b border-[#383838]">
             <img
               src={project.gallery[activeImageIdx]}
               alt={`${project.title} screenshot ${activeImageIdx + 1}`}
@@ -70,7 +70,7 @@ export default function ProjectModal({
             />
 
             {/* Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1e1e1f] via-transparent to-transparent opacity-60" />
+            <div className="absolute inset-0 bg-linear-to-t from-[#1e1e1f] via-transparent to-transparent opacity-60" />
 
             {/* Slider Navigation Arrows */}
             {project.gallery.length > 1 && (
@@ -153,7 +153,7 @@ export default function ProjectModal({
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="h-11 px-5 rounded-xl bg-gradient-to-r from-[#ffdb70] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#1e1e1f] flex items-center justify-center gap-2 text-xs font-bold tracking-wide transition-all duration-300 shadow-md hover:-translate-y-0.5"
+                    className="h-11 px-5 rounded-xl bg-linear-to-r from-[#ffdb70] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#1e1e1f] flex items-center justify-center gap-2 text-xs font-bold tracking-wide transition-all duration-300 shadow-md hover:-translate-y-0.5"
                   >
                     <Icon name="ExternalLink" size={14} />
                     <span>Launch Project</span>

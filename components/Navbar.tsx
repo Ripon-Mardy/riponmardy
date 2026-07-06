@@ -37,7 +37,7 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
                 {isActive && (
                   <motion.div
                     layoutId="activeTabIndicator"
-                    className="absolute bottom-[-4px] left-0 right-0 h-[2.5px] bg-[#ffdb70] rounded-full"
+                    className="absolute -bottom-1 left-0 right-0 h-[2.5px] bg-[#ffdb70] rounded-full"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}

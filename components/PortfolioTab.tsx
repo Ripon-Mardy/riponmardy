@@ -36,7 +36,7 @@ export default function PortfolioTab() {
           <h2 className="text-2xl font-bold text-white tracking-tight">
             Portfolio
           </h2>
-          <div className="absolute bottom-0 left-0 w-10 h-1 bg-gradient-to-r from-[#ffdb70] to-[#f59e0b] rounded-full" />
+          <div className="absolute bottom-0 left-0 w-10 h-1 bg-linear-to-r from-[#ffdb70] to-[#f59e0b] rounded-full" />
         </header>
       </section>
 
@@ -76,7 +76,7 @@ export default function PortfolioTab() {
               className="group cursor-pointer bg-[#1a1a1b] rounded-3xl overflow-hidden border border-[#303031] hover:border-[#ffdb70]/30 hover:shadow-xl transition-all duration-500 flex flex-col h-full hover:-translate-y-1"
             >
               {/* Card Image Wrapper with magnifying effect */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-gray-900">
+              <div className="relative aspect-4/3 w-full overflow-hidden bg-gray-900">
                 <img
                   src={project.thumbnail}
                   alt={project.title}

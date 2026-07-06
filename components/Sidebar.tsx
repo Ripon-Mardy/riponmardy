@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { personalInfo, contactInfo, socialLinks } from "../lib/data";
 import Icon from "./Icon";
-import { motion, AnimatePresence } from "motion/react";
 
 export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -39,7 +38,7 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="w-full lg:w-[280px] xl:w-[300px] shrink-0 bg-[#1e1e1f] border border-[#383838] rounded-3xl p-6 lg:p-8 flex flex-col items-center relative lg:sticky lg:top-8 self-start shadow-xl z-20">
+    <aside className="w-full lg:w-70 xl:w-75 shrink-0 bg-[#1e1e1f] border border-[#383838] rounded-3xl p-6 lg:p-8 flex flex-col items-center relative lg:sticky lg:top-8 self-start shadow-xl z-20">
       {/* Contact Toggle Button for Mobile/Tablet */}
       <button
         id="sidebar-toggle-btn"
@@ -58,7 +57,7 @@ export default function Sidebar() {
       <div className="flex flex-col items-center text-center w-full">
         {/* Avatar Container with glowing gradient circle */}
         <div className="relative w-28 h-28 lg:w-36 lg:h-36 rounded-3xl overflow-hidden bg-[#2b2b2c] flex items-center justify-center border border-[#383838] shadow-inner mb-5 group">
-          <div className="absolute inset-0 bg-gradient-to-tr from-[#ffdb70] to-[#f59e0b] opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+          <div className="absolute inset-0 bg-linear-to-tr from-[#ffdb70] to-[#f59e0b] opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
           <img
             src={personalInfo.avatar}
             alt={personalInfo.name}
@@ -76,7 +75,7 @@ export default function Sidebar() {
         </span>
       </div>
 
-      <div className="w-full h-[1px] bg-[#383838] my-6" />
+      <div className="w-full h-px bg-[#383838] my-6" />
 
       {/* Expandable Contacts Tray for Mobile, static on Desktop */}
       <div className="w-full">
@@ -150,7 +149,7 @@ export default function Sidebar() {
             </div>
           </div>
 
-          <div className="w-full h-[1px] bg-[#383838] my-6" />
+          <div className="w-full h-px bg-[#383838] my-6" />
 
           {/* Social Icons and Download Action */}
           <div className="flex flex-col gap-5 items-center">

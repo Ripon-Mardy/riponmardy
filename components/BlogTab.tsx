@@ -40,7 +40,7 @@ export default function BlogTab() {
           <h2 className="text-2xl font-bold text-white tracking-tight">
             Blog Articles
           </h2>
-          <div className="absolute bottom-0 left-0 w-10 h-1 bg-gradient-to-r from-[#ffdb70] to-[#f59e0b] rounded-full" />
+          <div className="absolute bottom-0 left-0 w-10 h-1 bg-linear-to-t from-[#ffdb70] to-[#f59e0b] rounded-full" />
         </header>
       </section>
 
@@ -109,7 +109,7 @@ export default function BlogTab() {
             className="group cursor-pointer bg-[#1a1a1b] border border-[#303031] hover:border-[#ffdb70]/30 rounded-3xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-500 flex flex-col h-full"
           >
             {/* Thumbnail */}
-            <div className="relative aspect-[16/10] overflow-hidden bg-gray-900 shrink-0">
+            <div className="relative aspect-16/10 overflow-hidden bg-gray-900 shrink-0">
               <img
                 src={post.image}
                 alt={post.title}
