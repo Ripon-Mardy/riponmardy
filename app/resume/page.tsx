@@ -1,11 +1,13 @@
+"use client";
 import { useState } from "react";
-import { educationTimeline, experienceTimeline, skills } from "../lib/data";
-import Icon from "./Icon";
 import { motion } from "motion/react";
+
+import { educationTimeline, experienceTimeline, skills } from "../../lib/data";
+import Icon from "../../components/Icon";
 
 type SkillCategory = "all" | "frontend" | "backend" | "design" | "other";
 
-export default function ResumeTab() {
+const page = () => {
   const [activeCategory, setActiveCategory] = useState<SkillCategory>("all");
 
   const filteredSkills = skills.filter(
@@ -19,7 +21,6 @@ export default function ResumeTab() {
     { id: "design", label: "Design Systems" },
     { id: "other", label: "DevOps & Utilities" },
   ];
-
   return (
     <div className="space-y-10 animate-fade-in">
       {/* Title */}
@@ -174,4 +175,6 @@ export default function ResumeTab() {
       </section>
     </div>
   );
-}
+};
+
+export default page;

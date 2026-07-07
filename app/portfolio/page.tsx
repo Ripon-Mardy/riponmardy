@@ -1,8 +1,9 @@
+"use client";
 import { useState } from "react";
-import { projects } from "../lib/data";
-import { ProjectItem } from "../lib/types";
-import ProjectModal from "../components/ProjectModel";
-import Icon from "./Icon";
+import { projects } from "../../lib/data";
+import { ProjectItem } from "../../lib/types";
+import ProjectModal from "../../components/ProjectModel";
+import Icon from "../../components/Icon";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function PortfolioTab() {

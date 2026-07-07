@@ -1,8 +1,9 @@
+"use client";
 import { useState } from "react";
-import { blogPosts } from "../lib/data";
-import { BlogPost } from "../lib/types";
-import BlogDetailModal from "../components/BlogDetailModel";
-import Icon from "./Icon";
+import { blogPosts } from "../../lib/data";
+import { BlogPost } from "../../lib/types";
+import BlogDetailModal from "../../components/BlogDetailModel";
+import Icon from "../../components/Icon";
 
 export default function BlogTab() {
   const [searchQuery, setSearchQuery] = useState("");

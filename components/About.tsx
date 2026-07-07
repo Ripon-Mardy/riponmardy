@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import Image from "next/image";
 import { personalInfo, services, testimonials, clients } from "../lib/data";
@@ -17,7 +18,7 @@ export default function AboutTab() {
   };
 
   const currentTestimonial = testimonials[activeTestimonialIdx];
-  if(!currentTestimonial) return null
+  if (!currentTestimonial) return null;
 
   return (
     <div className="space-y-10">

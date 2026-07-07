@@ -1,48 +1,46 @@
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 
-interface NavbarProps {
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
-}
-
 const navItems = [
-  { id: "about", label: "About" },
-  { id: "resume", label: "Resume" },
-  { id: "portfolio", label: "Portfolio" },
-  { id: "blog", label: "Blog" },
-  { id: "contact", label: "Contact" },
+  { id: "about", label: "About", href: "/" },
+  { id: "resume", label: "Resume", href: "/resume" },
+  { id: "portfolio", label: "Portfolio", href: "/portfolio" },
+  { id: "blog", label: "Blog", href: "/blogs" },
+  { id: "contact", label: "Contact", href: "/contact" },
 ];
 
-export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
+export default function Navbar() {
+  const pathname = usePathname();
   return (
-    <nav className="fixed bottom-0 left-0 right-0 lg:absolute lg:top-0 lg:right-0 lg:bottom-auto lg:left-auto bg-[#2b2b2c]/95 lg:bg-[#2b2b2c]/80 backdrop-blur-md border-t lg:border-t-0 lg:border-l lg:border-b border-[#383838] px-6 lg:px-10 py-3 lg:py-5 rounded-t-2xl lg:rounded-t-none lg:rounded-bl-2xl lg:rounded-tr-3xl z-40 shadow-lg lg:shadow-none w-full lg:w-auto">
+    <nav className="fixed bottom-0 left-0 right-0 lg:absolute lg:top-2 lg:right-5 lg:left-auto lg:bottom-auto z-40 w-full lg:w-auto bg-[#2b2b2c]/95 lg:bg-[#2b2b2c]/80 backdrop-blur-md border-t lg:border lg:border-[#383838] rounded-t-2xl lg:rounded-2xl shadow-lg lg:shadow-none px-6 lg:px-8 py-3 lg:py-4">
       <ul className="flex items-center justify-around lg:justify-end gap-3 md:gap-6 lg:gap-8 max-w-md mx-auto lg:max-w-none">
         {navItems.map((item) => {
-          const isActive = activeTab === item.id;
+          const isActive = pathname === item.href;
+
           return (
-            <li key={item.id}>
-              <button
-                id={`nav-tab-${item.id}`}
-                onClick={() => {
-                  setActiveTab(item.id);
-                  window.location.hash = item.id;
-                }}
-                className={`relative px-2.5 py-1.5 text-xs md:text-sm font-semibold tracking-wide transition-colors duration-300 cursor-pointer ${
-                  isActive
-                    ? "text-[#ffdb70]"
-                    : "text-gray-400 hover:text-gray-200"
+            <li key={item.id} className="relative">
+              <Link
+                href={item.href}
+                className={`relative px-2 py-2 text-sm font-medium transition-colors duration-300 ${
+                  isActive ? "text-[#ffdb70]" : "text-gray-400 hover:text-white"
                 }`}
               >
-                {/* Motion layoutId for high-end slider pill or underline indicator */}
+                {item.label}
+
                 {isActive && (
-                  <motion.div
-                    layoutId="activeTabIndicator"
-                    className="absolute -bottom-1 left-0 right-0 h-[2.5px] bg-[#ffdb70] rounded-full"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  <motion.span
+                    // layoutId="activeTabIndicator"
+                    className="absolute left-0 right-0 -bottom-1 h-[2.5px] rounded-full bg-[#ffdb70]"
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 30,
+                    }}
                   />
                 )}
-                {item.label}
-              </button>
+              </Link>
             </li>
           );
         })}

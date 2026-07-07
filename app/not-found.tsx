@@ -1,51 +1,38 @@
-"use client";
+import Icon from "../components/Icon";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { ArrowLeft, Home } from "lucide-react";
 
-export default function NotFound() {
-  const router = useRouter();
+interface NotFoundTabProps {
+  onBackToHome: () => void;
+}
 
+export default function NotFoundTab({ onBackToHome }: NotFoundTabProps) {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 text-gray-800 px-4">
-      {/* 404 Title */}
-      <h1 className="text-[120px] md:text-[150px] font-extrabold text-blue-600 leading-none">
-        404
-      </h1>
-
-      {/* Subtitle */}
-      <h2 className="text-3xl md:text-4xl font-semibold mt-4 text-gray-800">
-        Page Not Found
-      </h2>
-
-      {/* Description */}
-      <p className="text-gray-600 mt-3 max-w-md text-center">
-        The page you are looking for doesn’t exist or has been moved.
-      </p>
-
-      {/* Buttons */}
-      <div className="flex items-center gap-4 mt-8">
-        <button
-          onClick={() => router.back()}
-          className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gray-200 text-gray-800 hover:bg-gray-300 transition font-medium"
-        >
-          <ArrowLeft size={18} />
-          Go Back
-        </button>
-
-        <Link
-          href="/"
-          className="flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition font-medium"
-        >
-          <Home size={18} />
-          Home
-        </Link>
+    <div className="py-20 flex flex-col items-center justify-center text-center space-y-6 max-w-md mx-auto animate-fade-in select-none">
+      {/* 404 Icon/Illustration container */}
+      <div className="relative w-20 h-20 rounded-3xl bg-[#252526] border border-[#ffdb70]/20 flex items-center justify-center text-[#ffdb70] shadow-xl">
+        {/* Pulsing ring */}
+        <div className="absolute inset-0 rounded-3xl bg-[#ffdb70]/5 animate-ping" />
+        <Icon name="AlertCircle" size={32} />
       </div>
 
-      {/* Footer Text */}
-      <p className="text-sm text-gray-400 mt-10">
-        © {new Date().getFullYear()} DevRipon. All rights reserved.
-      </p>
+      <div className="space-y-2">
+        <h3 className="text-xl font-extrabold text-white tracking-tight uppercase">
+          404: Node Unreachable
+        </h3>
+        <p className="text-xs text-gray-400 font-light leading-relaxed">
+          The requested system node or article does not exist or has been
+          relocated to another workspace coordinate.
+        </p>
+      </div>
+
+      <button
+        id="not-found-back-btn"
+        onClick={onBackToHome}
+        className="px-5 py-3 rounded-xl border border-[#383838] hover:border-[#ffdb70] bg-[#252526] hover:bg-[#ffdb70]/5 flex items-center justify-center gap-2 text-xs font-semibold tracking-wide text-gray-200 hover:text-[#ffdb70] transition-all duration-300 shadow-md cursor-pointer"
+      >
+        <Icon name="ArrowLeft" size={14} className="text-[#ffdb70]" />
+        <Link href={"/"}>Return to Main Profile</Link>
+      </button>
     </div>
   );
 }

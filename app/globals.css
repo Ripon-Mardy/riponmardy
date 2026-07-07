@@ -5,6 +5,10 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
+body {
+  background: #1e1e1f;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;

@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { personalInfo, contactInfo, socialLinks } from "../lib/data";
 import Icon from "./Icon";
