@@ -1,10 +1,13 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "motion/react";
+import Image from "next/image";
+
 import { projects } from "../../lib/data";
 import { ProjectItem } from "../../lib/types";
 import ProjectModal from "../../components/ProjectModel";
 import Icon from "../../components/Icon";
-import { motion, AnimatePresence } from "motion/react";
 
 export default function PortfolioTab() {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -30,7 +33,7 @@ export default function PortfolioTab() {
   };
 
   return (
-    <div className="space-y-10 animate-fade-in">
+    <div className="space-y-5 animate-fade-in">
       {/* Title */}
       <section className="space-y-5">
         <header className="relative pb-5">
@@ -73,52 +76,73 @@ export default function PortfolioTab() {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.3 }}
               key={project.id}
-              onClick={() => handleOpenModal(project)}
-              className="group cursor-pointer bg-[#1a1a1b] rounded-3xl overflow-hidden border border-[#303031] hover:border-[#ffdb70]/30 hover:shadow-xl transition-all duration-500 flex flex-col h-full hover:-translate-y-1"
+              className="group bg-[#1a1a1b] rounded-3xl overflow-hidden border border-[#303031] hover:border-[#ffdb70]/30 hover:shadow-xl transition-all duration-500 flex flex-col h-full"
             >
-              {/* Card Image Wrapper with magnifying effect */}
+              {/* Project Image */}
               <div className="relative aspect-4/3 w-full overflow-hidden bg-gray-900">
-                <img
+                <Image
                   src={project.thumbnail}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-108"
-                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  layout="responsive"
                 />
-
-                {/* Glassmorphism Hover Overlay with visual eye */}
-                <div className="absolute inset-0 bg-[#0e1013]/70 backdrop-blur-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <div className="w-12 h-12 rounded-2xl bg-[#ffdb70]/15 border border-[#ffdb70]/30 flex items-center justify-center text-[#ffdb70] transform scale-75 group-hover:scale-100 transition-all duration-500 shadow-md">
-                    <Icon name="Eye" size={20} />
-                  </div>
-                </div>
               </div>
 
-              {/* Card Body Footer Details */}
-              <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                <div className="space-y-1.5">
-                  <h3 className="text-sm font-bold text-gray-100 tracking-tight group-hover:text-[#ffdb70] transition-colors duration-300">
+              {/* Content */}
+              <div className="p-5 flex flex-col flex-1">
+                {/* Title */}
+                <div className="mb-4">
+                  <h3 className="text-lg font-semibold text-white group-hover:text-[#ffdb70] transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-[10px] text-gray-500 font-semibold tracking-wider uppercase">
+
+                  {/* <p className="mt-1 text-xs uppercase tracking-wider text-gray-500">
                     {project.category}
+                  </p> */}
+                  <p className="line-clamp-2 text-sm text-gray-400">
+                    {project.description}
                   </p>
                 </div>
 
-                {/* Tech Badges mini row */}
-                <div className="flex flex-wrap gap-1">
-                  {project.technologies.slice(0, 3).map((tech) => (
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.technologies.slice(0, 5).map((tech) => (
                     <span
                       key={tech}
-                      className="text-[9px] font-medium text-gray-400 bg-[#252526] px-1.5 py-0.5 rounded border border-[#383838]/40"
+                      className="text-[10px] px-2 py-1 rounded-lg bg-[#252526] border border-[#383838] text-gray-300"
                     >
                       {tech}
                     </span>
                   ))}
-                  {project.technologies.length > 3 && (
-                    <span className="text-[9px] font-medium text-gray-500 bg-[#252526] px-1.5 py-0.5 rounded border border-[#383838]/40">
-                      +{project.technologies.length - 3}
+
+                  {project.technologies.length > 5 && (
+                    <span className="text-[10px] px-2 py-1 rounded-lg bg-[#252526] border border-[#383838] text-gray-400">
+                      +{project.technologies.length - 5}
                     </span>
                   )}
+                </div>
+
+                {/* Buttons */}
+                <div className="mt-auto flex gap-3">
+                  <Link
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 rounded-xl border border-[#383838] bg-[#252526] px-2 py-2 text-xs font-medium text-gray-200 transition hover:border-[#ffdb70] hover:text-[#ffdb70]"
+                  >
+                    <Icon name="Github" size={16} />
+                    GitHub
+                  </Link>
+
+                  <Link
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-[#ffdb70] px-2 py-2 text-xs font-semibold text-black transition hover:bg-[#f7d04a]"
+                  >
+                    <Icon name="ExternalLink" size={16} />
+                    Live Demo
+                  </Link>
                 </div>
               </div>
             </motion.div>

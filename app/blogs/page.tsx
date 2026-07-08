@@ -34,7 +34,7 @@ export default function BlogTab() {
   };
 
   return (
-    <div className="space-y-10 animate-fade-in">
+    <div className="space-y-5 animate-fade-in">
       {/* Title */}
       <section className="space-y-5">
         <header className="relative pb-5">

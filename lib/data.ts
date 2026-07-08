@@ -1,3 +1,5 @@
+import riponmardy from "../public/ripon mardy.jpg";
+
 import {
   BlogPost,
   ClientItem,
@@ -11,56 +13,71 @@ import {
 } from "./types";
 
 export const personalInfo = {
-  name: "Marcus Vance",
-  title: "Lead Full-Stack Architect",
-  subTitle: "Crafting High-Performance Web Solutions & AI Integrations",
-  avatar:
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop",
-  bio: "I am a Lead Full-Stack Architect based in San Francisco, specializing in building high-performance, accessible, and elegant digital products. With over 8 years of industry experience, I merge state-of-the-art technologies with meticulous design standards. I am dedicated to solving complex system puzzles and delivering flawless user experiences.",
-  cvUrl: "#", // Handled as an interactive download action in the app
+  name: "Ripon Mardy",
+  title: "AI-Driven Full Stack Software Engineer",
+  subTitle: "I design, build, and deploy modern web applications.",
+  avatar: riponmardy,
+  bio: `Full Stack Software Engineer with 2+ years of experience, including 1.5 years of remote work, building scalable, production-ready web applications using the MERN stack and Next.js. Passionate about writing clean, maintainable code and developing high-performance applications. Experienced in delivering end-to-end solutions, from responsive frontend interfaces to secure backend APIs, for real-world clients and business requirements.`,
+  cvUrl: "#",
 };
 
 export const socialLinks: SocialLink[] = [
-  { name: "GitHub", url: "https://github.com", icon: "Github" },
-  { name: "LinkedIn", url: "https://linkedin.com", icon: "Linkedin" },
-  { name: "Twitter", url: "https://twitter.com", icon: "Twitter" },
-  { name: "Dribbble", url: "https://dribbble.com", icon: "Dribbble" },
+  {
+    name: "GitHub",
+    url: "https://github.com/Ripon-Mardy",
+    icon: "Github",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/riponmardy/",
+    icon: "Linkedin",
+  },
+  {
+    name: "WhatsApp",
+    url: "https://wa.me/+8801320585642",
+    icon: "Whatsapp",
+  },
+  {
+    name: "LeetCode",
+    url: "https://leetcode.com/u/mardyripon10/",
+    icon: "Leetcode",
+  },
 ];
 
 export const contactInfo: ContactInfo = {
-  email: "marcus.vance@dev.studio",
-  phone: "+1 (415) 890-4321",
-  birthday: "October 14, 1994",
-  location: "San Francisco, CA, USA",
+  email: "mardyripon10@gmail.com",
+  phone: "+0880 1320585642",
+  birthday: "July 23, 2001",
+  location: "Dhaka, Bangladesh",
 };
 
 export const services: ServiceItem[] = [
   {
     id: "web-dev",
-    title: "Web Application Architecture",
+    title: "Full Stack Web Development",
     description:
-      "Architecting lightning-fast, production-ready React applications with pristine clean code and optimal performance metrics.",
+      "Designing and developing scalable, production-ready web applications using React, Next.js, TypeScript, Node.js, and MongoDB with a focus on clean architecture and high performance.",
     icon: "Layout",
   },
   {
-    id: "api-design",
+    id: "API Development",
     title: "API Design & Backend Engines",
     description:
-      "Designing robust, scale-to-zero server-side REST/GraphQL APIs and microservices utilizing Node.js, Express, and cloud native architectures.",
+      "Building secure and maintainable RESTful APIs, implementing authentication, authorization, database integration, and efficient server-side business logic.",
     icon: "Cpu",
   },
   {
-    id: "ui-ux",
+    id: "Modern UI Engineering",
     title: "High-Fidelity UI/UX Systems",
     description:
-      "Translating sophisticated product ideas into meticulous, dynamic, and fluid responsive design systems with precise tailwind grids.",
+      "Crafting responsive, accessible, and user-friendly interfaces with Tailwind CSS, transforming designs into smooth and engaging user experiences..",
     icon: "Figma",
   },
   {
-    id: "ai-integration",
+    id: "AI-Driven Development",
     title: "AI Integration & Analytics",
     description:
-      "Integrating intelligent LLM features, custom search vector configurations, and smart metrics tracking to elevate digital products.",
+      "Using modern AI tools to accelerate development, improve code quality, automate repetitive tasks, and build smarter web applications while ensuring reliability through manual validation.",
     icon: "Sparkles",
   },
 ];
@@ -72,7 +89,7 @@ export const testimonials: TestimonialItem[] = [
     avatar:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop",
     role: "VP of Product at CloudScale",
-    text: "Marcus is an extraordinary talent. He stepped in to architect our flagship dashboard interface, delivering it two weeks ahead of schedule. The code quality, loading speed, and sheer aesthetic polish exceeded all our stakeholders' expectations.",
+    text: "Ripon is an extraordinary talent. He stepped in to architect our flagship dashboard interface, delivering it two weeks ahead of schedule. The code quality, loading speed, and sheer aesthetic polish exceeded all our stakeholders' expectations.",
     date: "May 2026",
   },
   {
@@ -81,7 +98,7 @@ export const testimonials: TestimonialItem[] = [
     avatar:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop",
     role: "Founder of SynthFlow",
-    text: "Marcus brought a level of technical rigor and design craftsmanship that is rare in full-stack engineers. He didn't just write server APIs; he refined our layout, established our token system, and implemented highly fluid motion sequences.",
+    text: "Ripon brought a level of technical rigor and design craftsmanship that is rare in full-stack engineers. He didn't just write server APIs; he refined our layout, established our token system, and implemented highly fluid motion sequences.",
     date: "April 2026",
   },
   {
@@ -90,7 +107,7 @@ export const testimonials: TestimonialItem[] = [
     avatar:
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop",
     role: "Engineering Director at ApexLab",
-    text: "Collaborating with Marcus was a breeze. He has an incredible ability to communicate complex architecture issues simply, and his standard for type-safety and automated testing saved us weeks of post-launch debugging.",
+    text: "Collaborating with Ripon was a breeze. He has an incredible ability to communicate complex architecture issues simply, and his standard for type-safety and automated testing saved us weeks of post-launch debugging.",
     date: "January 2026",
   },
 ];
@@ -121,253 +138,321 @@ export const clients: ClientItem[] = [
 export const educationTimeline: TimelineItem[] = [
   {
     id: "edu-1",
-    title: "Master of Science in Computer Science",
-    subtitle: "Stanford University",
-    period: "2016 — 2018",
+    title: "Bachelor of Science in Computer Science & Engineering",
+    subtitle: "Dhaka International University",
+    period: "2024 — Present",
     description:
       "Specialized in Software Systems and Human-Computer Interaction. Researched high-efficiency rendering pipelines and client-side web optimizations.",
   },
   {
     id: "edu-2",
-    title: "Bachelor of Science in Software Engineering",
-    subtitle: "University of California, Berkeley",
-    period: "2012 — 2016",
+    title: "Diploma in CSE",
+    subtitle: "Aptouch Polytechnic Institute",
+    period: "2020 — 2024",
     description:
-      "Graduated with honors. Active lead in the Web Design & Development Coalition. Built multiple interactive utilities for local community networks.",
+      "Focused on foundational programming, data structures, and web development. Completed a capstone project on real-time collaborative web applications.",
   },
 ];
 
 export const experienceTimeline: TimelineItem[] = [
   {
     id: "exp-1",
-    title: "Lead Full-Stack Architect",
-    subtitle: "HexaTech Systems",
+    title: "Full Stack Software Developer",
+    subtitle: "Freelance & Remote",
     period: "2022 — Present",
     description:
-      "Driving engineering strategies for multi-tenant cloud architectures. Directed a team of 6 developers in rewriting our core web engine, improving Lighthouse performance scores from 45 to 98. Designed a custom reactive state scheduler that saved 35% in CPU utilization.",
+      "Developing modern, scalable web applications using React, Next.js, TypeScript, Node.js, Express.js, and MongoDB. Delivered end-to-end solutions for clients, including responsive user interfaces, RESTful APIs, authentication systems, and database integration. Focused on clean architecture, performance optimization, and maintainable code.",
   },
   {
     id: "exp-2",
-    title: "Senior Front-End Engineer",
-    subtitle: "Aetherial Solutions",
-    period: "2019 — 2022",
+    title: "Frontend Developer",
+    subtitle: "Mathmozo It - Remote",
+    period: "2023 — 2025",
     description:
-      "Engineered high-concurrency real-time charts and financial dashboards using React, D3, and WebSockets. Led the design token integration with Tailwind CSS across three cross-functional departments, shortening design-to-dev cycles by 40%.",
+      "Built responsive and user-friendly web applications with React, Next.js, JavaScript, and Tailwind CSS. Collaborated with backend developers to integrate REST APIs, improve application performance, and deliver production-ready features while following modern development practices.",
   },
   {
     id: "exp-3",
-    title: "Full-Stack Web Developer",
-    subtitle: "ByteCraft Studio",
-    period: "2018 — 2019",
+    title: "Personal Projects & Continuous Learning",
+    subtitle: "Ongoing",
+    period: "2021 — Present",
     description:
-      "Developed and maintained highly scalable e-commerce sites and client management systems. Crafted custom RESTful APIs using Node.js/Express, implemented automated CI/CD pipelines, and improved database indexing strategies.",
+      "Maintaining a portfolio of open-source projects on GitHub, contributing to Next.js and React ecosystems. Regularly exploring AI-assisted development tools, TypeScript advanced patterns, and performance profiling techniques to stay at the forefront of web engineering.",
   },
 ];
 
 export const skills: SkillItem[] = [
+  // Frontend
   {
-    name: "TypeScript / ESNext",
-    percentage: 98,
-    level: "Expert",
-    category: "frontend",
-  },
-  {
-    name: "React (v19) / Next.js",
-    percentage: 95,
-    level: "Expert",
-    category: "frontend",
-  },
-  {
-    name: "Tailwind CSS / V4",
-    percentage: 96,
-    level: "Expert",
-    category: "frontend",
-  },
-  {
-    name: "Framer Motion",
+    name: "Next.js (App Router)",
     percentage: 90,
     level: "Advanced",
     category: "frontend",
   },
-
   {
-    name: "Node.js / Express",
+    name: "React.js",
     percentage: 92,
-    level: "Expert",
-    category: "backend",
+    level: "Advanced",
+    category: "frontend",
   },
   {
-    name: "PostgreSQL / Prisma",
+    name: "TypeScript",
     percentage: 88,
     level: "Advanced",
-    category: "backend",
+    category: "frontend",
   },
   {
-    name: "GraphQL / REST APIs",
-    percentage: 90,
+    name: "JavaScript (ES6+)",
+    percentage: 94,
     level: "Advanced",
-    category: "backend",
+    category: "frontend",
   },
   {
-    name: "Redis / Serverless Caching",
-    percentage: 82,
+    name: "Tailwind CSS",
+    percentage: 92,
     level: "Advanced",
-    category: "backend",
+    category: "frontend",
   },
-
   {
-    name: "Figma UI System Design",
+    name: "Redux Toolkit",
     percentage: 85,
     level: "Advanced",
-    category: "design",
+    category: "frontend",
   },
   {
-    name: "Responsive Layouts",
-    percentage: 98,
-    level: "Expert",
-    category: "design",
+    name: "shadcn/ui",
+    percentage: 82,
+    level: "Intermediate",
+    category: "frontend",
   },
   {
-    name: "Design Tokens & Themes",
-    percentage: 90,
+    name: "Bootstrap",
+    percentage: 85,
     level: "Advanced",
-    category: "design",
+    category: "frontend",
   },
   {
-    name: "Motion Architecture",
-    percentage: 88,
+    name: "HTML5 & CSS3",
+    percentage: 95,
     level: "Advanced",
-    category: "design",
+    category: "frontend",
   },
 
+  // Backend
   {
-    name: "Git / Semantic Releases",
-    percentage: 95,
-    level: "Expert",
-    category: "other",
-  },
-  {
-    name: "Docker Containerization",
-    percentage: 80,
-    level: "Intermediate",
-    category: "other",
-  },
-  {
-    name: "Vite Bundle Optimization",
-    percentage: 92,
-    level: "Expert",
-    category: "other",
-  },
-  {
-    name: "Accessibility (WCAG 2.1)",
+    name: "Node.js",
     percentage: 88,
     level: "Advanced",
-    category: "other",
+    category: "backend",
+  },
+  {
+    name: "Express.js",
+    percentage: 90,
+    level: "Advanced",
+    category: "backend",
+  },
+  {
+    name: "REST APIs",
+    percentage: 90,
+    level: "Advanced",
+    category: "backend",
+  },
+  {
+    name: "JWT Authentication",
+    percentage: 85,
+    level: "Advanced",
+    category: "backend",
+  },
+  {
+    name: "RBAC",
+    percentage: 80,
+    level: "Intermediate",
+    category: "backend",
+  },
+
+  // Database
+  {
+    name: "MongoDB",
+    percentage: 90,
+    level: "Advanced",
+    category: "database",
+  },
+  {
+    name: "PostgreSQL",
+    percentage: 75,
+    level: "Intermediate",
+    category: "database",
+  },
+  {
+    name: "MySQL",
+    percentage: 70,
+    level: "Intermediate",
+    category: "database",
+  },
+  {
+    name: "CRUD Operations",
+    percentage: 95,
+    level: "Advanced",
+    category: "database",
+  },
+  {
+    name: "Database Design",
+    percentage: 80,
+    level: "Intermediate",
+    category: "database",
+  },
+  {
+    name: "Query Optimization",
+    percentage: 75,
+    level: "Intermediate",
+    category: "database",
+  },
+
+  // Tools & DevOps
+  {
+    name: "Git & GitHub",
+    percentage: 92,
+    level: "Advanced",
+    category: "tools",
+  },
+  {
+    name: "Docker",
+    percentage: 70,
+    level: "Intermediate",
+    category: "tools",
+  },
+  {
+    name: "CI/CD",
+    percentage: 65,
+    level: "Intermediate",
+    category: "tools",
+  },
+  {
+    name: "Postman",
+    percentage: 90,
+    level: "Advanced",
+    category: "tools",
+  },
+  {
+    name: "Figma",
+    percentage: 80,
+    level: "Intermediate",
+    category: "tools",
+  },
+  {
+    name: "Linux / Ubuntu",
+    percentage: 88,
+    level: "Advanced",
+    category: "tools",
+  },
+  {
+    name: "Nginx",
+    percentage: 65,
+    level: "Intermediate",
+    category: "tools",
+  },
+  {
+    name: "PM2",
+    percentage: 70,
+    level: "Intermediate",
+    category: "tools",
+  },
+  {
+    name: "WordPress",
+    percentage: 75,
+    level: "Intermediate",
+    category: "tools",
+  },
+
+  // AI & Developer Tools
+  {
+    name: "OpenAI API",
+    percentage: 85,
+    level: "Advanced",
+    category: "ai",
+  },
+  {
+    name: "Claude",
+    percentage: 90,
+    level: "Advanced",
+    category: "ai",
+  },
+  {
+    name: "GitHub Copilot",
+    percentage: 92,
+    level: "Advanced",
+    category: "ai",
+  },
+  {
+    name: "Cursor AI",
+    percentage: 92,
+    level: "Advanced",
+    category: "ai",
+  },
+  {
+    name: "Google AI Studio",
+    percentage: 85,
+    level: "Advanced",
+    category: "ai",
+  },
+  {
+    name: "Gemini",
+    percentage: 88,
+    level: "Advanced",
+    category: "ai",
+  },
+
+  // Familiar With
+  {
+    name: "AWS",
+    percentage: 60,
+    level: "Beginner",
+    category: "familiar",
+  },
+  {
+    name: "Vue.js",
+    percentage: 55,
+    level: "Beginner",
+    category: "familiar",
+  },
+  {
+    name: "Angular",
+    percentage: 50,
+    level: "Beginner",
+    category: "familiar",
   },
 ];
 
+// portfolio
+import portfolio1 from "../public/portfolio/portfolio1.png";
+import portfolio2 from "../public/portfolio/portfolio2.webp";
+
 export const projects: ProjectItem[] = [
   {
-    id: "proj-1",
-    title: "Quantum Dashboard",
+    id: "proj-2",
+    title: "telescopebd",
     category: "Web Application",
-    thumbnail:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
-    gallery: [
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=800&auto=format&fit=crop",
-    ],
+    thumbnail: portfolio1,
     client: "Quantum Analytics Inc.",
     date: "January 2026",
-    technologies: [
-      "React 19",
-      "D3.js",
-      "Tailwind CSS v4",
-      "TypeScript",
-      "Node.js",
-    ],
+    technologies: ["HTML5", "CSS", "JavaScript", "React.js", "Next.js"],
     description:
       "A state-of-the-art interactive data monitoring terminal for industrial systems. It displays hundreds of real-time server streams simultaneously using GPU-accelerated canvas grids, fully interactive zoomable timelines, and customizable bento-grid layouts. Highly optimized for massive data throughput with virtualized rows and zero-rerender updates.",
-    liveUrl: "https://quantum.dev.studio",
-    githubUrl: "https://github.com/marcusvance/quantum-dashboard",
-  },
-  {
-    id: "proj-2",
-    title: "Nova CRM Mobile App",
-    category: "Mobile Design",
-    thumbnail:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800&auto=format&fit=crop",
-    gallery: [
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1555421689-491a97ff2040?q=80&w=800&auto=format&fit=crop",
-    ],
-    client: "Nova Corp",
-    date: "November 2025",
-    technologies: ["React Native", "Expo", "Framer Motion", "Tailwind CSS"],
-    description:
-      "A complete mobile CRM platform featuring real-time client feed synchronization, smart customer segmentation, speech-to-text automated meeting summarization, and direct integrations with Google Workspace APIs. The application supports offline synchronization using a localized SQLite cache and background sync queues.",
-    liveUrl: "https://nova-crm.dev.studio",
-    githubUrl: "https://github.com/marcusvance/nova-crm",
+    live: "https://telescopebd.vercel.app/",
+    github: "https://github.com/Ripon-Mardy/telescopebd",
   },
   {
     id: "proj-3",
-    title: "SynthFlow AI Orchestrator",
-    category: "AI Integration",
-    thumbnail:
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
-    gallery: [
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=800&auto=format&fit=crop",
-    ],
-    client: "SynthFlow Labs",
-    date: "March 2026",
-    technologies: [
-      "Next.js",
-      "Gemini SDK",
-      "PostgreSQL",
-      "Tailwind CSS",
-      "Prisma",
-    ],
+    title: "inteltec",
+    category: "Web Application",
+    thumbnail: portfolio2,
+    client: "Quantum Analytics Inc.",
+    date: "January 2026",
+    technologies: ["HTML5", "CSS", "JavaScript", "React.js", "Next.js"],
     description:
-      "An AI-powered service orchestration hub that automatically analyzes team tasks, designs custom workflow maps, writes and tests boilerplate middleware functions, and connects API services. Employs semantic model alignment, custom vector index searches, and structured system feedback chains.",
-    liveUrl: "https://synthflow.dev.studio",
-    githubUrl: "https://github.com/marcusvance/synthflow-orchestrator",
-  },
-  {
-    id: "proj-4",
-    title: "Helios E-Commerce Portal",
-    category: "Web Design",
-    thumbnail:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
-    gallery: [
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop",
-    ],
-    client: "Helios Retail Group",
-    date: "September 2025",
-    technologies: ["React", "Shopify API", "Tailwind CSS", "Vite", "Zustand"],
-    description:
-      "An elegant, highly accessible premium storefront for high-end boutique brands. Features full keyboard accessibility (WCAG AA certified), extremely responsive fast cart updates, clean product sliders, fluid search autocompletion, and personalized recommendation widgets.",
-    liveUrl: "https://helios-shop.dev.studio",
-    githubUrl: "https://github.com/marcusvance/helios-shop",
-  },
-  {
-    id: "proj-5",
-    title: "Apex Landing Page",
-    category: "Web Design",
-    thumbnail:
-      "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop",
-    gallery: [
-      "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=800&auto=format&fit=crop",
-    ],
-    client: "Apex SaaS Group",
-    date: "July 2025",
-    technologies: ["HTML5", "CSS Grid", "Tailwind CSS", "GSAP"],
-    description:
-      "A breathtaking high-converting SaaS landing page highlighting futuristic glassmorphism elements, custom svg scroll illustrations, interactive product sliders, and dynamic price configuration grids. Achieve a full 100% Core Web Vitals score on all viewports.",
-    liveUrl: "https://apex-landing.dev.studio",
-    githubUrl: "https://github.com/marcusvance/apex-landing",
+      "A state-of-the-art interactive data monitoring terminal for industrial systems. It displays hundreds of real-time server streams simultaneously using GPU-accelerated canvas grids, fully interactive zoomable timelines, and customizable bento-grid layouts. Highly optimized for massive data throughput with virtualized rows and zero-rerender updates.",
+    live: "https://inteltec.vercel.app/",
+    github: "https://github.com/Ripon-Mardy/inteltec",
   },
 ];
 

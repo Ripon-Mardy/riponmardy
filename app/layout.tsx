@@ -39,7 +39,7 @@ export default function RootLayout({
             <Sidebar />
             <main className="w-full lg:flex-1 bg-[#1e1e1f] border border-[#383838] rounded-3xl shadow-2xl min-h-[75vh] flex flex-col">
               <Navbar />
-              <div className="flex-1 p-6 md:p-8 lg:p-10 pt-8 lg:pt-24 pb-20 lg:pb-10">
+              <div className="flex-1 p-6 md:p-8 lg:p-10 pt-8 pb-20 lg:pb-10">
                 {children}
               </div>
             </main>

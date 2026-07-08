@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export interface SocialLink {
   name: string;
   url: string;
@@ -44,22 +46,28 @@ export interface TimelineItem {
 export interface SkillItem {
   name: string;
   percentage: number;
-  level: string; // e.g., "Advanced", "Expert", "Intermediate"
-  category: "frontend" | "backend" | "design" | "other";
+  level: string;
+  category:
+    | "frontend"
+    | "backend"
+    | "database"
+    | "tools"
+    | "ai"
+    | "other"
+    | "familiar";
 }
 
 export interface ProjectItem {
   id: string;
   title: string;
   category: string;
-  thumbnail: string;
-  gallery: string[];
+  thumbnail: StaticImageData;
   client: string;
   date: string;
   technologies: string[];
   description: string;
-  liveUrl?: string;
-  githubUrl?: string;
+  live?: string;
+  github?: string;
 }
 
 export interface BlogPost {

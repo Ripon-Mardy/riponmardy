@@ -60,66 +60,6 @@ export default function ProjectModal({
             <Icon name="X" size={16} />
           </button>
 
-          {/* Hero Image Slider */}
-          <div className="relative w-full aspect-video md:aspect-21/9 bg-[#141415] overflow-hidden group border-b border-[#383838]">
-            <img
-              src={project.gallery[activeImageIdx]}
-              alt={`${project.title} screenshot ${activeImageIdx + 1}`}
-              className="w-full h-full object-cover transition-all duration-500"
-              referrerPolicy="no-referrer"
-            />
-
-            {/* Overlay Gradient */}
-            <div className="absolute inset-0 bg-linear-to-t from-[#1e1e1f] via-transparent to-transparent opacity-60" />
-
-            {/* Slider Navigation Arrows */}
-            {project.gallery.length > 1 && (
-              <>
-                <button
-                  id="prev-project-img-btn"
-                  onClick={() =>
-                    setActiveImageIdx(
-                      (prev) =>
-                        (prev - 1 + project.gallery.length) %
-                        project.gallery.length,
-                    )
-                  }
-                  className="absolute left-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-lg bg-[#1a1a1b]/80 border border-[#383838]/80 hover:border-[#ffdb70] flex items-center justify-center text-gray-300 hover:text-white opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer shadow-md"
-                >
-                  <Icon name="ArrowLeft" size={14} />
-                </button>
-                <button
-                  id="next-project-img-btn"
-                  onClick={() =>
-                    setActiveImageIdx(
-                      (prev) => (prev + 1) % project.gallery.length,
-                    )
-                  }
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-9 h-9 rounded-lg bg-[#1a1a1b]/80 border border-[#383838]/80 hover:border-[#ffdb70] flex items-center justify-center text-gray-300 hover:text-white opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer shadow-md"
-                >
-                  <Icon name="ArrowRight" size={14} />
-                </button>
-              </>
-            )}
-
-            {/* Thumbnail Navigation Dots */}
-            {project.gallery.length > 1 && (
-              <div className="absolute bottom-4 left-0 right-0 flex items-center justify-center gap-1.5 z-10">
-                {project.gallery.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveImageIdx(idx)}
-                    className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                      activeImageIdx === idx
-                        ? "w-5 bg-[#ffdb70]"
-                        : "w-1.5 bg-white/40 hover:bg-white/80"
-                    }`}
-                  />
-                ))}
-              </div>
-            )}
-          </div>
-
           {/* Modal Main Content Container */}
           <div className="p-6 md:p-10 space-y-8">
             {/* Header Details */}
@@ -135,10 +75,10 @@ export default function ProjectModal({
 
               {/* Action Buttons (External Link / GitHub) */}
               <div className="flex items-center gap-3">
-                {project.githubUrl && (
+                {project.github && (
                   <a
                     id="project-github-link"
-                    href={project.githubUrl}
+                    href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="h-11 px-4 rounded-xl border border-[#383838] hover:border-[#ffdb70] bg-[#252526] hover:bg-[#ffdb70]/5 flex items-center justify-center gap-2 text-xs font-semibold tracking-wide text-gray-200 hover:text-[#ffdb70] transition-all duration-300 shadow-md"
@@ -147,10 +87,10 @@ export default function ProjectModal({
                     <span>View Repository</span>
                   </a>
                 )}
-                {project.liveUrl && (
+                {project.live && (
                   <a
                     id="project-live-link"
-                    href={project.liveUrl}
+                    href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="h-11 px-5 rounded-xl bg-linear-to-r from-[#ffdb70] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#1e1e1f] flex items-center justify-center gap-2 text-xs font-bold tracking-wide transition-all duration-300 shadow-md hover:-translate-y-0.5"

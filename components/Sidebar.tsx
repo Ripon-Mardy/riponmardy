@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
+
 import { personalInfo, contactInfo, socialLinks } from "../lib/data";
 import Icon from "./Icon";
 
@@ -26,7 +28,7 @@ export default function Sidebar() {
         { type: "text/plain" },
       );
       element.href = URL.createObjectURL(file);
-      element.download = "Marcus_Vance_CV.txt";
+      element.download = "resume-of-ripon-mardy(updated).pdf";
       document.body.appendChild(element);
       element.click();
       document.body.removeChild(element);
@@ -59,9 +61,10 @@ export default function Sidebar() {
         {/* Avatar Container with glowing gradient circle */}
         <div className="relative w-28 h-28 lg:w-36 lg:h-36 rounded-3xl overflow-hidden bg-[#2b2b2c] flex items-center justify-center border border-[#383838] shadow-inner mb-5 group">
           <div className="absolute inset-0 bg-linear-to-tr from-[#ffdb70] to-[#f59e0b] opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-          <img
+          <Image
             src={personalInfo.avatar}
             alt={personalInfo.name}
+            layout="responsive"
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             referrerPolicy="no-referrer"
           />
@@ -97,6 +100,7 @@ export default function Sidebar() {
                 </p>
                 <a
                   href={`mailto:${contactInfo.email}`}
+                  target="_blank"
                   className="text-xs text-gray-200 hover:text-[#ffdb70] transition-colors duration-200 block truncate"
                   title={contactInfo.email}
                 >

@@ -5,7 +5,15 @@ import { motion } from "motion/react";
 import { educationTimeline, experienceTimeline, skills } from "../../lib/data";
 import Icon from "../../components/Icon";
 
-type SkillCategory = "all" | "frontend" | "backend" | "design" | "other";
+type SkillCategory =
+  | "all"
+  | "frontend"
+  | "backend"
+  | "database"
+  | "tools"
+  | "other"
+  | "ai"
+  | "familiar";
 
 const page = () => {
   const [activeCategory, setActiveCategory] = useState<SkillCategory>("all");
@@ -18,11 +26,14 @@ const page = () => {
     { id: "all", label: "All Skills" },
     { id: "frontend", label: "Front-End" },
     { id: "backend", label: "Back-End" },
-    { id: "design", label: "Design Systems" },
-    { id: "other", label: "DevOps & Utilities" },
+    { id: "database", label: "Database" },
+    { id: "tools", label: "Tools" },
+    { id: "ai", label: "AI" },
+    { id: "familiar", label: "Familiar" },
+    { id: "other", label: "Other" },
   ];
   return (
-    <div className="space-y-10 animate-fade-in">
+    <div className="space-y-5 animate-fade-in">
       {/* Title */}
       <section className="space-y-5">
         <header className="relative pb-5">

@@ -21,9 +21,9 @@ export default function AboutTab() {
   if (!currentTestimonial) return null;
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-5 animate-fade-in">
       {/* Bio / Heading */}
-      <section className="space-y-5 animate-fade-in">
+      <section className="space-y-5">
         <header className="relative pb-5">
           <h2 className="text-2xl font-bold text-white tracking-tight">
             About Me
@@ -147,7 +147,7 @@ export default function AboutTab() {
       </section>
 
       {/* Clients Brand Partners */}
-      <section className="space-y-6">
+      {/* <section className="space-y-6">
         <h3 className="text-xl font-bold text-white tracking-tight">
           Partners
         </h3>
@@ -175,7 +175,7 @@ export default function AboutTab() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
