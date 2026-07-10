@@ -23,7 +23,7 @@ export default function Sidebar() {
       const element = document.createElement("a");
       const file = new Blob(
         [
-          `Marcus Vance - Lead Full-Stack Architect\nContact: ${contactInfo.email}\nExperience: 8+ Years\nEducation: Stanford MS CS\nThis is a placeholder CV for Marcus Vance.`,
+          `Ripon Mardy - Lead Full-Stack Architect\nContact: ${contactInfo.email}\nExperience: 2+ Years\nEducation: Stanford MS CS\nThis is a placeholder CV for Ripon Mardy.`,
         ],
         { type: "text/plain" },
       );

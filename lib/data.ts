@@ -424,15 +424,171 @@ export const skills: SkillItem[] = [
 ];
 
 // portfolio
-import portfolio1 from "../public/portfolio/portfolio1.png";
-import portfolio2 from "../public/portfolio/portfolio2.webp";
+// import portfolio3 from "../public/portfolio/portfolio1.png";
+// import portfolio2 from "../public/portfolio/portfolio2.webp";
+import portfolio1 from "../public/portfolio/hyori.png";
+import porfolio2 from "../public/portfolio/jonosokti.png";
+import portfolio3 from "../public/portfolio/buybee.png";
+import portfolio4 from "../public/portfolio/nextjsdashboard.png";
+import portfolio5 from "../public/portfolio/sensor-shop.png";
+import portfolio6 from "../public/portfolio/umbd.png";
+import portfolio7 from "../public/portfolio/oxford.webp";
+import portfolio8 from "../public/portfolio/telescopebd.png";
+import portfolio9 from "../public/portfolio/inteltec.webp";
 
 export const projects: ProjectItem[] = [
   {
-    id: "proj-2",
-    title: "telescopebd",
+    id: "proj-1",
+    title: "Hyori Organic food",
     category: "Web Application",
     thumbnail: portfolio1,
+    client: "Quantum Analytics Inc.",
+    date: "January 2026",
+    technologies: [
+      "React.js",
+      "Next.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "TypeScript",
+      "Node.js",
+    ],
+    description:
+      "Hyori Organic Food is a full-stack e-commerce web application for buying fresh and organic products online. It features user authentication, product management, shopping cart, and an admin dashboard. Built with Next.js, Node.js, Express, and MongoDB, following scalable and industry-level practices.",
+    live: "https://hyori-organic-food.vercel.app/",
+    github: "https://github.com/Ripon-Mardy/Hyori-Organic-food",
+  },
+  {
+    id: "proj-2",
+    title: "Jonosokti",
+    category: "Web Application",
+    thumbnail: porfolio2,
+    client: "Quantum Analytics Inc.",
+    date: "January 2026",
+    technologies: [
+      "React.js",
+      "Next.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "TypeScript",
+      "Node.js",
+    ],
+    description:
+      "Jonosokti is a modern web platform developed using Next.js, designed for fast performance, scalability, and a smooth user experience.",
+    live: "https://www.jonosokti.com/",
+    github: "https://github.com/Ripon-Mardy/jonosokti",
+  },
+  {
+    id: "proj-3",
+    title: "BuyBee",
+    category: "Web Application",
+    thumbnail: portfolio3,
+    client: "Quantum Analytics Inc.",
+    date: "January 2026",
+    technologies: [
+      "React.js",
+      "Next.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "TypeScript",
+      "Node.js",
+    ],
+    description:
+      "This project is a frontend e-commerce application built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui. It includes responsive pages, reusable components, and mock data to simulate real-world e-commerce functionality.",
+    live: "https://buybee-rosy.vercel.app/",
+    github: "https://github.com/Ripon-Mardy/BuyBee",
+  },
+  {
+    id: "proj-4",
+    title: "Nextjs-dashboard",
+    category: "Web Application",
+    thumbnail: portfolio4,
+    client: "Quantum Analytics Inc.",
+    date: "January 2026",
+    technologies: [
+      "React.js",
+      "Next.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "TypeScript",
+      "Node.js",
+    ],
+    description:
+      "A clean and responsive dashboard sidebar built with Next.js, Tailwind CSS, and Lucide icons.",
+    live: "https://nextjs-dashboard-beta-olive-28.vercel.app/",
+    github: "https://github.com/Ripon-Mardy/nextjs-dashboard",
+  },
+  {
+    id: "proj-5",
+    title: "Sensor-Shop ",
+    category: "Web Application",
+    thumbnail: portfolio5,
+    client: "Quantum Analytics Inc.",
+    date: "January 2026",
+    technologies: [
+      "React.js",
+      "Next.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "TypeScript",
+      "Node.js",
+    ],
+    description:
+      "A Next.js-based Sensor-Shop website focused on presenting electronic sensor products. The project includes responsive UI, optimized performance, and structured product listings for easy browsing.",
+    live: "https://sensor-shopbd.com/",
+    github: "https://github.com/Ripon-Mardy/Sensor-Shop",
+  },
+  {
+    id: "proj-6",
+    title: "United Machinery Bangladesh  ",
+    category: "Web Application",
+    thumbnail: portfolio6,
+    client: "Quantum Analytics Inc.",
+    date: "January 2026",
+    technologies: [
+      "React.js",
+      "Next.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "TypeScript",
+      "Node.js",
+    ],
+    description:
+      "A Next.js-based Sensor-Shop website focused on presenting electronic sensor products. The project includes responsive UI, optimized performance, and structured product listings for easy browsing.",
+    live: "https://umbd.net/",
+    github: "https://github.com/Ripon-Mardy/united",
+  },
+  {
+    id: "proj-7",
+    title: "Oxford UI Design",
+    category: "Web Application",
+    thumbnail: portfolio7,
+    client: "Quantum Analytics Inc.",
+    date: "January 2026",
+    technologies: [
+      "React.js",
+      "Next.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "TypeScript",
+      "Node.js",
+    ],
+    description:
+      "Oxford UI Design is a professional UI concept emphasizing simplicity, readability, and consistency. The design prioritizes user experience with a clean visual hierarchy and responsive layout.",
+    live: "https://oxford-nine.vercel.app/",
+    github: "https://github.com/Ripon-Mardy/Oxford",
+  },
+  {
+    id: "proj-8",
+    title: "telescopebd",
+    category: "Web Application",
+    thumbnail: portfolio8,
     client: "Quantum Analytics Inc.",
     date: "January 2026",
     technologies: ["HTML5", "CSS", "JavaScript", "React.js", "Next.js"],
@@ -442,10 +598,10 @@ export const projects: ProjectItem[] = [
     github: "https://github.com/Ripon-Mardy/telescopebd",
   },
   {
-    id: "proj-3",
+    id: "proj-9",
     title: "inteltec",
     category: "Web Application",
-    thumbnail: portfolio2,
+    thumbnail: portfolio9,
     client: "Quantum Analytics Inc.",
     date: "January 2026",
     technologies: ["HTML5", "CSS", "JavaScript", "React.js", "Next.js"],
@@ -458,7 +614,7 @@ export const projects: ProjectItem[] = [
 
 export const blogPosts: BlogPost[] = [
   {
-    id: "post-1",
+    id: 1,
     title: "Mastering Clean Architecture & Type Safety in Modern React",
     excerpt:
       "Learn how to structure enterprise React folders, enforce absolute type-safety with TypeScript, and decouple business operations from UI layers.",
@@ -483,14 +639,12 @@ By adhering to these patterns, your team will benefit from clean file trees, fas
     image:
       "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop",
     author: {
-      name: "Marcus Vance",
-      avatar:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop",
+      name: "Ripon Mardy",
+      avatar: riponmardy,
     },
-    tags: ["React", "TypeScript", "Clean Architecture", "Best Practices"],
   },
   {
-    id: "post-2",
+    id: 2,
     title: "Designing for the Onyx Theme: Aesthetic Rules of Premium Dark UI",
     excerpt:
       "Discover the hidden rules behind high-contrast dark interfaces. Learn about relative luminance, gradient borders, and visual hierarchy.",
@@ -520,14 +674,12 @@ Apply these rules in your next tailwind build to immediately lift your interface
     image:
       "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
     author: {
-      name: "Marcus Vance",
-      avatar:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop",
+      name: "Ripon Mardy",
+      avatar: riponmardy,
     },
-    tags: ["UI Design", "Tailwind CSS", "Dark Mode", "Aesthetics"],
   },
   {
-    id: "post-3",
+    id: 3,
     title: "The Shift to ESM: Streamlining Bundles with Vite",
     excerpt:
       "An in-depth look at native ES Modules, removing HMR noise, and optimizing modern asset pipelines for high-performance builds.",
@@ -552,10 +704,8 @@ Embracing modern ESM patterns not only makes your applications faster, but keeps
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
     author: {
-      name: "Marcus Vance",
-      avatar:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop",
+      name: "Ripon Mardy",
+      avatar: riponmardy,
     },
-    tags: ["Vite", "ESM", "Web Performance", "Build Tools"],
   },
 ];

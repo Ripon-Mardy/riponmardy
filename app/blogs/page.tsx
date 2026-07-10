@@ -1,37 +1,26 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+
 import { blogPosts } from "../../lib/data";
-import { BlogPost } from "../../lib/types";
-import BlogDetailModal from "../../components/BlogDetailModel";
 import Icon from "../../components/Icon";
 
 export default function BlogTab() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [activePost, setActivePost] = useState<BlogPost | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Extract all unique tags
-  const allTags = Array.from(new Set(blogPosts.flatMap((post) => post.tags)));
 
   // Filter posts
   const filteredPosts = blogPosts.filter((post) => {
     const matchesSearch =
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.tags.some((t) =>
-        t.toLowerCase().includes(searchQuery.toLowerCase()),
-      );
+      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
 
-    const matchesTag = !selectedTag || post.tags.includes(selectedTag);
-
-    return matchesSearch && matchesTag;
+    return matchesSearch;
   });
 
-  const handleOpenModal = (post: BlogPost) => {
-    setActivePost(post);
-    setIsModalOpen(true);
-  };
+  console.log(
+    filteredPosts.map((post) => ({ id: post.id, title: post.title })),
+  );
 
   return (
     <div className="space-y-5 animate-fade-in">
@@ -70,35 +59,6 @@ export default function BlogTab() {
             </button>
           )}
         </div>
-
-        {/* Dynamic Tag Pills list */}
-        <div className="flex flex-wrap items-center gap-1.5 overflow-x-auto pb-1 max-w-full no-scrollbar">
-          <button
-            id="blog-tag-all"
-            onClick={() => setSelectedTag(null)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all duration-300 whitespace-nowrap cursor-pointer ${
-              !selectedTag
-                ? "bg-[#ffdb70]/15 border border-[#ffdb70]/30 text-[#ffdb70]"
-                : "bg-[#252526] border border-[#383838] text-gray-400 hover:text-gray-100"
-            }`}
-          >
-            All Topics
-          </button>
-          {allTags.map((tag) => (
-            <button
-              id={`blog-tag-${tag.toLowerCase().replace(/\s+/g, "-")}`}
-              key={tag}
-              onClick={() => setSelectedTag(tag)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all duration-300 whitespace-nowrap cursor-pointer ${
-                selectedTag === tag
-                  ? "bg-[#ffdb70]/15 border border-[#ffdb70]/30 text-[#ffdb70]"
-                  : "bg-[#252526] border border-[#383838] text-gray-400 hover:text-gray-100"
-              }`}
-            >
-              #{tag}
-            </button>
-          ))}
-        </div>
       </div>
 
       {/* Blog Cards list */}
@@ -106,16 +66,17 @@ export default function BlogTab() {
         {filteredPosts.map((post) => (
           <article
             key={post.id}
-            onClick={() => handleOpenModal(post)}
-            className="group cursor-pointer bg-[#1a1a1b] border border-[#303031] hover:border-[#ffdb70]/30 rounded-3xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-500 flex flex-col h-full"
+            className="group cursor-pointer bg-[#1a1a1b] border border-[#303031] hover:border-[#ffdb70]/30 rounded-3xl overflow-hidden shadow-md hover:shadow-xl flex flex-col h-full"
           >
             {/* Thumbnail */}
             <div className="relative aspect-16/10 overflow-hidden bg-gray-900 shrink-0">
-              <img
+              <Image
+                width={100}
+                height={100}
                 src={post.image}
                 alt={post.title}
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                referrerPolicy="no-referrer"
+                layout="responsive"
               />
               <div className="absolute top-4 left-4">
                 <span className="text-[9px] font-bold tracking-wider text-[#ffdb70] bg-[#1e1e1f]/90 border border-[#383838]/80 px-2.5 py-1 rounded-lg uppercase shadow-md">
@@ -134,65 +95,21 @@ export default function BlogTab() {
                   <span>{post.readTime}</span>
                 </div>
 
-                <h3 className="text-base font-bold text-gray-100 tracking-tight leading-snug group-hover:text-[#ffdb70] transition-colors duration-300">
+                <Link
+                  href={`/blogs/${post.id}`}
+                  className="text-base font-bold text-gray-100 tracking-tight leading-snug group-hover:text-[#ffdb70] transition-colors duration-300"
+                >
                   {post.title}
-                </h3>
+                </Link>
 
                 <p className="text-xs text-gray-400 leading-relaxed font-light line-clamp-2">
                   {post.excerpt}
                 </p>
               </div>
-
-              {/* Tags and Read more indicators */}
-              <div className="flex items-center justify-between pt-3 border-t border-[#383838]/40">
-                <div className="flex gap-1.5 overflow-hidden">
-                  {post.tags.slice(0, 2).map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[9px] font-medium text-gray-400 bg-[#252526] px-2 py-0.5 rounded border border-[#383838]/30"
-                    >
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-
-                <span className="text-[10px] font-bold text-[#ffdb70] flex items-center gap-1 group-hover:underline uppercase tracking-wider">
-                  <span>Read Article</span>
-                  <Icon
-                    name="ArrowRight"
-                    size={10}
-                    className="text-[#ffdb70]"
-                  />
-                </span>
-              </div>
             </div>
           </article>
         ))}
       </div>
-
-      {/* Empty Search State */}
-      {filteredPosts.length === 0 && (
-        <div className="py-20 text-center space-y-4">
-          <div className="w-12 h-12 rounded-full bg-[#252526] border border-[#383838] flex items-center justify-center text-gray-500 mx-auto">
-            <Icon name="AlertCircle" size={20} />
-          </div>
-          <div className="space-y-1">
-            <h4 className="text-sm font-bold text-white tracking-tight">
-              No Articles Found
-            </h4>
-            <p className="text-xs text-gray-400 font-light">
-              We couldn't find any articles matching your filters or query.
-            </p>
-          </div>
-        </div>
-      )}
-
-      {/* Full detail modal */}
-      <BlogDetailModal
-        post={activePost}
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </div>
   );
 }

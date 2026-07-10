@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
+
 import Icon from "../../components/Icon";
 
 interface FormFields {
@@ -43,8 +45,6 @@ export default function ContactTab() {
       tempErrors.subject = "Subject line is required.";
     if (!fields.message.trim()) {
       tempErrors.message = "Message content is required.";
-    } else if (fields.message.trim().length < 10) {
-      tempErrors.message = "Message must be at least 10 characters long.";
     }
 
     setErrors(tempErrors);
@@ -59,23 +59,46 @@ export default function ContactTab() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!validate()) return;
 
     setFormStatus("submitting");
 
-    // Simulate form submission to server
-    setTimeout(() => {
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          name: fields.name,
+          email: fields.email,
+          subject: fields.subject,
+          message: fields.message,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
+      );
+
       setFormStatus("success");
-      setFields({ name: "", email: "", subject: "", message: "" });
+
+      setFields({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+
       setErrors({});
 
-      // Reset back to idle after a period
       setTimeout(() => {
         setFormStatus("idle");
       }, 5000);
-    }, 1800);
+    } catch (error) {
+      console.error(error);
+
+      alert("Something went wrong.");
+      setFormStatus("idle");
+    }
   };
 
   return (
@@ -158,7 +181,7 @@ export default function ContactTab() {
 
             {/* Tooltip Popup */}
             <div className="absolute -top-11 bg-[#1e1e1f] border border-[#ffdb70]/30 rounded-lg px-2.5 py-1 text-[10px] font-bold text-[#ffdb70] tracking-wide whitespace-nowrap shadow-xl">
-              San Francisco Studio
+              Dhaka, Bangladesh
             </div>
           </div>
         </div>
@@ -184,7 +207,7 @@ export default function ContactTab() {
               <input
                 id="contact-name"
                 type="text"
-                placeholder="Marcus Vance"
+                placeholder="Your Name"
                 value={fields.name}
                 onChange={(e) => handleInputChange("name", e.target.value)}
                 className={`w-full h-11 px-4 bg-[#252526] border ${

@@ -1,7 +1,9 @@
 services:
   portfolio:
-    build: .
     container_name: portfolio-container
+
+    build:
+      context: .
 
     ports:
       - "3000:3000"
@@ -12,7 +14,3 @@ services:
 
     environment:
       NODE_ENV: development
-      CHOKIDAR_USEPOLLING: "true"
-      WATCHPACK_POLLING: "true"
-
-    command: npm run dev

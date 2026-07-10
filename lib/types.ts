@@ -71,7 +71,7 @@ export interface ProjectItem {
 }
 
 export interface BlogPost {
-  id: string;
+  id: number;
   title: string;
   excerpt: string;
   content: string;
@@ -81,7 +81,6 @@ export interface BlogPost {
   image: string;
   author: {
     name: string;
-    avatar: string;
+    avatar: StaticImageData;
   };
-  tags: string[];
 }
