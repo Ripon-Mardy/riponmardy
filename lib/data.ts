@@ -46,7 +46,7 @@ export const socialLinks: SocialLink[] = [
 
 export const contactInfo: ContactInfo = {
   email: "mardyripon10@gmail.com",
-  phone: "+0880 1320585642",
+  phone: "+880 1320585642",
   birthday: "July 23, 2001",
   location: "Dhaka, Bangladesh",
 };
