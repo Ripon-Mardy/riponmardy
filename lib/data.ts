@@ -14,7 +14,7 @@ import {
 
 export const personalInfo = {
   name: "Ripon Mardy",
-  title: "AI-Driven Full Stack Developer",
+  title: "Full Stack Software Developer",
   subTitle: "I design, build, and deploy modern web applications.",
   avatar: riponmardy,
   bio: `Full Stack Software Engineer with 2+ years of experience, including 1.5 years of remote work, building scalable, production-ready web applications using the MERN stack and Next.js. Passionate about writing clean, maintainable code and developing high-performance applications. Experienced in delivering end-to-end solutions, from responsive frontend interfaces to secure backend APIs, for real-world clients and business requirements.`,
