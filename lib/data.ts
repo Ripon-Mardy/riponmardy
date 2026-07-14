@@ -14,7 +14,7 @@ import {
 
 export const personalInfo = {
   name: "Ripon Mardy",
-  title: "AI-Driven Full Stack Developer",
+  title: "Full Stack Software Developer",
   subTitle: "I design, build, and deploy modern web applications.",
   avatar: riponmardy,
   bio: `Full Stack Software Engineer with 2+ years of experience, including 1.5 years of remote work, building scalable, production-ready web applications using the MERN stack and Next.js. Passionate about writing clean, maintainable code and developing high-performance applications. Experienced in delivering end-to-end solutions, from responsive frontend interfaces to secure backend APIs, for real-world clients and business requirements.`,
@@ -435,6 +435,8 @@ import portfolio6 from "../public/portfolio/umbd.png";
 import portfolio7 from "../public/portfolio/oxford.webp";
 import portfolio8 from "../public/portfolio/telescopebd.png";
 import portfolio9 from "../public/portfolio/inteltec.webp";
+import portfolio10 from "../public/portfolio/gethyped.png";
+import portfolio11 from "../public/portfolio/sagenpower.png";
 
 export const projects: ProjectItem[] = [
   {
@@ -502,6 +504,50 @@ export const projects: ProjectItem[] = [
   },
   {
     id: "proj-4",
+    title: "Get Hyped",
+    category: "Web Application",
+    thumbnail: portfolio10,
+    client: "Quantum Analytics Inc.",
+    date: "January 2026",
+    technologies: [
+      "React.js",
+      "GSAP",
+      "Next.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "TypeScript",
+      "Node.js",
+    ],
+    description:
+      "This project is a frontend e-commerce application built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui. It includes responsive pages, reusable components, and mock data to simulate real-world e-commerce functionality.",
+    live: "https://gethyped-clone-lyart.vercel.app/",
+    github: "https://github.com/Ripon-Mardy/gethyped-clone-nextjs-gsap",
+  },
+  {
+    id: "proj-5",
+    title: "Sagen Power",
+    category: "Web Application",
+    thumbnail: portfolio11,
+    client: "Quantum Analytics Inc.",
+    date: "January 2026",
+    technologies: [
+      "React.js",
+      "Next.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "TypeScript",
+      "Node.js",
+    ],
+    description:
+      "This project is a frontend e-commerce application built with Next.js, TypeScript, Tailwind CSS, and shadcn/ui. It includes responsive pages, reusable components, and mock data to simulate real-world e-commerce functionality.",
+    live: "https://sagenpower.vercel.app/",
+    github: "https://github.com/Ripon-Mardy/sagenpower",
+  },
+
+  {
+    id: "proj-6",
     title: "Nextjs-dashboard",
     category: "Web Application",
     thumbnail: portfolio4,
@@ -522,7 +568,7 @@ export const projects: ProjectItem[] = [
     github: "https://github.com/Ripon-Mardy/nextjs-dashboard",
   },
   {
-    id: "proj-5",
+    id: "proj-7",
     title: "Sensor-Shop ",
     category: "Web Application",
     thumbnail: portfolio5,
@@ -543,7 +589,7 @@ export const projects: ProjectItem[] = [
     github: "https://github.com/Ripon-Mardy/Sensor-Shop",
   },
   {
-    id: "proj-6",
+    id: "proj-8",
     title: "United Machinery Bangladesh  ",
     category: "Web Application",
     thumbnail: portfolio6,
@@ -564,7 +610,7 @@ export const projects: ProjectItem[] = [
     github: "https://github.com/Ripon-Mardy/united",
   },
   {
-    id: "proj-7",
+    id: "proj-9",
     title: "Oxford UI Design",
     category: "Web Application",
     thumbnail: portfolio7,
@@ -585,7 +631,7 @@ export const projects: ProjectItem[] = [
     github: "https://github.com/Ripon-Mardy/Oxford",
   },
   {
-    id: "proj-8",
+    id: "proj-10",
     title: "telescopebd",
     category: "Web Application",
     thumbnail: portfolio8,
@@ -598,7 +644,7 @@ export const projects: ProjectItem[] = [
     github: "https://github.com/Ripon-Mardy/telescopebd",
   },
   {
-    id: "proj-9",
+    id: "proj-11",
     title: "inteltec",
     category: "Web Application",
     thumbnail: portfolio9,
