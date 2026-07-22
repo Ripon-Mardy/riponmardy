@@ -12,6 +12,7 @@
     "@emailjs/browser": "^4.4.1",
     "@tailwindcss/postcss": "^4.3.2",
     "@types/react-motion": "^0.0.40",
+    "@vercel/analytics": "^2.0.1",
     "framer-motion": "^11.2.6",
     "lucide-react": "^0.546.0",
     "mongoose": "^8.19.2",
