@@ -13,27 +13,21 @@ export default function Sidebar() {
 
   const handleDownloadCV = () => {
     if (downloadState !== "idle") return;
+
     setDownloadState("loading");
 
-    // Simulate premium download process
     setTimeout(() => {
       setDownloadState("success");
 
-      // Actual file-like download trigger for interactive feedback
       const element = document.createElement("a");
-      const file = new Blob(
-        [
-          `Ripon Mardy - Lead Full-Stack Architect\nContact: ${contactInfo.email}\nExperience: 2+ Years\nEducation: Stanford MS CS\nThis is a placeholder CV for Ripon Mardy.`,
-        ],
-        { type: "text/plain" },
-      );
-      element.href = URL.createObjectURL(file);
-      element.download = "resume-of-ripon-mardy(updated).pdf";
+
+      element.href = "resume-of-ripon-mardy(updated).pdf";
+      element.download = "Ripon-Mardy-Resume.pdf";
+
       document.body.appendChild(element);
       element.click();
       document.body.removeChild(element);
 
-      // Reset to idle after a brief period
       setTimeout(() => {
         setDownloadState("idle");
       }, 3000);
@@ -81,7 +75,6 @@ export default function Sidebar() {
 
       <div className="w-full h-px bg-[#383838] my-6" />
 
-      {/* Expandable Contacts Tray for Mobile, static on Desktop */}
       <div className="w-full">
         {/* Mobile/Tablet Expandable Content */}
         <div
