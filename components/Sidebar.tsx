@@ -11,6 +11,7 @@ export default function Sidebar() {
     "idle" | "loading" | "success"
   >("idle");
 
+  // download resume function
   const handleDownloadCV = () => {
     if (downloadState !== "idle") return;
 
