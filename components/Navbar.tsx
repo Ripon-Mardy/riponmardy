@@ -23,6 +23,7 @@ export default function Navbar() {
             <li key={item.id} className="relative">
               <Link
                 href={item.href}
+                aria-current={isActive ? "page" : undefined}
                 className={`relative px-2 py-2 text-sm font-medium transition-colors duration-300 ${
                   isActive ? "text-[#ffdb70]" : "text-gray-400 hover:text-white"
                 }`}

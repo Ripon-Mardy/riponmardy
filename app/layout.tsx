@@ -1,3 +1,4 @@
+import type { Metadata, Viewport } from "next";
 import { Ubuntu } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
@@ -10,11 +11,28 @@ import Navbar from "../components/Navbar";
 const ubuntu = Ubuntu({
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
+  variable: "--font-ubuntu",
 });
 
-export const metadata = {
-  title: "Ripon Mardy Axel",
-  description: "A AI-Driven Developer portfolio",
+export const metadata: Metadata = {
+  title: {
+    default: "Ripon Mardy | Full Stack Software Developer",
+    template: "%s | Ripon Mardy",
+  },
+  description:
+    "Portfolio of Ripon Mardy, a full stack developer building scalable web applications with React, Next.js, Node.js and MongoDB.",
+  openGraph: {
+    title: "Ripon Mardy | Full Stack Software Developer",
+    description:
+      "Full stack developer building scalable web applications with React, Next.js, Node.js and MongoDB.",
+    url: "https://riponmardy.vercel.app",
+    siteName: "Ripon Mardy",
+    type: "website",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#121212",
 };
 
 
@@ -28,9 +46,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head></head>
-
-      <body suppressHydrationWarning className={ubuntu.className}>
+      <body
+        suppressHydrationWarning
+        className={`${ubuntu.className} ${ubuntu.variable}`}
+      >
         <NextTopLoader
           color="#f59e0b"
           initialPosition={0.08}

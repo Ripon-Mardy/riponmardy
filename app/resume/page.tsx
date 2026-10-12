@@ -2,7 +2,12 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 
-import { educationTimeline, experienceTimeline, skills } from "../../lib/data";
+import {
+  educationTimeline,
+  experienceTimeline,
+  personalInfo,
+  skills,
+} from "../../lib/data";
 import Icon from "../../components/Icon";
 
 type SkillCategory =
@@ -42,6 +47,43 @@ const page = () => {
           </h2>
           <div className="absolute bottom-0 left-0 w-10 h-1 bg-linear-to-r from-[#ffdb70] to-[#f59e0b] rounded-full" />
         </header>
+
+        {/* CV download card */}
+        <div className="relative overflow-hidden bg-[#212123]/60 border border-[#303031] rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center gap-4 shadow-md">
+          <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-[#ffdb70]/5 blur-2xl pointer-events-none" />
+          <div className="w-11 h-11 shrink-0 rounded-xl bg-[#252526] border border-[#383838] flex items-center justify-center text-[#ffdb70]">
+            <Icon name="FileText" size={20} />
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-bold text-white tracking-tight">
+              Full resume
+            </p>
+            <p className="text-xs text-gray-400 font-light">
+              One-page PDF with experience, projects and skills.
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <a
+              id="resume-download-btn"
+              href={personalInfo.cvUrl}
+              download="Ripon-Mardy-Resume.pdf"
+              className="flex-1 sm:flex-none px-4 py-2.5 rounded-xl bg-linear-to-r from-[#ffdb70] to-[#f59e0b] flex items-center justify-center gap-2 text-xs font-bold tracking-wide text-[#1e1e1f] shadow-md shadow-[#f59e0b]/10 hover:shadow-lg hover:shadow-[#f59e0b]/20 hover:-translate-y-0.5 transition-all duration-300"
+            >
+              <Icon name="Download" size={14} />
+              <span>Download PDF</span>
+            </a>
+            <a
+              id="resume-view-btn"
+              href={personalInfo.cvUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 sm:flex-none px-4 py-2.5 rounded-xl border border-[#383838] hover:border-[#ffdb70] bg-[#252526] flex items-center justify-center gap-2 text-xs font-semibold tracking-wide text-gray-200 hover:text-[#ffdb70] hover:-translate-y-0.5 transition-all duration-300 shadow-md"
+            >
+              <Icon name="ExternalLink" size={14} />
+              <span>View</span>
+            </a>
+          </div>
+        </div>
       </section>
 
       {/* Experience & Education Timelines */}
