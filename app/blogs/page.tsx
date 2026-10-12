@@ -71,12 +71,11 @@ export default function BlogTab() {
             {/* Thumbnail */}
             <div className="relative aspect-16/10 overflow-hidden bg-gray-900 shrink-0">
               <Image
-                width={100}
-                height={100}
                 src={post.image}
                 alt={post.title}
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                layout="responsive"
+                fill
+                sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
               <div className="absolute top-4 left-4">
                 <span className="text-[9px] font-bold tracking-wider text-[#ffdb70] bg-[#1e1e1f]/90 border border-[#383838]/80 px-2.5 py-1 rounded-lg uppercase shadow-md">

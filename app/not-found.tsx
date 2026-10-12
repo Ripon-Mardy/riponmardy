@@ -1,11 +1,7 @@
 import Icon from "../components/Icon";
 import Link from "next/link";
 
-interface NotFoundTabProps {
-  onBackToHome: () => void;
-}
-
-export default function NotFoundTab({ onBackToHome }: NotFoundTabProps) {
+export default function NotFound() {
   return (
     <div className="py-20 flex flex-col items-center justify-center text-center space-y-6 max-w-md mx-auto animate-fade-in select-none">
       {/* 404 Icon/Illustration container */}
@@ -17,22 +13,22 @@ export default function NotFoundTab({ onBackToHome }: NotFoundTabProps) {
 
       <div className="space-y-2">
         <h3 className="text-xl font-extrabold text-white tracking-tight uppercase">
-          404: Node Unreachable
+          404: Page Not Found
         </h3>
         <p className="text-xs text-gray-400 font-light leading-relaxed">
-          The requested system node or article does not exist or has been
-          relocated to another workspace coordinate.
+          The page or article you're looking for doesn't exist or has been
+          moved.
         </p>
       </div>
 
-      <button
+      <Link
         id="not-found-back-btn"
-        onClick={onBackToHome}
-        className="px-5 py-3 rounded-xl border border-[#383838] hover:border-[#ffdb70] bg-[#252526] hover:bg-[#ffdb70]/5 flex items-center justify-center gap-2 text-xs font-semibold tracking-wide text-gray-200 hover:text-[#ffdb70] transition-all duration-300 shadow-md cursor-pointer"
+        href="/"
+        className="px-5 py-3 rounded-xl border border-[#383838] hover:border-[#ffdb70] bg-[#252526] hover:bg-[#ffdb70]/5 flex items-center justify-center gap-2 text-xs font-semibold tracking-wide text-gray-200 hover:text-[#ffdb70] transition-all duration-300 shadow-md"
       >
         <Icon name="ArrowLeft" size={14} className="text-[#ffdb70]" />
-        <Link href={"/"}>Return to Main Profile</Link>
-      </button>
+        <span>Return to Main Profile</span>
+      </Link>
     </div>
   );
 }

@@ -7,32 +7,12 @@ import Icon from "./Icon";
 
 export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [downloadState, setDownloadState] = useState<
-    "idle" | "loading" | "success"
-  >("idle");
+  const [downloaded, setDownloaded] = useState(false);
 
-  // download resume function
+  // The <a download> does the actual download; this only drives the feedback state
   const handleDownloadCV = () => {
-    if (downloadState !== "idle") return;
-
-    setDownloadState("loading");
-
-    setTimeout(() => {
-      setDownloadState("success");
-
-      const element = document.createElement("a");
-
-      element.href = "resume-of-ripon-mardy(updated).pdf";
-      element.download = "Ripon-Mardy-Resume.pdf";
-
-      document.body.appendChild(element);
-      element.click();
-      document.body.removeChild(element);
-
-      setTimeout(() => {
-        setDownloadState("idle");
-      }, 3000);
-    }, 1500);
+    setDownloaded(true);
+    setTimeout(() => setDownloaded(false), 3000);
   };
 
   return (
@@ -59,8 +39,11 @@ export default function Sidebar() {
           <Image
             src={personalInfo.avatar}
             alt={personalInfo.name}
-            layout="responsive"
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            fill
+            priority
+            placeholder="blur"
+            sizes="(min-width: 1024px) 144px, 112px"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
             referrerPolicy="no-referrer"
           />
         </div>
@@ -169,32 +152,39 @@ export default function Sidebar() {
               ))}
             </div>
 
-            {/* CV Download Action */}
-            <button
-              id="download-cv-btn"
-              onClick={handleDownloadCV}
-              disabled={downloadState === "loading"}
-              className="w-full py-3.5 px-4 rounded-xl border border-[#383838] hover:border-[#ffdb70] bg-[#252526] hover:bg-[#ffdb70]/5 flex items-center justify-center gap-2 text-xs font-semibold tracking-wide text-gray-200 hover:text-[#ffdb70] transition-all duration-300 shadow-md hover:-translate-y-0.5 cursor-pointer disabled:opacity-75 disabled:cursor-wait"
-            >
-              {downloadState === "idle" && (
-                <>
-                  <Icon name="Download" size={14} className="text-[#ffdb70]" />
-                  <span>Download CV</span>
-                </>
-              )}
-              {downloadState === "loading" && (
-                <>
-                  <div className="w-4 h-4 border-2 border-[#ffdb70] border-t-transparent rounded-full animate-spin" />
-                  <span>Preparing Document...</span>
-                </>
-              )}
-              {downloadState === "success" && (
-                <>
-                  <Icon name="Check" size={14} className="text-[#10b981]" />
-                  <span className="text-[#10b981]">Document Downloaded!</span>
-                </>
-              )}
-            </button>
+            {/* CV Actions */}
+            <div className="w-full grid grid-cols-[1fr_auto] gap-2">
+              <a
+                id="download-cv-btn"
+                href={personalInfo.cvUrl}
+                download="Ripon-Mardy-Resume.pdf"
+                onClick={handleDownloadCV}
+                className="py-3.5 px-4 rounded-xl bg-linear-to-r from-[#ffdb70] to-[#f59e0b] flex items-center justify-center gap-2 text-xs font-bold tracking-wide text-[#1e1e1f] transition-all duration-300 shadow-md shadow-[#f59e0b]/10 hover:shadow-lg hover:shadow-[#f59e0b]/20 hover:-translate-y-0.5"
+              >
+                {downloaded ? (
+                  <>
+                    <Icon name="Check" size={14} />
+                    <span>Downloaded!</span>
+                  </>
+                ) : (
+                  <>
+                    <Icon name="Download" size={14} />
+                    <span>Download CV</span>
+                  </>
+                )}
+              </a>
+              <a
+                id="view-cv-btn"
+                href={personalInfo.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View CV in a new tab"
+                title="View CV"
+                className="w-12 rounded-xl border border-[#383838] hover:border-[#ffdb70] bg-[#252526] flex items-center justify-center text-gray-300 hover:text-[#ffdb70] transition-all duration-300 shadow-md hover:-translate-y-0.5"
+              >
+                <Icon name="Eye" size={15} />
+              </a>
+            </div>
           </div>
         </div>
       </div>

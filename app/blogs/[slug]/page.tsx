@@ -45,11 +45,11 @@ const page = () => {
           <div className="relative w-full aspect-21/9 overflow-hidden border-b border-[#383838]">
             <Image
               src={blog.image}
-              alt="Article Banner"
-              width={100}
-              height={100}
-              className="w-full h-full object-cover"
-              layout="responsive"
+              alt={blog.title}
+              fill
+              priority
+              sizes="(min-width: 1280px) 900px, 100vw"
+              className="object-cover"
             />
             <div className="absolute inset-0 bg-linear-to-t from-[#1e1e1f] to-transparent opacity-50" />
           </div>
