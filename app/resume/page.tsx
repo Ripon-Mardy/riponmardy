@@ -1,233 +1,203 @@
 "use client";
-import { useState } from "react";
-import { motion } from "motion/react";
-
 import {
   educationTimeline,
   experienceTimeline,
   personalInfo,
   skills,
 } from "../../lib/data";
+import { SkillItem, TimelineItem } from "../../lib/types";
 import Icon from "../../components/Icon";
+import SectionHeading, { SubHeading } from "../../components/SectionHeading";
 
-type SkillCategory =
-  | "all"
-  | "frontend"
-  | "backend"
-  | "database"
-  | "tools"
-  | "other"
-  | "ai"
-  | "familiar";
+const skillGroups: { id: SkillItem["category"]; label: string; icon: string }[] = [
+  { id: "frontend", label: "Front-end", icon: "Layout" },
+  { id: "backend", label: "Back-end", icon: "Server" },
+  { id: "database", label: "Database", icon: "Database" },
+  { id: "tools", label: "Tools & Workflow", icon: "Wrench" },
+  { id: "ai", label: "AI", icon: "Sparkles" },
+  { id: "familiar", label: "Familiar with", icon: "Compass" },
+  { id: "other", label: "Other", icon: "Layers" },
+];
 
-const page = () => {
-  const [activeCategory, setActiveCategory] = useState<SkillCategory>("all");
+// Filled dots convey proficiency without false-precision percentages
+const levelDots: Record<string, number> = {
+  Beginner: 1,
+  Intermediate: 2,
+  Advanced: 3,
+};
 
-  const filteredSkills = skills.filter(
-    (skill) => activeCategory === "all" || skill.category === activeCategory,
-  );
-
-  const categories: { id: SkillCategory; label: string }[] = [
-    { id: "all", label: "All Skills" },
-    { id: "frontend", label: "Front-End" },
-    { id: "backend", label: "Back-End" },
-    { id: "database", label: "Database" },
-    { id: "tools", label: "Tools" },
-    { id: "ai", label: "AI" },
-    { id: "familiar", label: "Familiar" },
-    { id: "other", label: "Other" },
-  ];
+function Timeline({ items }: { items: TimelineItem[] }) {
   return (
-    <div className="space-y-5 animate-fade-in">
-      {/* Title */}
-      <section className="space-y-5">
-        <header className="relative pb-5">
-          <h2 className="text-2xl font-bold text-white tracking-tight">
-            Resume
-          </h2>
-          <div className="absolute bottom-0 left-0 w-10 h-1 bg-linear-to-r from-[#ffdb70] to-[#f59e0b] rounded-full" />
-        </header>
-
-        {/* CV download card */}
-        <div className="relative overflow-hidden bg-[#212123]/60 border border-[#303031] rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center gap-4 shadow-md">
-          <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-[#ffdb70]/5 blur-2xl pointer-events-none" />
-          <div className="w-11 h-11 shrink-0 rounded-xl bg-[#252526] border border-[#383838] flex items-center justify-center text-[#ffdb70]">
-            <Icon name="FileText" size={20} />
+    <ol className="relative space-y-3">
+      {items.map((item) => (
+        <li
+          key={item.id}
+          className="card-raised card-hover group relative rounded-3xl p-6"
+        >
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div className="space-y-1">
+              <h4 className="text-[15px] font-medium tracking-tight text-fg">
+                {item.title}
+              </h4>
+              <p className="text-[13px] text-accent/90">{item.subtitle}</p>
+            </div>
+            <span className="chip shrink-0 self-start font-mono text-[10.5px]!">
+              {item.period}
+            </span>
           </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-bold text-white tracking-tight">
-              Full resume
-            </p>
-            <p className="text-xs text-gray-400 font-light">
+          <p className="mt-4 text-[13px] leading-relaxed text-muted">
+            {item.description}
+          </p>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+export default function ResumePage() {
+  const groups = skillGroups
+    .map((group) => ({
+      ...group,
+      items: skills.filter((s) => s.category === group.id),
+    }))
+    .filter((group) => group.items.length > 0);
+
+  return (
+    <div className="space-y-16 animate-fade-in">
+      <section className="space-y-8">
+        <SectionHeading
+          index="02"
+          label="Resume"
+          title={
+            <>
+              Experience &amp; <em className="text-gradient pr-1">craft</em>
+            </>
+          }
+        />
+
+        {/* CV card */}
+        <div className="card-raised relative flex flex-col gap-5 overflow-hidden rounded-3xl p-6 sm:flex-row sm:items-center">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -top-20 -right-16 size-56 rounded-full bg-accent/10 blur-3xl"
+          />
+          <span className="icon-tile size-12">
+            <Icon name="FileText" size={20} />
+          </span>
+          <div className="min-w-0 flex-1">
+            <p className="text-[15px] font-medium text-fg">Full resume</p>
+            <p className="text-[13px] text-muted">
               One-page PDF with experience, projects and skills.
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="relative flex items-center gap-2">
             <a
               id="resume-download-btn"
               href={personalInfo.cvUrl}
               download="Ripon-Mardy-Resume.pdf"
-              className="flex-1 sm:flex-none px-4 py-2.5 rounded-xl bg-linear-to-r from-[#ffdb70] to-[#f59e0b] flex items-center justify-center gap-2 text-xs font-bold tracking-wide text-[#1e1e1f] shadow-md shadow-[#f59e0b]/10 hover:shadow-lg hover:shadow-[#f59e0b]/20 hover:-translate-y-0.5 transition-all duration-300"
+              className="btn btn-primary flex-1 sm:flex-none"
             >
-              <Icon name="Download" size={14} />
-              <span>Download PDF</span>
+              <Icon name="Download" size={15} />
+              Download PDF
             </a>
             <a
               id="resume-view-btn"
               href={personalInfo.cvUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 sm:flex-none px-4 py-2.5 rounded-xl border border-[#383838] hover:border-[#ffdb70] bg-[#252526] flex items-center justify-center gap-2 text-xs font-semibold tracking-wide text-gray-200 hover:text-[#ffdb70] hover:-translate-y-0.5 transition-all duration-300 shadow-md"
+              className="btn btn-ghost flex-1 sm:flex-none"
             >
-              <Icon name="ExternalLink" size={14} />
-              <span>View</span>
+              <Icon name="ArrowUpRight" size={15} />
+              View
             </a>
           </div>
         </div>
       </section>
 
-      {/* Experience & Education Timelines */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Experience Column */}
+      <div className="grid grid-cols-1 gap-12 xl:grid-cols-2 xl:gap-8">
         <section className="space-y-6">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-[#252526] border border-[#383838] flex items-center justify-center text-[#ffdb70]">
+            <span className="icon-tile size-10">
               <Icon name="Briefcase" size={16} />
-            </div>
-            <h3 className="text-xl font-bold text-white tracking-tight">
-              Experience
-            </h3>
+            </span>
+            <SubHeading>Experience</SubHeading>
           </div>
-
-          <div className="relative border-l border-[#383838] pl-6 ml-4.5 space-y-8">
-            {experienceTimeline.map((item) => (
-              <div key={item.id} className="relative group">
-                {/* Timeline node circle */}
-                <div className="absolute -left-7.5 top-1.5 w-3.5 h-3.5 rounded-full bg-[#383838] border-2 border-[#1e1e1f] group-hover:bg-[#ffdb70] transition-colors duration-300" />
-                <div className="absolute -left-8.75 top-[1.5px] w-6 h-6 rounded-full bg-[#ffdb70]/0 border border-[#ffdb70]/0 group-hover:border-[#ffdb70]/20 group-hover:bg-[#ffdb70]/5 transition-all duration-300 pointer-events-none" />
-
-                <div className="space-y-2">
-                  <h4 className="text-sm font-bold text-gray-100 group-hover:text-[#ffdb70] transition-colors duration-300">
-                    {item.title}
-                  </h4>
-                  <div className="flex flex-wrap items-center gap-2 text-xs text-[#ffdb70]/80">
-                    <span className="font-semibold">{item.subtitle}</span>
-                    <span className="text-gray-600">•</span>
-                    <span className="text-gray-400 font-light bg-[#252526] px-2 py-0.5 rounded border border-[#383838]">
-                      {item.period}
-                    </span>
-                  </div>
-                  <p className="text-xs text-gray-400 leading-relaxed font-light">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <Timeline items={experienceTimeline} />
         </section>
 
-        {/* Education Column */}
         <section className="space-y-6">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-[#252526] border border-[#383838] flex items-center justify-center text-[#ffdb70]">
-              <Icon name="BookOpen" size={16} />
-            </div>
-            <h3 className="text-xl font-bold text-white tracking-tight">
-              Education
-            </h3>
+            <span className="icon-tile size-10">
+              <Icon name="GraduationCap" size={16} />
+            </span>
+            <SubHeading>Education</SubHeading>
           </div>
-
-          <div className="relative border-l border-[#383838] pl-6 ml-4.5 space-y-8">
-            {educationTimeline.map((item) => (
-              <div key={item.id} className="relative group">
-                {/* Timeline node circle */}
-                <div className="absolute -left-7.5 top-1.5 w-3.5 h-3.5 rounded-full bg-[#383838] border-2 border-[#1e1e1f] group-hover:bg-[#ffdb70] transition-colors duration-300" />
-                <div className="absolute -left-8.75 top-[1.5px] w-6 h-6 rounded-full bg-[#ffdb70]/0 border border-[#ffdb70]/0 group-hover:border-[#ffdb70]/20 group-hover:bg-[#ffdb70]/5 transition-all duration-300 pointer-events-none" />
-
-                <div className="space-y-2">
-                  <h4 className="text-sm font-bold text-gray-100 group-hover:text-[#ffdb70] transition-colors duration-300">
-                    {item.title}
-                  </h4>
-                  <div className="flex flex-wrap items-center gap-2 text-xs text-[#ffdb70]/80">
-                    <span className="font-semibold">{item.subtitle}</span>
-                    <span className="text-gray-600">•</span>
-                    <span className="text-gray-400 font-light bg-[#252526] px-2 py-0.5 rounded border border-[#383838]">
-                      {item.period}
-                    </span>
-                  </div>
-                  <p className="text-xs text-gray-400 leading-relaxed font-light">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <Timeline items={educationTimeline} />
         </section>
       </div>
 
-      <div className="w-full h-px bg-[#383838] my-8" />
-
-      {/* Professional Skills Grid */}
-      <section className="space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <h3 className="text-xl font-bold text-white tracking-tight">
-            Technical Skills
-          </h3>
-
-          {/* Skill categories pill filters */}
-          <div className="flex flex-wrap items-center gap-1.5">
-            {categories.map((cat) => (
-              <button
-                id={`skill-cat-${cat.id}`}
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all duration-300 cursor-pointer ${
-                  activeCategory === cat.id
-                    ? "bg-[#ffdb70] text-[#1e1e1f]"
-                    : "bg-[#252526] border border-[#383838] text-gray-400 hover:text-gray-100"
-                }`}
-              >
-                {cat.label}
-              </button>
+      <section className="space-y-7">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <SubHeading>Technical skills</SubHeading>
+          <div className="flex items-center gap-4 text-[11px] text-subtle">
+            {Object.entries(levelDots).map(([level, n]) => (
+              <span key={level} className="flex items-center gap-1.5">
+                <Dots filled={n} />
+                {level}
+              </span>
             ))}
           </div>
         </div>
 
-        {/* Skill list with interactive animated progress bars */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
-          {filteredSkills.map((skill, index) => (
-            <div key={skill.name} className="space-y-2">
-              <div className="flex justify-between items-end">
-                <span className="text-xs font-bold text-gray-200 tracking-tight">
-                  {skill.name}
-                </span>
-                <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-wider">
-                  <span className="text-gray-500">{skill.level}</span>
-                  <span className="text-gray-600">|</span>
-                  <span className="text-[#ffdb70]">{skill.percentage}%</span>
+        <div className="stagger grid grid-cols-1 gap-4 md:grid-cols-2">
+          {groups.map((group, i) => (
+            <div
+              key={group.id}
+              style={{ "--i": i } as React.CSSProperties}
+              className="card-raised rounded-3xl p-6"
+            >
+              <div className="mb-5 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="icon-tile size-9">
+                    <Icon name={group.icon} size={15} />
+                  </span>
+                  <h4 className="text-[15px] font-medium text-fg">{group.label}</h4>
                 </div>
+                <span className="font-mono text-[11px] text-subtle">
+                  {String(group.items.length).padStart(2, "0")}
+                </span>
               </div>
-
-              {/* Progress track */}
-              <div className="h-2 w-full bg-[#2a2a2b] border border-[#383838]/40 rounded-full overflow-hidden">
-                {/* Simulated progress fill with dynamic width. Since motion/react is installed, let's animate the width beautifully using motion! */}
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${skill.percentage}%` }}
-                  transition={{
-                    duration: 1.2,
-                    ease: "easeOut",
-                    delay: index * 0.05,
-                  }}
-                  className="h-full bg-linear-to-r from-[#ffdb70] to-[#f59e0b] rounded-full"
-                />
-              </div>
+              <ul className="divide-y divide-line">
+                {group.items.map((skill) => (
+                  <li
+                    key={skill.name}
+                    className="flex items-center justify-between gap-4 py-2.5"
+                  >
+                    <span className="text-[13px] text-fg/90">{skill.name}</span>
+                    <span title={skill.level}>
+                      <Dots filled={levelDots[skill.level] ?? 2} />
+                      <span className="sr-only">{skill.level}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
       </section>
     </div>
   );
-};
+}
 
-export default page;
+function Dots({ filled }: { filled: number }) {
+  return (
+    <span aria-hidden className="inline-flex items-center gap-1">
+      {[1, 2, 3].map((n) => (
+        <span
+          key={n}
+          className={`size-1.5 rounded-full ${n <= filled ? "bg-accent" : "bg-line-strong"}`}
+        />
+      ))}
+    </span>
+  );
+}

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Ubuntu } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next"
@@ -7,11 +7,23 @@ import { Analytics } from "@vercel/analytics/next"
 import NextTopLoader from "nextjs-toploader";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
+import MobileNav from "../components/MobileNav";
 
-const ubuntu = Ubuntu({
+const geist = Geist({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
-  variable: "--font-ubuntu",
+  variable: "--font-geist",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+});
+
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument",
 });
 
 export const metadata: Metadata = {
@@ -32,7 +44,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#121212",
+  themeColor: "#08080a",
 };
 
 
@@ -48,10 +60,10 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning
-        className={`${ubuntu.className} ${ubuntu.variable}`}
+        className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable} font-sans`}
       >
         <NextTopLoader
-          color="#f59e0b"
+          color="#e3bf7f"
           initialPosition={0.08}
           crawlSpeed={200}
           height={3}
@@ -86,12 +98,13 @@ export default function RootLayout({
         <Analytics />
 
 
-        <div className="min-h-screen bg-[#121212] text-gray-300 pb-24 lg:pb-0">
-          <div className="relative max-w-7xl mx-auto px-4 py-6 md:py-12 lg:py-16 xl:py-20 flex flex-col lg:flex-row gap-6 md:gap-8">
+        <MobileNav />
+        <div className="min-h-screen">
+          <div className="relative mx-auto flex max-w-7xl flex-col gap-5 px-4 pt-21 pb-5 md:gap-6 md:pt-24 md:pb-10 lg:flex-row lg:gap-7 lg:py-14 xl:py-16">
             <Sidebar />
-            <main className="w-full lg:flex-1 bg-[#1e1e1f] border border-[#383838] rounded-3xl shadow-2xl min-h-[75vh] flex flex-col">
+            <main className="card flex min-h-[75vh] w-full flex-col rounded-[2rem] bg-surface/85 backdrop-blur-xl lg:flex-1">
               <Navbar />
-              <div className="flex-1 p-6 md:p-8 lg:p-10 pt-8 pb-20 lg:pb-9">
+              <div className="flex-1 px-5 pt-8 pb-12 sm:px-7 md:px-10 md:pb-14 lg:px-12 lg:pt-24">
                 {children}
               </div>
             </main>

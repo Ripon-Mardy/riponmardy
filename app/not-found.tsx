@@ -3,31 +3,17 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="py-20 flex flex-col items-center justify-center text-center space-y-6 max-w-md mx-auto animate-fade-in select-none">
-      {/* 404 Icon/Illustration container */}
-      <div className="relative w-20 h-20 rounded-3xl bg-[#252526] border border-[#ffdb70]/20 flex items-center justify-center text-[#ffdb70] shadow-xl">
-        {/* Pulsing ring */}
-        <div className="absolute inset-0 rounded-3xl bg-[#ffdb70]/5 animate-ping" />
-        <Icon name="AlertCircle" size={32} />
-      </div>
-
+    <div className="mx-auto flex max-w-md flex-col items-center justify-center space-y-6 py-20 text-center animate-fade-in">
+      <p className="font-serif text-[7rem] leading-none tracking-tight text-gradient">404</p>
       <div className="space-y-2">
-        <h3 className="text-xl font-extrabold text-white tracking-tight uppercase">
-          404: Page Not Found
-        </h3>
-        <p className="text-xs text-gray-400 font-light leading-relaxed">
-          The page or article you're looking for doesn't exist or has been
-          moved.
+        <h1 className="font-serif text-3xl tracking-tight text-fg">Page not found</h1>
+        <p className="text-sm leading-relaxed text-muted">
+          The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
       </div>
-
-      <Link
-        id="not-found-back-btn"
-        href="/"
-        className="px-5 py-3 rounded-xl border border-[#383838] hover:border-[#ffdb70] bg-[#252526] hover:bg-[#ffdb70]/5 flex items-center justify-center gap-2 text-xs font-semibold tracking-wide text-gray-200 hover:text-[#ffdb70] transition-all duration-300 shadow-md"
-      >
-        <Icon name="ArrowLeft" size={14} className="text-[#ffdb70]" />
-        <span>Return to Main Profile</span>
+      <Link id="not-found-back-btn" href="/" className="btn btn-ghost">
+        <Icon name="ArrowLeft" size={15} />
+        Back to home
       </Link>
     </div>
   );
