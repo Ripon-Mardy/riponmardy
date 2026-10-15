@@ -2,7 +2,9 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 
+import { contactInfo, personalInfo, socialLinks } from "../../lib/data";
 import Icon from "../../components/Icon";
+import SectionHeading from "../../components/SectionHeading";
 
 interface FormFields {
   name: string;
@@ -11,338 +13,238 @@ interface FormFields {
   message: string;
 }
 
-interface FormErrors {
-  name?: string;
-  email?: string;
-  subject?: string;
-  message?: string;
+type FormErrors = Partial<Record<keyof FormFields, string>>;
+
+const emptyFields: FormFields = { name: "", email: "", subject: "", message: "" };
+
+const whatsapp = socialLinks.find((l) => l.name === "WhatsApp");
+
+const channels = [
+  {
+    icon: "Mail",
+    label: "Email",
+    value: contactInfo.email,
+    href: `mailto:${contactInfo.email}`,
+  },
+  ...(whatsapp
+    ? [{ icon: "Whatsapp", label: "WhatsApp", value: contactInfo.phone, href: whatsapp.url }]
+    : []),
+  { icon: "MapPin", label: "Based in", value: contactInfo.location },
+];
+
+function Field({
+  id,
+  label,
+  error,
+  children,
+}: {
+  id: string;
+  label: string;
+  error?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="space-y-2">
+      <label htmlFor={id} className="eyebrow block text-[10px]!">
+        {label}
+      </label>
+      {children}
+      {error && (
+        <p id={`${id}-error`} className="flex items-center gap-1.5 text-xs text-red-300">
+          <Icon name="AlertCircle" size={12} />
+          {error}
+        </p>
+      )}
+    </div>
+  );
 }
 
 export default function ContactTab() {
-  const [fields, setFields] = useState<FormFields>({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
+  const [fields, setFields] = useState<FormFields>(emptyFields);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [formStatus, setFormStatus] = useState<
-    "idle" | "submitting" | "success" | "error"
-  >("idle");
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">(
+    "idle",
+  );
 
   const validate = (): boolean => {
-    const tempErrors: FormErrors = {};
-    if (!fields.name.trim()) tempErrors.name = "Full Name is required.";
-
+    const next: FormErrors = {};
+    if (!fields.name.trim()) next.name = "Please enter your name.";
     if (!fields.email.trim()) {
-      tempErrors.email = "Email Address is required.";
+      next.email = "Please enter your email.";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) {
-      tempErrors.email = "Please enter a valid email address.";
+      next.email = "That email doesn't look right.";
     }
-
-    if (!fields.subject.trim())
-      tempErrors.subject = "Subject line is required.";
-    if (!fields.message.trim()) {
-      tempErrors.message = "Message content is required.";
-    }
-
-    setErrors(tempErrors);
-    return Object.keys(tempErrors).length === 0;
+    if (!fields.subject.trim()) next.subject = "Please add a subject.";
+    if (!fields.message.trim()) next.message = "Please write a message.";
+    setErrors(next);
+    return Object.keys(next).length === 0;
   };
 
   const handleInputChange = (key: keyof FormFields, val: string) => {
     setFields((prev) => ({ ...prev, [key]: val }));
-    // Clear error for that field incrementally
-    if (errors[key]) {
-      setErrors((prev) => ({ ...prev, [key]: undefined }));
-    }
+    if (errors[key]) setErrors((prev) => ({ ...prev, [key]: undefined }));
+    if (formStatus === "error") setFormStatus("idle");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!validate()) return;
 
     setFormStatus("submitting");
-
     try {
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        {
-          name: fields.name,
-          email: fields.email,
-          subject: fields.subject,
-          message: fields.message,
-        },
+        { ...fields },
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
       );
-
       setFormStatus("success");
-
-      setFields({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
-
+      setFields(emptyFields);
       setErrors({});
-
-      setTimeout(() => {
-        setFormStatus("idle");
-      }, 5000);
+      setTimeout(() => setFormStatus("idle"), 6000);
     } catch (error) {
       console.error(error);
-
-      alert("Something went wrong.");
-      setFormStatus("idle");
+      setFormStatus("error");
     }
   };
 
+  const busy = formStatus === "submitting";
+  const fieldProps = (key: keyof FormFields) => ({
+    id: `contact-${key}`,
+    value: fields[key],
+    disabled: busy,
+    "aria-invalid": Boolean(errors[key]),
+    "aria-describedby": errors[key] ? `contact-${key}-error` : undefined,
+    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+      handleInputChange(key, e.target.value),
+  });
+
   return (
-    <div className="space-y-10 animate-fade-in">
-      {/* Title */}
-      <section className="space-y-5">
-        <header className="relative pb-5">
-          <h2 className="text-2xl font-bold text-white tracking-tight">
-            Contact
-          </h2>
-          <div className="absolute bottom-0 left-0 w-10 h-1 bg-linear-to-r from-[#ffdb70] to-[#f59e0b] rounded-full" />
-        </header>
-      </section>
+    <div className="space-y-12 animate-fade-in">
+      <SectionHeading
+        index="05"
+        label="Contact"
+        title={
+          <>
+            Let&apos;s build something <em className="text-gradient pr-1">together</em>
+          </>
+        }
+        description="Have a project, a role, or just an idea? Send a note and I&apos;ll get back to you."
+      />
 
-      {/* Styled Interactive Dark Map Illustration */}
-      <section className="space-y-4">
-        <div className="relative w-full h-64 rounded-3xl overflow-hidden border border-[#383838] bg-[#0c0d0e] shadow-inner">
-          {/* Futuristic Map Blueprint Overlay */}
-          <div className="absolute inset-0 opacity-20 pointer-events-none bg-[linear-gradient(rgba(56,56,56,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(56,56,56,0.3)_1px,transparent_1px)] bg-size-[20px]" />
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-5">
+        {/* Channels */}
+        <div className="stagger flex flex-col gap-3 lg:col-span-2">
+          {channels.map((c, i) => {
+            const inner = (
+              <>
+                <span className="icon-tile size-11">
+                  <Icon name={c.icon} size={17} />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="eyebrow text-[10px]!">{c.label}</p>
+                  <p className="truncate text-sm text-fg">{c.value}</p>
+                </div>
+                {c.href && (
+                  <Icon
+                    name="ArrowUpRight"
+                    size={16}
+                    className="text-subtle transition-all duration-500 ease-premium group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+                  />
+                )}
+              </>
+            );
+            const className = `card-raised group flex items-center gap-4 rounded-3xl p-5 ${
+              c.href ? "card-hover" : ""
+            }`;
+            return c.href ? (
+              <a
+                key={c.label}
+                href={c.href}
+                target={c.href.startsWith("http") ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                style={{ "--i": i } as React.CSSProperties}
+                className={className}
+              >
+                {inner}
+              </a>
+            ) : (
+              <div key={c.label} style={{ "--i": i } as React.CSSProperties} className={className}>
+                {inner}
+              </div>
+            );
+          })}
 
-          {/* Abstract vector map continents */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-30 select-none pointer-events-none">
-            <svg
-              width="100%"
-              height="100%"
-              viewBox="0 0 800 400"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-full h-full object-cover"
-            >
-              {/* Simplistic stylized landscape shapes */}
-              <path
-                d="M150 120 C 180 140, 240 100, 290 150 C 340 200, 390 170, 420 220 C 450 270, 490 310, 520 290 C 550 270, 600 320, 650 280 C 700 240, 750 200, 780 230"
-                stroke="#383838"
-                strokeWidth="2"
-                strokeDasharray="4 4"
-              />
-              <path
-                d="M50 280 Q 150 220, 250 310 T 450 240 T 650 330"
-                stroke="#ffdb70"
-                strokeWidth="1"
-                strokeOpacity="0.1"
-              />
-              {/* Radial grids */}
-              <circle
-                cx="400"
-                cy="200"
-                r="120"
-                stroke="#383838"
-                strokeWidth="0.5"
-                strokeDasharray="3 6"
-              />
-              <circle
-                cx="400"
-                cy="200"
-                r="180"
-                stroke="#383838"
-                strokeWidth="0.5"
-                strokeDasharray="2 4"
-              />
-            </svg>
+          {personalInfo.availableForWork && (
+          <div className="card-raised relative mt-auto hidden overflow-hidden rounded-3xl p-6 lg:block">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -right-10 -bottom-16 size-48 rounded-full bg-accent/10 blur-3xl"
+            />
+            <p className="relative font-serif text-xl leading-snug text-fg/90">
+              Open to freelance projects and full-time remote roles.
+            </p>
           </div>
-
-          {/* Technical Scope Markers */}
-          <div className="absolute bottom-4 left-6 font-mono text-[9px] text-gray-500 space-y-0.5">
-            <p>LOC: 37.7749° N, 122.4194° W</p>
-            <p>SYS: SECURE PORTAL ONLINE</p>
-          </div>
-
-          {/* Glowing Pinpoint Node over San Francisco (centered for beautiful layout) */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-            {/* Pulsing ring animation */}
-            <div className="absolute w-12 h-12 rounded-full bg-[#ffdb70]/10 border border-[#ffdb70]/20 animate-ping" />
-            <div className="absolute w-6 h-6 rounded-full bg-[#ffdb70]/20 border border-[#ffdb70]/40 animate-pulse" />
-
-            {/* The Pin Container */}
-            <div className="relative w-8 h-8 rounded-xl bg-[#252526] border border-[#ffdb70] flex items-center justify-center text-[#ffdb70] shadow-xl z-10 animate-bounce">
-              <Icon name="MapPin" size={16} />
-            </div>
-
-            {/* Tooltip Popup */}
-            <div className="absolute -top-11 bg-[#1e1e1f] border border-[#ffdb70]/30 rounded-lg px-2.5 py-1 text-[10px] font-bold text-[#ffdb70] tracking-wide whitespace-nowrap shadow-xl">
-              Dhaka, Bangladesh
-            </div>
-          </div>
+          )}
         </div>
-      </section>
 
-      {/* Form and info split */}
-      <section className="space-y-6">
-        <h3 className="text-xl font-bold text-white tracking-tight">
-          Contact Form
-        </h3>
-
-        <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Name & Email Inputs (Flex row on desktop) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {/* Name field */}
-            <div className="space-y-2">
-              <label
-                htmlFor="contact-name"
-                className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block"
-              >
-                Full Name
-              </label>
-              <input
-                id="contact-name"
-                type="text"
-                placeholder="Your Name"
-                value={fields.name}
-                onChange={(e) => handleInputChange("name", e.target.value)}
-                className={`w-full h-11 px-4 bg-[#252526] border ${
-                  errors.name
-                    ? "border-red-500 focus:border-red-500"
-                    : "border-[#383838] focus:border-[#ffdb70]"
-                } rounded-xl text-xs text-gray-200 placeholder-gray-600 focus:outline-none transition-all duration-300`}
-                disabled={formStatus === "submitting"}
-              />
-              {errors.name && (
-                <p className="text-[10px] font-semibold text-red-500 flex items-center gap-1">
-                  <Icon name="AlertCircle" size={10} />
-                  <span>{errors.name}</span>
-                </p>
-              )}
-            </div>
-
-            {/* Email field */}
-            <div className="space-y-2">
-              <label
-                htmlFor="contact-email"
-                className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block"
-              >
-                Email Address
-              </label>
-              <input
-                id="contact-email"
-                type="email"
-                placeholder="you@example.com"
-                value={fields.email}
-                onChange={(e) => handleInputChange("email", e.target.value)}
-                className={`w-full h-11 px-4 bg-[#252526] border ${
-                  errors.email
-                    ? "border-red-500 focus:border-red-500"
-                    : "border-[#383838] focus:border-[#ffdb70]"
-                } rounded-xl text-xs text-gray-200 placeholder-gray-600 focus:outline-none transition-all duration-300`}
-                disabled={formStatus === "submitting"}
-              />
-              {errors.email && (
-                <p className="text-[10px] font-semibold text-red-500 flex items-center gap-1">
-                  <Icon name="AlertCircle" size={10} />
-                  <span>{errors.email}</span>
-                </p>
-              )}
-            </div>
+        {/* Form */}
+        <form
+          onSubmit={handleSubmit}
+          noValidate
+          className="card-raised space-y-5 rounded-3xl p-6 md:p-8 lg:col-span-3"
+        >
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <Field id="contact-name" label="Name" error={errors.name}>
+              <input type="text" autoComplete="name" placeholder="Jane Doe" className="field" {...fieldProps("name")} />
+            </Field>
+            <Field id="contact-email" label="Email" error={errors.email}>
+              <input type="email" autoComplete="email" placeholder="you@company.com" className="field" {...fieldProps("email")} />
+            </Field>
           </div>
 
-          {/* Subject input */}
-          <div className="space-y-2">
-            <label
-              htmlFor="contact-subject"
-              className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block"
-            >
-              Subject
-            </label>
-            <input
-              id="contact-subject"
-              type="text"
-              placeholder="Collaboration Opportunity"
-              value={fields.subject}
-              onChange={(e) => handleInputChange("subject", e.target.value)}
-              className={`w-full h-11 px-4 bg-[#252526] border ${
-                errors.subject
-                  ? "border-red-500 focus:border-red-500"
-                  : "border-[#383838] focus:border-[#ffdb70]"
-              } rounded-xl text-xs text-gray-200 placeholder-gray-600 focus:outline-none transition-all duration-300`}
-              disabled={formStatus === "submitting"}
-            />
-            {errors.subject && (
-              <p className="text-[10px] font-semibold text-red-500 flex items-center gap-1">
-                <Icon name="AlertCircle" size={10} />
-                <span>{errors.subject}</span>
-              </p>
-            )}
-          </div>
+          <Field id="contact-subject" label="Subject" error={errors.subject}>
+            <input type="text" placeholder="Project enquiry" className="field" {...fieldProps("subject")} />
+          </Field>
 
-          {/* Message input */}
-          <div className="space-y-2">
-            <label
-              htmlFor="contact-message"
-              className="text-[10px] font-bold uppercase tracking-wider text-gray-400 block"
-            >
-              Message
-            </label>
+          <Field id="contact-message" label="Message" error={errors.message}>
             <textarea
-              id="contact-message"
-              rows={5}
-              placeholder="Hi Marcus, I would love to connect to discuss a website architecture project we are launching..."
-              value={fields.message}
-              onChange={(e) => handleInputChange("message", e.target.value)}
-              className={`w-full p-4 bg-[#252526] border ${
-                errors.message
-                  ? "border-red-500 focus:border-red-500"
-                  : "border-[#383838] focus:border-[#ffdb70]"
-              } rounded-xl text-xs text-gray-200 placeholder-gray-600 focus:outline-none transition-all duration-300 resize-none`}
-              disabled={formStatus === "submitting"}
+              rows={6}
+              placeholder="Tell me a little about what you're building…"
+              className="field resize-none"
+              {...fieldProps("message")}
             />
-            {errors.message && (
-              <p className="text-[10px] font-semibold text-red-500 flex items-center gap-1">
-                <Icon name="AlertCircle" size={10} />
-                <span>{errors.message}</span>
-              </p>
-            )}
-          </div>
+          </Field>
 
-          {/* Submission and Feedback Button */}
-          <div className="flex items-center justify-end">
-            <button
-              id="submit-contact-btn"
-              type="submit"
-              disabled={formStatus === "submitting"}
-              className="px-6 py-3.5 rounded-xl bg-linear-to-r from-[#ffdb70] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#1e1e1f] flex items-center justify-center gap-2 text-xs font-bold tracking-wide transition-all duration-300 shadow-md hover:-translate-y-0.5 cursor-pointer disabled:opacity-75 disabled:cursor-wait"
-            >
-              {formStatus === "idle" && (
-                <>
-                  <Icon name="Send" size={14} />
-                  <span>Send Message</span>
-                </>
-              )}
-              {formStatus === "submitting" && (
-                <>
-                  <div className="w-4 h-4 border-2 border-slate-900 border-t-transparent rounded-full animate-spin" />
-                  <span>Sending Message...</span>
-                </>
-              )}
+          <div className="flex flex-col-reverse items-stretch gap-4 pt-1 sm:flex-row sm:items-center sm:justify-between">
+            <p role="status" className="text-xs">
               {formStatus === "success" && (
+                <span className="flex items-center gap-1.5 text-emerald-300">
+                  <Icon name="CheckCircle2" size={14} /> Thanks! Your message is on its way.
+                </span>
+              )}
+              {formStatus === "error" && (
+                <span className="flex items-center gap-1.5 text-red-300">
+                  <Icon name="AlertCircle" size={14} /> Couldn&apos;t send. Please try again or email me directly.
+                </span>
+              )}
+            </p>
+            <button id="submit-contact-btn" type="submit" disabled={busy} className="btn btn-primary">
+              {busy ? (
                 <>
-                  <Icon name="Check" size={14} className="text-emerald-950" />
-                  <span>Message Sent Successfully!</span>
+                  <span className="size-4 animate-spin rounded-full border-2 border-accent-ink/80 border-t-transparent" />
+                  Sending…
+                </>
+              ) : (
+                <>
+                  Send message
+                  <Icon name="ArrowUpRight" size={15} />
                 </>
               )}
             </button>
           </div>
         </form>
-      </section>
+      </div>
     </div>
   );
 }

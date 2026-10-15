@@ -20,6 +20,8 @@ export const personalInfo = {
   bio: `Full Stack Software Engineer with 2+ years of experience, including 1.5 years of remote work, building scalable, production-ready web applications using the MERN stack and Next.js. Passionate about writing clean, maintainable code and developing high-performance applications. Experienced in delivering end-to-end solutions, from responsive frontend interfaces to secure backend APIs, for real-world clients and business requirements.`,
   // Absolute path so the link resolves to the same file from every route
   cvUrl: "/ripon-mardy-resume.pdf",
+  // Shows the "Available for work" badge in the sidebar
+  availableForWork: true,
 };
 
 export const socialLinks: SocialLink[] = [

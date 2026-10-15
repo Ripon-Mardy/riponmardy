@@ -5,110 +5,120 @@ import Image from "next/image";
 
 import { blogPosts } from "../../lib/data";
 import Icon from "../../components/Icon";
+import SectionHeading from "../../components/SectionHeading";
 
 export default function BlogTab() {
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Filter posts
-  const filteredPosts = blogPosts.filter((post) => {
-    const matchesSearch =
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-
-    return matchesSearch;
-  });
-
-  console.log(
-    filteredPosts.map((post) => ({ id: post.id, title: post.title })),
+  const query = searchQuery.trim().toLowerCase();
+  const filteredPosts = blogPosts.filter(
+    (post) =>
+      post.title.toLowerCase().includes(query) ||
+      post.excerpt.toLowerCase().includes(query) ||
+      post.category.toLowerCase().includes(query),
   );
 
   return (
-    <div className="space-y-5 animate-fade-in">
-      {/* Title */}
-      <section className="space-y-5">
-        <header className="relative pb-5">
-          <h2 className="text-2xl font-bold text-white tracking-tight">
-            Blog Articles
-          </h2>
-          <div className="absolute bottom-0 left-0 w-10 h-1 bg-linear-to-t from-[#ffdb70] to-[#f59e0b] rounded-full" />
-        </header>
-      </section>
+    <div className="space-y-10 animate-fade-in">
+      <SectionHeading
+        index="04"
+        label="Journal"
+        title={
+          <>
+            Notes &amp; <em className="text-gradient pr-1">writing</em>
+          </>
+        }
+        description="Thoughts on architecture, interface craft and the tooling behind modern web apps."
+      />
 
-      {/* Search and Filters panel */}
-      <div className="flex flex-col md:flex-row gap-4 justify-between items-stretch md:items-center">
-        {/* Search Bar */}
-        <div className="relative flex-1 max-w-md">
-          <input
-            id="blog-search-input"
-            type="text"
-            placeholder="Search articles, tags, topic guides..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full h-11 pl-11 pr-4 bg-[#252526] border border-[#383838] focus:border-[#ffdb70] rounded-xl text-xs text-gray-200 placeholder-gray-500 focus:outline-none transition-all duration-300 shadow-inner"
-          />
-          <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500">
-            <Icon name="Search" size={14} />
-          </div>
-          {searchQuery && (
-            <button
-              id="clear-blog-search-btn"
-              onClick={() => setSearchQuery("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white cursor-pointer"
-            >
-              <Icon name="X" size={12} />
-            </button>
-          )}
-        </div>
+      <div className="relative max-w-md">
+        <Icon
+          name="Search"
+          size={15}
+          className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-subtle"
+        />
+        <input
+          id="blog-search-input"
+          type="search"
+          aria-label="Search articles"
+          placeholder="Search articles…"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="field rounded-full! pr-10 pl-11"
+        />
+        {searchQuery && (
+          <button
+            id="clear-blog-search-btn"
+            type="button"
+            onClick={() => setSearchQuery("")}
+            aria-label="Clear search"
+            className="absolute top-1/2 right-3 flex size-6 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full text-subtle hover:bg-overlay hover:text-fg"
+          >
+            <Icon name="X" size={12} />
+          </button>
+        )}
       </div>
 
-      {/* Blog Cards list */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {filteredPosts.map((post) => (
-          <article
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+        {filteredPosts.map((post, i) => (
+          <Link
             key={post.id}
-            className="group cursor-pointer bg-[#1a1a1b] border border-[#303031] hover:border-[#ffdb70]/30 rounded-3xl overflow-hidden shadow-md hover:shadow-xl flex flex-col h-full"
+            href={`/blogs/${post.id}`}
+            style={{ "--i": i } as React.CSSProperties}
+            className={`card-raised card-hover group flex flex-col overflow-hidden rounded-[1.75rem] animate-fade-in ${
+              i === 0 && !query ? "md:col-span-2 md:flex-row" : ""
+            }`}
           >
-            {/* Thumbnail */}
-            <div className="relative aspect-16/10 overflow-hidden bg-gray-900 shrink-0">
+            <div
+              className={`relative aspect-16/10 shrink-0 overflow-hidden bg-overlay ${
+                i === 0 && !query ? "md:aspect-auto md:w-1/2" : ""
+              }`}
+            >
               <Image
                 src={post.image}
-                alt={post.title}
+                alt=""
                 fill
-                sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
-                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                sizes="(min-width: 1024px) 480px, (min-width: 768px) 50vw, 100vw"
+                className="object-cover transition-transform duration-1000 ease-premium group-hover:scale-[1.04]"
               />
-              <div className="absolute top-4 left-4">
-                <span className="text-[9px] font-bold tracking-wider text-[#ffdb70] bg-[#1e1e1f]/90 border border-[#383838]/80 px-2.5 py-1 rounded-lg uppercase shadow-md">
-                  {post.category}
-                </span>
-              </div>
+              <div className="absolute inset-0 bg-linear-to-t from-raised/70 to-transparent" />
             </div>
 
-            {/* Card Info */}
-            <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-              <div className="space-y-2.5">
-                {/* Meta details */}
-                <div className="flex items-center gap-2 text-[10px] text-gray-500 font-semibold tracking-wide">
-                  <span>{post.date}</span>
-                  <span>•</span>
+            <div className="flex flex-1 flex-col justify-between gap-6 p-6 md:p-7">
+              <div className="space-y-3">
+                <div className="flex flex-wrap items-center gap-2 text-[11px] text-subtle">
+                  <span className="eyebrow text-accent!">{post.category}</span>
+                  <span aria-hidden>·</span>
+                  <time>{post.date}</time>
+                  <span aria-hidden>·</span>
                   <span>{post.readTime}</span>
                 </div>
-
-                <Link
-                  href={`/blogs/${post.id}`}
-                  className="text-base font-bold text-gray-100 tracking-tight leading-snug group-hover:text-[#ffdb70] transition-colors duration-300"
-                >
+                <h3 className="font-serif text-2xl leading-tight tracking-tight text-fg transition-colors duration-300 group-hover:text-accent-soft">
                   {post.title}
-                </Link>
-
-                <p className="text-xs text-gray-400 leading-relaxed font-light line-clamp-2">
+                </h3>
+                <p className="line-clamp-3 text-[13px] leading-relaxed text-muted">
                   {post.excerpt}
                 </p>
               </div>
+              <span className="inline-flex items-center gap-1.5 text-xs font-medium text-fg">
+                Read article
+                <Icon
+                  name="ArrowRight"
+                  size={14}
+                  className="transition-transform duration-500 ease-premium group-hover:translate-x-1"
+                />
+              </span>
             </div>
-          </article>
+          </Link>
         ))}
       </div>
+
+      {filteredPosts.length === 0 && (
+        <div className="card-raised space-y-2 rounded-3xl py-14 text-center">
+          <p className="text-sm text-fg">No articles match “{searchQuery}”.</p>
+          <p className="text-xs text-subtle">Try a different keyword.</p>
+        </div>
+      )}
     </div>
   );
 }

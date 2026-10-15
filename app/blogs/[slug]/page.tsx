@@ -1,171 +1,180 @@
 "use client";
+import { Fragment } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 
-import { blogPosts } from "../../../lib/data";
+import { blogPosts, personalInfo } from "../../../lib/data";
+import Icon from "../../../components/Icon";
 
-import { ArrowLeft } from "lucide-react";
+// Inline markdown: **bold** and `code`
+function renderInline(text: string) {
+  return text.split(/(\*\*[^*]+\*\*|`[^`]+`)/g).map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={i} className="font-medium text-fg">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    if (part.startsWith("`") && part.endsWith("`")) {
+      return (
+        <code
+          key={i}
+          className="rounded-md border border-line bg-overlay px-1.5 py-0.5 font-mono text-[0.85em] text-accent-soft"
+        >
+          {part.slice(1, -1)}
+        </code>
+      );
+    }
+    return <Fragment key={i}>{part}</Fragment>;
+  });
+}
 
-const page = () => {
-  const router = useRouter();
+// Block markdown used by the posts in lib/data.ts: ### headings, "- " lists, paragraphs
+function ArticleBody({ content }: { content: string }) {
+  const blocks = content.trim().split(/\n\s*\n/);
+  return (
+    <div className="space-y-6 text-[16px] leading-[1.8] text-muted">
+      {blocks.map((block, i) => {
+        const lines = block.split("\n");
+        const nodes: React.ReactNode[] = [];
+        let list: string[] = [];
+        const flushList = () => {
+          if (!list.length) return;
+          nodes.push(
+            <ul key={`ul-${nodes.length}`} className="space-y-2 pl-1">
+              {list.map((item, j) => (
+                <li key={j} className="flex gap-3">
+                  <span className="mt-[0.8em] size-1 shrink-0 rounded-full bg-accent" />
+                  <span>{renderInline(item)}</span>
+                </li>
+              ))}
+            </ul>,
+          );
+          list = [];
+        };
+
+        lines.forEach((line, j) => {
+          if (line.startsWith("### ")) {
+            flushList();
+            nodes.push(
+              <h3
+                key={`h-${j}`}
+                className="pt-4 font-serif text-[1.75rem] leading-tight tracking-tight text-fg"
+              >
+                {line.slice(4)}
+              </h3>,
+            );
+          } else if (line.startsWith("- ")) {
+            list.push(line.slice(2));
+          } else if (line.trim()) {
+            flushList();
+            nodes.push(<p key={`p-${j}`}>{renderInline(line)}</p>);
+          }
+        });
+        flushList();
+        return <Fragment key={i}>{nodes}</Fragment>;
+      })}
+    </div>
+  );
+}
+
+export default function BlogPostPage() {
   const params = useParams();
-
-  const slug = Number(params.slug);
-
-  const blog = blogPosts.find((post) => post.id === slug);
+  const blog = blogPosts.find((post) => post.id === Number(params.slug));
 
   if (!blog) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <h1 className="text-2xl font-bold text-white">Blog not found</h1>
+      <div className="space-y-6 py-20 text-center">
+        <h1 className="font-serif text-4xl text-fg">Article not found</h1>
+        <Link href="/blogs" className="btn btn-ghost">
+          <Icon name="ArrowLeft" size={15} />
+          All articles
+        </Link>
       </div>
     );
   }
 
+  const otherPosts = blogPosts.filter((p) => p.id !== blog.id).slice(0, 2);
+
   return (
-    <div>
-      <button
-        onClick={() => router.back()}
-        className="flex items-center gap-1 text-[#ffdb70] hover:text-[#ffdb70] transition-colors mb-4  bg-[#252526] border border-[#383838] text-xs font-semibold px-3 py-2 rounded-lg cursor-pointer hover:bg-[#ffdb70]/10"
-      >
-        <ArrowLeft className="w-4 h-4" /> Back
-      </button>
-      <div className=" flex items-center justify-center">
-        {/* Modal */}
-        <motion.div
-          initial={{ scale: 0.95, opacity: 0, y: 15 }}
-          animate={{ scale: 1, opacity: 1, y: 0 }}
-          exit={{ scale: 0.95, opacity: 0, y: 15 }}
-          transition={{ type: "spring", duration: 0.5 }}
-          className="relative w-full"
-        >
-          {/* Banner */}
-          <div className="relative w-full aspect-21/9 overflow-hidden border-b border-[#383838]">
+    <motion.article
+      initial={{ opacity: 0, y: 14 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      className="mx-auto max-w-3xl space-y-10"
+    >
+      <Link href="/blogs" className="btn btn-ghost h-9 px-4 text-xs">
+        <Icon name="ArrowLeft" size={14} />
+        All articles
+      </Link>
+
+      <header className="space-y-6">
+        <div className="flex flex-wrap items-center gap-2 text-xs text-subtle">
+          <span className="eyebrow text-accent!">{blog.category}</span>
+          <span aria-hidden>·</span>
+          <time>{blog.date}</time>
+          <span aria-hidden>·</span>
+          <span>{blog.readTime}</span>
+        </div>
+        <h1 className="font-serif text-4xl leading-[1.08] tracking-tight text-fg md:text-[3.25rem]">
+          {blog.title}
+        </h1>
+        <p className="text-lg leading-relaxed text-muted">{blog.excerpt}</p>
+        <div className="flex items-center gap-3">
+          <div className="relative size-10 overflow-hidden rounded-full border border-line-strong">
             <Image
-              src={blog.image}
-              alt={blog.title}
+              src={blog.author.avatar}
+              alt={blog.author.name}
               fill
-              priority
-              sizes="(min-width: 1280px) 900px, 100vw"
+              sizes="40px"
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-linear-to-t from-[#1e1e1f] to-transparent opacity-50" />
           </div>
-
-          {/* Content */}
-          <div className="space-y-6 mt-5">
-            {/* Meta */}
-            <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500 font-semibold">
-              <span className="text-[#ffdb70] uppercase bg-[#ffdb70]/5 border border-[#ffdb70]/20 px-2 py-1 rounded-lg">
-                {blog.category}
-              </span>
-
-              <span>•</span>
-
-              <span>{blog.date}</span>
-
-              <span>•</span>
-
-              <span>{blog.readTime}</span>
-            </div>
-
-            {/* Title */}
-            <h2 className="text-3xl font-bold text-white">{blog.title}</h2>
-
-            <div className="w-full h-px bg-[#383838]" />
-
-            {/* Author */}
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl overflow-hidden border border-[#383838]">
-                <Image
-                  width={40}
-                  height={40}
-                  src={blog.author.avatar}
-                  alt="Author"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              <div>
-                <p className="text-white font-semibold">{blog.author.name}</p>
-                <p className="text-xs text-gray-500">Full Stack Developer</p>
-              </div>
-            </div>
-
-            {/* Article */}
-            <div className="space-y-5 text-gray-300 leading-8 text-justify">
-              <p>
-                This project was built using Next.js, React, TypeScript, and
-                Tailwind CSS. The goal was to create a clean, modern, and
-                responsive portfolio website that showcases projects, skills,
-                and experience.
-              </p>
-
-              <p>
-                The website includes smooth animations using Framer Motion,
-                reusable UI components, responsive layouts, dark mode styling,
-                and optimized performance for a better user experience.
-              </p>
-
-              <h3 className="text-xl font-semibold text-white">Key Features</h3>
-
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Modern UI Design</li>
-                <li>Responsive Layout</li>
-                <li>Framer Motion Animations</li>
-                <li>Reusable Components</li>
-                <li>SEO Friendly</li>
-                <li>Fast Performance</li>
-              </ul>
-
-              <h3 className="text-xl font-semibold text-white">
-                Technologies Used
-              </h3>
-
-              <ul className="list-disc pl-6 space-y-2">
-                <li>Next.js</li>
-                <li>React</li>
-                <li>TypeScript</li>
-                <li>Tailwind CSS</li>
-                <li>Framer Motion</li>
-              </ul>
-
-              <p>
-                This portfolio is designed to be scalable and easy to maintain.
-                New projects and sections can be added with minimal effort while
-                keeping the codebase clean and reusable.
-              </p>
-            </div>
-
-            <div className="w-full h-px bg-[#383838]" />
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2">
-              <span className="text-xs text-gray-500 font-semibold">Tags:</span>
-
-              <span className="px-3 py-1 rounded-lg bg-[#2b2b2c] border border-[#383838] text-sm text-gray-300">
-                #NextJS
-              </span>
-
-              <span className="px-3 py-1 rounded-lg bg-[#2b2b2c] border border-[#383838] text-sm text-gray-300">
-                #React
-              </span>
-
-              <span className="px-3 py-1 rounded-lg bg-[#2b2b2c] border border-[#383838] text-sm text-gray-300">
-                #TailwindCSS
-              </span>
-
-              <span className="px-3 py-1 rounded-lg bg-[#2b2b2c] border border-[#383838] text-sm text-gray-300">
-                #TypeScript
-              </span>
-            </div>
+          <div>
+            <p className="text-sm font-medium text-fg">{blog.author.name}</p>
+            <p className="text-xs text-subtle">{personalInfo.title}</p>
           </div>
-        </motion.div>
+        </div>
+      </header>
+
+      <div className="relative aspect-21/10 overflow-hidden rounded-[1.75rem] border border-line">
+        <Image
+          src={blog.image}
+          alt=""
+          fill
+          priority
+          sizes="(min-width: 1024px) 768px, 100vw"
+          className="object-cover"
+        />
       </div>
-    </div>
-  );
-};
 
-export default page;
+      <ArticleBody content={blog.content} />
+
+      {otherPosts.length > 0 && (
+        <footer className="space-y-5 pt-6">
+          <div className="hairline" />
+          <p className="eyebrow pt-4">Keep reading</p>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {otherPosts.map((post) => (
+              <Link
+                key={post.id}
+                href={`/blogs/${post.id}`}
+                className="card-raised card-hover group space-y-2 rounded-3xl p-5"
+              >
+                <p className="text-[11px] text-subtle">
+                  {post.category} · {post.readTime}
+                </p>
+                <p className="font-serif text-xl leading-snug text-fg group-hover:text-accent-soft">
+                  {post.title}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </footer>
+      )}
+    </motion.article>
+  );
+}

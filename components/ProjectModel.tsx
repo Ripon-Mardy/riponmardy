@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "motion/react";
 import { ProjectItem } from "../lib/types";
 import Icon from "./Icon";
-import { motion, AnimatePresence } from "motion/react";
 
 interface ProjectModalProps {
   project: ProjectItem | null;
@@ -9,157 +10,139 @@ interface ProjectModalProps {
   onClose: () => void;
 }
 
-export default function ProjectModal({
-  project,
-  isOpen,
-  onClose,
-}: ProjectModalProps) {
-  const [activeImageIdx, setActiveImageIdx] = useState(0);
-
+export default function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
   useEffect(() => {
-    if (isOpen) {
-      setActiveImageIdx(0);
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
+    if (!isOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
     };
-  }, [isOpen, project]);
-
-  if (!isOpen || !project) return null;
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [isOpen, onClose]);
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 select-none">
-        {/* Backdrop overlay */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={onClose}
-          className="absolute inset-0 bg-[#0c0d0e]/90 backdrop-blur-sm cursor-pointer"
-        />
-
-        {/* Modal Window */}
-        <motion.div
-          initial={{ scale: 0.95, opacity: 0, y: 15 }}
-          animate={{ scale: 1, opacity: 1, y: 0 }}
-          exit={{ scale: 0.95, opacity: 0, y: 15 }}
-          transition={{ type: "spring", duration: 0.5 }}
-          className="relative bg-[#1e1e1f] border border-[#383838] w-full max-w-4xl max-h-[90vh] rounded-3xl overflow-y-auto shadow-2xl flex flex-col z-10 scrollbar-none select-text"
-        >
-          {/* Close Button */}
-          <button
-            id="close-project-modal-btn"
+      {isOpen && project && (
+        <div className="fixed inset-0 z-50 flex items-end justify-center p-0 sm:items-center sm:p-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute top-5 right-5 w-9 h-9 rounded-xl bg-[#252526] border border-[#383838] hover:border-[#ffdb70] flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300 shadow-md cursor-pointer z-20"
-            aria-label="Close modal"
+            className="absolute inset-0 cursor-pointer bg-canvas/80 backdrop-blur-md"
+          />
+
+          <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-modal-title"
+            initial={{ opacity: 0, y: 40, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 30, scale: 0.98 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="card scrollbar-none relative z-10 flex max-h-[92vh] w-full max-w-4xl flex-col overflow-y-auto rounded-t-[2rem] sm:rounded-[2rem]"
           >
-            <Icon name="X" size={16} />
-          </button>
+            <button
+              id="close-project-modal-btn"
+              type="button"
+              onClick={onClose}
+              className="btn btn-ghost absolute top-4 right-4 z-20 size-10 bg-canvas/60! px-0 backdrop-blur-md"
+              aria-label="Close"
+            >
+              <Icon name="X" size={16} />
+            </button>
 
-          {/* Modal Main Content Container */}
-          <div className="p-6 md:p-10 space-y-8">
-            {/* Header Details */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-[#383838]">
-              <div>
-                <span className="text-[10px] font-bold tracking-wider text-[#ffdb70] uppercase bg-[#ffdb70]/5 border border-[#ffdb70]/20 px-2.5 py-1 rounded-lg">
-                  {project.category}
-                </span>
-                <h3 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight mt-2.5">
-                  {project.title}
-                </h3>
-              </div>
-
-              {/* Action Buttons (External Link / GitHub) */}
-              <div className="flex items-center gap-3">
-                {project.github && (
-                  <a
-                    id="project-github-link"
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="h-11 px-4 rounded-xl border border-[#383838] hover:border-[#ffdb70] bg-[#252526] hover:bg-[#ffdb70]/5 flex items-center justify-center gap-2 text-xs font-semibold tracking-wide text-gray-200 hover:text-[#ffdb70] transition-all duration-300 shadow-md"
-                  >
-                    <Icon name="Github" size={14} />
-                    <span>View Repository</span>
-                  </a>
-                )}
-                {project.live && (
-                  <a
-                    id="project-live-link"
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="h-11 px-5 rounded-xl bg-linear-to-r from-[#ffdb70] to-[#f59e0b] hover:from-[#f59e0b] hover:to-[#d97706] text-[#1e1e1f] flex items-center justify-center gap-2 text-xs font-bold tracking-wide transition-all duration-300 shadow-md hover:-translate-y-0.5"
-                  >
-                    <Icon name="ExternalLink" size={14} />
-                    <span>Launch Project</span>
-                  </a>
-                )}
-              </div>
+            <div className="relative aspect-16/8 w-full shrink-0 overflow-hidden bg-overlay">
+              <Image
+                src={project.thumbnail}
+                alt={project.title}
+                fill
+                placeholder="blur"
+                sizes="(min-width: 896px) 896px, 100vw"
+                className="object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-surface via-surface/20 to-transparent" />
             </div>
 
-            {/* Content Layout Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Left description details */}
-              <div className="lg:col-span-2 space-y-4">
-                <h4 className="text-sm font-bold text-gray-200 uppercase tracking-wider">
-                  Project Case-Study
-                </h4>
-                <p className="text-gray-300 text-sm leading-relaxed font-light whitespace-pre-line">
-                  {project.description}
-                </p>
+            <div className="-mt-16 relative space-y-8 p-6 md:p-10">
+              <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+                <div className="space-y-3">
+                  <span className="eyebrow text-accent!">{project.category}</span>
+                  <h3
+                    id="project-modal-title"
+                    className="font-serif text-4xl tracking-tight text-fg md:text-5xl"
+                  >
+                    {project.title}
+                  </h3>
+                </div>
+                <div className="flex items-center gap-2">
+                  {project.github && (
+                    <a
+                      id="project-github-link"
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-ghost"
+                    >
+                      <Icon name="Github" size={15} />
+                      Source
+                    </a>
+                  )}
+                  {project.live && (
+                    <a
+                      id="project-live-link"
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary"
+                    >
+                      Visit site
+                      <Icon name="ArrowUpRight" size={15} />
+                    </a>
+                  )}
+                </div>
               </div>
 
-              {/* Right Sidebar Metadata */}
-              <div className="bg-[#212123]/60 border border-[#303031] rounded-2xl p-6 space-y-6 self-start shadow-sm">
-                <h4 className="text-xs font-bold text-white uppercase tracking-widest border-b border-[#383838] pb-3">
-                  Project Specs
-                </h4>
+              <div className="hairline" />
 
-                <div className="space-y-4">
-                  <div>
-                    <span className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider block">
-                      Client Partner
-                    </span>
-                    <span className="text-xs text-gray-200 font-medium">
-                      {project.client}
-                    </span>
+              <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+                <div className="space-y-3 lg:col-span-2">
+                  <p className="eyebrow">Overview</p>
+                  <p className="text-[15px] leading-relaxed whitespace-pre-line text-muted">
+                    {project.description}
+                  </p>
+                </div>
+
+                <dl className="card-raised space-y-5 self-start rounded-3xl p-6">
+                  <div className="space-y-1">
+                    <dt className="eyebrow text-[10px]!">Client</dt>
+                    <dd className="text-sm text-fg">{project.client}</dd>
                   </div>
-
-                  <div>
-                    <span className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider block">
-                      Release Date
-                    </span>
-                    <span className="text-xs text-gray-200 font-medium">
-                      {project.date}
-                    </span>
+                  <div className="space-y-1">
+                    <dt className="eyebrow text-[10px]!">Released</dt>
+                    <dd className="text-sm text-fg">{project.date}</dd>
                   </div>
-
-                  <div>
-                    <span className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider block">
-                      Stack & Libraries
-                    </span>
-                    <div className="flex flex-wrap gap-1.5 mt-2">
+                  <div className="space-y-2">
+                    <dt className="eyebrow text-[10px]!">Stack</dt>
+                    <dd className="flex flex-wrap gap-1.5">
                       {project.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="text-[10px] font-medium text-gray-300 bg-[#2b2b2c] border border-[#383838] px-2 py-0.5 rounded"
-                        >
+                        <span key={tech} className="chip">
                           {tech}
                         </span>
                       ))}
-                    </div>
+                    </dd>
                   </div>
-                </div>
+                </dl>
               </div>
             </div>
-          </div>
-        </motion.div>
-      </div>
+          </motion.div>
+        </div>
+      )}
     </AnimatePresence>
   );
 }
