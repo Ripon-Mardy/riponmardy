@@ -10,14 +10,18 @@ import Icon from "../../components/Icon";
 import SectionHeading from "../../components/SectionHeading";
 
 // Only offer filters for categories that actually have projects
-const categories = ["All", ...Array.from(new Set(projects.map((p) => p.category)))];
+const categories = [
+  "All",
+  ...Array.from(new Set(projects.map((p) => p.category))),
+];
 
 export default function PortfolioTab() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [activeProject, setActiveProject] = useState<ProjectItem | null>(null);
 
   const filteredProjects = projects.filter(
-    (project) => selectedCategory === "All" || project.category === selectedCategory,
+    (project) =>
+      selectedCategory === "All" || project.category === selectedCategory,
   );
 
   return (
@@ -62,7 +66,11 @@ export default function PortfolioTab() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.97 }}
-              transition={{ duration: 0.6, delay: Math.min(i, 8) * 0.05, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 0.6,
+                delay: Math.min(i, 8) * 0.05,
+                ease: [0.16, 1, 0.3, 1],
+              }}
               className="card-raised card-hover group flex flex-col overflow-hidden rounded-[1.75rem]"
             >
               <button
@@ -148,7 +156,9 @@ export default function PortfolioTab() {
           <span className="icon-tile mx-auto size-12 text-subtle!">
             <Icon name="FolderOpen" size={20} />
           </span>
-          <p className="text-sm text-fg">No projects in “{selectedCategory}” yet.</p>
+          <p className="text-sm text-fg">
+            No projects in “{selectedCategory}” yet.
+          </p>
         </div>
       )}
 

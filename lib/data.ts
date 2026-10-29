@@ -369,23 +369,18 @@ export const skills: SkillItem[] = [
 
   // AI & Developer Tools
   {
-    name: "OpenAI API",
-    percentage: 85,
-    level: "Advanced",
-    category: "ai",
-  },
-  {
     name: "Claude",
     percentage: 90,
     level: "Advanced",
     category: "ai",
   },
   {
-    name: "GitHub Copilot",
-    percentage: 92,
+    name: "OpenAI API",
+    percentage: 85,
     level: "Advanced",
     category: "ai",
   },
+
   {
     name: "Cursor AI",
     percentage: 92,
@@ -395,12 +390,6 @@ export const skills: SkillItem[] = [
   {
     name: "Google AI Studio",
     percentage: 85,
-    level: "Advanced",
-    category: "ai",
-  },
-  {
-    name: "Gemini",
-    percentage: 88,
     level: "Advanced",
     category: "ai",
   },
@@ -426,9 +415,6 @@ export const skills: SkillItem[] = [
   },
 ];
 
-// portfolio
-// import portfolio3 from "../public/portfolio/portfolio1.png";
-// import portfolio2 from "../public/portfolio/portfolio2.webp";
 import portfolio1 from "../public/portfolio/hyori.png";
 import porfolio2 from "../public/portfolio/jonosokti.png";
 import portfolio3 from "../public/portfolio/buybee.png";
@@ -440,10 +426,32 @@ import portfolio8 from "../public/portfolio/telescopebd.png";
 import portfolio9 from "../public/portfolio/inteltec.webp";
 import portfolio10 from "../public/portfolio/gethyped.png";
 import portfolio11 from "../public/portfolio/sagenpower.png";
+import portfolio12 from "../public/portfolio/doctortracker.png";
 
 export const projects: ProjectItem[] = [
   {
     id: "proj-1",
+    title: "Doctor Tracker",
+    category: "Web Application",
+    thumbnail: portfolio12,
+    client: "Quantum Analytics Inc.",
+    date: "January 2026",
+    technologies: [
+      "React.js",
+      "Next.js",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "TypeScript",
+      "Node.js",
+    ],
+    description:
+      "A full-stack Doctor Tracker application built with TypeScript, Node.js, Express.js, and MongoDB. Features secure admin authentication, JWT-based authorization, and a scalable REST API for managing doctor-related information.",
+    live: "https://doctor-tracker-zeta.vercel.app",
+    github: "https://github.com/Ripon-Mardy/doctor-tracker",
+  },
+  {
+    id: "proj-2",
     title: "Hyori Organic food",
     category: "Web Application",
     thumbnail: portfolio1,
@@ -464,7 +472,7 @@ export const projects: ProjectItem[] = [
     github: "https://github.com/Ripon-Mardy/Hyori-Organic-food",
   },
   {
-    id: "proj-2",
+    id: "proj-3",
     title: "Jonosokti",
     category: "Web Application",
     thumbnail: porfolio2,
@@ -485,7 +493,7 @@ export const projects: ProjectItem[] = [
     github: "https://github.com/Ripon-Mardy/jonosokti",
   },
   {
-    id: "proj-3",
+    id: "proj-4",
     title: "BuyBee",
     category: "Web Application",
     thumbnail: portfolio3,
@@ -506,7 +514,7 @@ export const projects: ProjectItem[] = [
     github: "https://github.com/Ripon-Mardy/BuyBee",
   },
   {
-    id: "proj-4",
+    id: "proj-5",
     title: "Get Hyped",
     category: "Web Application",
     thumbnail: portfolio10,
@@ -528,7 +536,7 @@ export const projects: ProjectItem[] = [
     github: "https://github.com/Ripon-Mardy/gethyped-clone-nextjs-gsap",
   },
   {
-    id: "proj-5",
+    id: "proj-6",
     title: "Sagen Power",
     category: "Web Application",
     thumbnail: portfolio11,
@@ -550,7 +558,7 @@ export const projects: ProjectItem[] = [
   },
 
   {
-    id: "proj-6",
+    id: "proj-7",
     title: "Nextjs-dashboard",
     category: "Web Application",
     thumbnail: portfolio4,
@@ -571,7 +579,7 @@ export const projects: ProjectItem[] = [
     github: "https://github.com/Ripon-Mardy/nextjs-dashboard",
   },
   {
-    id: "proj-7",
+    id: "proj-8",
     title: "Sensor-Shop ",
     category: "Web Application",
     thumbnail: portfolio5,
@@ -592,7 +600,7 @@ export const projects: ProjectItem[] = [
     github: "https://github.com/Ripon-Mardy/Sensor-Shop",
   },
   {
-    id: "proj-8",
+    id: "proj-9",
     title: "United Machinery Bangladesh  ",
     category: "Web Application",
     thumbnail: portfolio6,
@@ -613,7 +621,7 @@ export const projects: ProjectItem[] = [
     github: "https://github.com/Ripon-Mardy/united",
   },
   {
-    id: "proj-9",
+    id: "proj-10",
     title: "Oxford UI Design",
     category: "Web Application",
     thumbnail: portfolio7,
@@ -634,7 +642,7 @@ export const projects: ProjectItem[] = [
     github: "https://github.com/Ripon-Mardy/Oxford",
   },
   {
-    id: "proj-10",
+    id: "proj-11",
     title: "telescopebd",
     category: "Web Application",
     thumbnail: portfolio8,
@@ -647,7 +655,7 @@ export const projects: ProjectItem[] = [
     github: "https://github.com/Ripon-Mardy/telescopebd",
   },
   {
-    id: "proj-11",
+    id: "proj-12",
     title: "inteltec",
     category: "Web Application",
     thumbnail: portfolio9,
