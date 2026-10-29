@@ -15,7 +15,12 @@ interface FormFields {
 
 type FormErrors = Partial<Record<keyof FormFields, string>>;
 
-const emptyFields: FormFields = { name: "", email: "", subject: "", message: "" };
+const emptyFields: FormFields = {
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
+};
 
 const whatsapp = socialLinks.find((l) => l.name === "WhatsApp");
 
@@ -27,7 +32,14 @@ const channels = [
     href: `mailto:${contactInfo.email}`,
   },
   ...(whatsapp
-    ? [{ icon: "Whatsapp", label: "WhatsApp", value: contactInfo.phone, href: whatsapp.url }]
+    ? [
+        {
+          icon: "Whatsapp",
+          label: "WhatsApp",
+          value: contactInfo.phone,
+          href: whatsapp.url,
+        },
+      ]
     : []),
   { icon: "MapPin", label: "Based in", value: contactInfo.location },
 ];
@@ -50,7 +62,10 @@ function Field({
       </label>
       {children}
       {error && (
-        <p id={`${id}-error`} className="flex items-center gap-1.5 text-xs text-red-300">
+        <p
+          id={`${id}-error`}
+          className="flex items-center gap-1.5 text-xs text-red-300"
+        >
           <Icon name="AlertCircle" size={12} />
           {error}
         </p>
@@ -62,9 +77,9 @@ function Field({
 export default function ContactTab() {
   const [fields, setFields] = useState<FormFields>(emptyFields);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">(
-    "idle",
-  );
+  const [formStatus, setFormStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
 
   const validate = (): boolean => {
     const next: FormErrors = {};
@@ -126,10 +141,11 @@ export default function ContactTab() {
         label="Contact"
         title={
           <>
-            Let&apos;s build something <em className="text-gradient pr-1">together</em>
+            Let&apos;s build something{" "}
+            <em className="text-gradient pr-1">together</em>
           </>
         }
-        description="Have a project, a role, or just an idea? Send a note and I&apos;ll get back to you."
+        description="Have a project, a role, or just an idea? Send a note and I'll get back to you."
       />
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-5">
@@ -169,22 +185,26 @@ export default function ContactTab() {
                 {inner}
               </a>
             ) : (
-              <div key={c.label} style={{ "--i": i } as React.CSSProperties} className={className}>
+              <div
+                key={c.label}
+                style={{ "--i": i } as React.CSSProperties}
+                className={className}
+              >
                 {inner}
               </div>
             );
           })}
 
           {personalInfo.availableForWork && (
-          <div className="card-raised relative mt-auto hidden overflow-hidden rounded-3xl p-6 lg:block">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -right-10 -bottom-16 size-48 rounded-full bg-accent/10 blur-3xl"
-            />
-            <p className="relative font-serif text-xl leading-snug text-fg/90">
-              Open to freelance projects and full-time remote roles.
-            </p>
-          </div>
+            <div className="card-raised relative mt-auto hidden overflow-hidden rounded-3xl p-6 lg:block">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-10 -bottom-16 size-48 rounded-full bg-accent/10 blur-3xl"
+              />
+              <p className="relative font-serif text-xl leading-snug text-fg/90">
+                Open to freelance projects and full-time roles.
+              </p>
+            </div>
           )}
         </div>
 
@@ -196,15 +216,32 @@ export default function ContactTab() {
         >
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
             <Field id="contact-name" label="Name" error={errors.name}>
-              <input type="text" autoComplete="name" placeholder="Jane Doe" className="field" {...fieldProps("name")} />
+              <input
+                type="text"
+                autoComplete="name"
+                placeholder="Jane Doe"
+                className="field"
+                {...fieldProps("name")}
+              />
             </Field>
             <Field id="contact-email" label="Email" error={errors.email}>
-              <input type="email" autoComplete="email" placeholder="you@company.com" className="field" {...fieldProps("email")} />
+              <input
+                type="email"
+                autoComplete="email"
+                placeholder="you@company.com"
+                className="field"
+                {...fieldProps("email")}
+              />
             </Field>
           </div>
 
           <Field id="contact-subject" label="Subject" error={errors.subject}>
-            <input type="text" placeholder="Project enquiry" className="field" {...fieldProps("subject")} />
+            <input
+              type="text"
+              placeholder="Project enquiry"
+              className="field"
+              {...fieldProps("subject")}
+            />
           </Field>
 
           <Field id="contact-message" label="Message" error={errors.message}>
@@ -220,16 +257,23 @@ export default function ContactTab() {
             <p role="status" className="text-xs">
               {formStatus === "success" && (
                 <span className="flex items-center gap-1.5 text-emerald-300">
-                  <Icon name="CheckCircle2" size={14} /> Thanks! Your message is on its way.
+                  <Icon name="CheckCircle2" size={14} /> Thanks! Your message is
+                  on its way.
                 </span>
               )}
               {formStatus === "error" && (
                 <span className="flex items-center gap-1.5 text-red-300">
-                  <Icon name="AlertCircle" size={14} /> Couldn&apos;t send. Please try again or email me directly.
+                  <Icon name="AlertCircle" size={14} /> Couldn&apos;t send.
+                  Please try again or email me directly.
                 </span>
               )}
             </p>
-            <button id="submit-contact-btn" type="submit" disabled={busy} className="btn btn-primary">
+            <button
+              id="submit-contact-btn"
+              type="submit"
+              disabled={busy}
+              className="btn btn-primary"
+            >
               {busy ? (
                 <>
                   <span className="size-4 animate-spin rounded-full border-2 border-accent-ink/80 border-t-transparent" />
