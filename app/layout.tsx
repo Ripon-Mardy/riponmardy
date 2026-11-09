@@ -8,6 +8,7 @@ import NextTopLoader from "nextjs-toploader";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import MobileNav from "../components/MobileNav";
+import WinterScene from "../components/WinterScene";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#08080a",
+  themeColor: "#05070d",
 };
 
 
@@ -98,11 +99,12 @@ export default function RootLayout({
         <Analytics />
 
 
+        <WinterScene />
         <MobileNav />
         <div className="min-h-screen">
           <div className="relative mx-auto flex max-w-7xl flex-col gap-5 px-4 pt-21 pb-5 md:gap-6 md:pt-24 md:pb-10 lg:flex-row lg:gap-7 lg:py-14 xl:py-16">
             <Sidebar />
-            <main className="card flex min-h-[75vh] w-full flex-col rounded-[2rem] bg-surface/85 backdrop-blur-xl lg:flex-1">
+            <main className="card flex min-h-[75vh] w-full flex-col rounded-[2rem] lg:flex-1">
               <Navbar />
               <div className="flex-1 px-5 pt-8 pb-12 sm:px-7 md:px-10 md:pb-14 lg:px-12 lg:pt-24">
                 {children}

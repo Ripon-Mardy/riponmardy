@@ -45,7 +45,7 @@ export default function AboutTab() {
           description={personalInfo.bio}
         />
 
-        <dl className="stagger grid grid-cols-2 overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-4 [&>*]:bg-surface">
+        <dl className="stagger grid grid-cols-2 overflow-hidden rounded-3xl border border-line bg-white/[0.03] sm:grid-cols-4">
           {stats.map((stat, i) => (
             <div
               key={stat.label}
