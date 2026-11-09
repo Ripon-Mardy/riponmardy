@@ -84,13 +84,29 @@
 
 @layer components {
   /* Elevated panel with a subtle top highlight */
+  /* Frosted glass card: the winter scene shows through, softly blurred */
   .card {
     position: relative;
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-line);
+    background-color: rgb(13 17 26 / 0.78);
+    -webkit-backdrop-filter: blur(20px) saturate(120%);
+    backdrop-filter: blur(20px) saturate(120%);
+    border: 1px solid rgb(200 220 255 / 0.09);
     box-shadow:
-      inset 0 1px 0 rgb(255 255 255 / 0.04),
-      0 30px 60px -30px rgb(0 0 0 / 0.6);
+      inset 0 1px 0 rgb(220 235 255 / 0.10),
+      0 30px 60px -30px rgb(0 0 0 / 0.7);
+  }
+
+  /* Light frost along the top edge of each card */
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+      radial-gradient(60% 40px at 50% 0, rgb(225 238 255 / 0.10), transparent) no-repeat,
+      linear-gradient(to bottom, rgb(220 235 255 / 0.05), transparent 80px) no-repeat;
+    box-shadow: inset 0 1px 0 rgb(235 243 255 / 0.18);
   }
 
   .card-raised {
@@ -283,4 +299,32 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ---------- Winter scene ---------- */
+@keyframes twinkle {
+  0%, 100% { opacity: var(--o, 0.6); }
+  50% { opacity: 0.1; }
+}
+.winter-star {
+  animation: twinkle 5s ease-in-out infinite;
+}
+
+@keyframes aurora {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1) rotate(-4deg); opacity: 0.8; }
+  50% { transform: translate3d(6vw, 2vh, 0) scale(1.15) rotate(3deg); opacity: 1; }
+}
+.winter-aurora {
+  animation: aurora 26s ease-in-out infinite;
+}
+.winter-aurora-2 {
+  animation: aurora 34s ease-in-out infinite reverse;
+}
+
+@keyframes fog-drift {
+  0%, 100% { transform: translateX(-6%); }
+  50% { transform: translateX(6%); }
+}
+.winter-fog {
+  animation: fog-drift 40s ease-in-out infinite;
 }
